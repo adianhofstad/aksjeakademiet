@@ -1271,6 +1271,7 @@ code {
 .tools-grid {
   display: grid;
   gap: 32px;
+  min-width: 0;
 }
 
 .tool-section {
@@ -1280,6 +1281,7 @@ code {
   padding: 32px;
   overflow: hidden;
   max-width: 100%;
+  min-width: 0;
   box-sizing: border-box;
 }
 
@@ -1355,6 +1357,12 @@ code {
   grid-template-columns: 1fr;
   gap: 24px;
   max-width: 100%;
+  min-width: 0;
+}
+
+.trading-container > * {
+  min-width: 0;
+  overflow: hidden;
 }
 
 .stock-list {
@@ -1485,6 +1493,8 @@ code {
   border-radius: var(--radius-lg);
   padding: 24px;
   border: 1px solid var(--border-color);
+  min-width: 0;
+  overflow: hidden;
 }
 
 .portfolio-panel h4 {
