@@ -496,7 +496,11 @@ function renderPortfolio() {
 
   if (balanceEl) {
     const totalValue = getTotalPortfolioValue();
-    balanceEl.textContent = formatNOK(totalValue);
+    const cash = tradingState.balance;
+    const invested = totalValue - cash;
+    balanceEl.innerHTML = formatNOK(totalValue) +
+      '<div style="font-size:0.75rem;font-weight:400;color:var(--text-muted);margin-top:2px;">Kontanter: ' +
+      formatNOK(cash) + (invested > 0 ? ' · Investert: ' + formatNOK(invested) : '') + '</div>';
   }
 
   if (holdingsEl) {
