@@ -448,28 +448,30 @@ function renderStockList() {
   const list = document.querySelector('.stock-list');
   if (!list) return;
 
-  list.innerHTML = tradingState.stocks.map((stock, i) => {
+  const rows = tradingState.stocks.map((stock, i) => {
     const change = stock.price - stock.prevPrice;
     const changePct = stock.prevPrice ? ((change / stock.prevPrice) * 100).toFixed(2) : '0.00';
     const cls = change >= 0 ? 'positive' : 'negative';
     const sign = change >= 0 ? '+' : '';
-    return `
-      <div class="stock-row">
-        <div class="stock-name"><span class="stock-name-text">${stock.name}</span><br><span class="ticker">${stock.ticker}</span></div>
-        <div class="stock-price">${stock.price.toFixed(2)} kr</div>
-        <div class="stock-change ${cls}">${sign}${changePct}%</div>
-        <div class="stock-actions">
-          <button class="btn btn-primary btn-sm" onclick="openTradeModal(${i}, 'buy')">Kjøp</button>
-          <button class="btn btn-secondary btn-sm" onclick="openTradeModal(${i}, 'sell')">Selg</button>
-          <button class="btn btn-ghost btn-sm chart-btn" onclick="showStockChart('${stock.ticker}')">Graf</button>
-        </div>
-      </div>
-    `;
+    return `<tr class="stock-row">
+      <td class="stock-name"><span class="stock-name-text">${stock.name}</span><br><span class="ticker">${stock.ticker}</span></td>
+      <td class="stock-price">${stock.price.toFixed(2)} kr</td>
+      <td class="stock-change ${cls}">${sign}${changePct}%</td>
+      <td class="stock-actions">
+        <button class="btn btn-primary btn-sm" onclick="openTradeModal(${i}, 'buy')">Kjøp</button>
+        <button class="btn btn-secondary btn-sm" onclick="openTradeModal(${i}, 'sell')">Selg</button>
+        <button class="btn btn-ghost btn-sm chart-btn" onclick="showStockChart('${stock.ticker}')">Graf</button>
+      </td>
+    </tr>`;
   }).join('');
+
+  list.innerHTML = `<table class="stock-table"><colgroup>
+    <col style="width:40%"><col style="width:20%"><col style="width:15%"><col style="width:25%">
+  </colgroup><tbody>${rows}</tbody></table>`;
 }
 
 function renderStockPrices() {
-  const rows = document.querySelectorAll('.stock-row');
+  const rows = document.querySelectorAll('tr.stock-row');
   tradingState.stocks.forEach((stock, i) => {
     if (!rows[i]) return;
     const priceEl = rows[i].querySelector('.stock-price');
