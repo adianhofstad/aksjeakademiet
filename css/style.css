@@ -1278,7 +1278,7 @@ code {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 32px;
-  overflow: hidden;
+  overflow: visible;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -1370,11 +1370,12 @@ code {
   flex-direction: column;
   gap: 8px;
   min-width: 0;
+  overflow-x: auto;
 }
 
 .stock-row {
   display: grid;
-  grid-template-columns: minmax(100px, 1.5fr) minmax(70px, auto) minmax(55px, auto) auto;
+  grid-template-columns: minmax(120px, 1.5fr) minmax(70px, auto) minmax(60px, auto) auto;
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -1382,7 +1383,7 @@ code {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   transition: all var(--transition);
-  min-width: 0;
+  min-width: 500px;
 }
 
 .stock-row:hover {
