@@ -453,20 +453,23 @@ function renderStockList() {
     const changePct = stock.prevPrice ? ((change / stock.prevPrice) * 100).toFixed(2) : '0.00';
     const cls = change >= 0 ? 'positive' : 'negative';
     const sign = change >= 0 ? '+' : '';
+    const held = tradingState.holdings[stock.ticker]?.qty || 0;
     return `<tr class="stock-row">
-      <td class="stock-name"><span class="stock-name-text">${stock.name}</span><br><span class="ticker">${stock.ticker}</span></td>
+      <td class="stock-name"><span class="stock-name-text">${stock.name}</span><br><span class="ticker">${stock.ticker}</span>${held > 0 ? '<br><span class="ticker" style="color:var(--accent-green);">Eier: ' + held + '</span>' : ''}</td>
       <td class="stock-price">${stock.price.toFixed(2)} kr</td>
       <td class="stock-change ${cls}">${sign}${changePct}%</td>
       <td class="stock-actions">
-        <button class="btn btn-primary btn-sm" onclick="openTradeModal(${i}, 'buy')">Kjøp</button>
-        <button class="btn btn-secondary btn-sm" onclick="openTradeModal(${i}, 'sell')">Selg</button>
-        <button class="btn btn-ghost btn-sm chart-btn" onclick="showStockChart('${stock.ticker}')">Graf</button>
+        <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',1)">+1</button>
+        <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',10)">+10</button>
+        ${held > 0 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',1)">-1</button>' : ''}
+        ${held >= 10 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',10)">-10</button>' : ''}
+        ${held > 0 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',' + held + ')">Selg alt</button>' : ''}
       </td>
     </tr>`;
   }).join('');
 
   list.innerHTML = `<table class="stock-table"><colgroup>
-    <col style="width:40%"><col style="width:20%"><col style="width:15%"><col style="width:25%">
+    <col style="width:35%"><col style="width:15%"><col style="width:12%"><col style="width:38%">
   </colgroup><tbody>${rows}</tbody></table>`;
 }
 
@@ -498,9 +501,15 @@ function renderPortfolio() {
     const totalValue = getTotalPortfolioValue();
     const cash = tradingState.balance;
     const invested = totalValue - cash;
-    balanceEl.innerHTML = formatNOK(totalValue) +
-      '<div style="font-size:0.75rem;font-weight:400;color:var(--text-muted);margin-top:2px;">Kontanter: ' +
-      formatNOK(cash) + (invested > 0 ? ' · Investert: ' + formatNOK(invested) : '') + '</div>';
+    const pl = totalValue - START_BALANCE;
+    const plSign = pl >= 0 ? '+' : '';
+    const plColor = pl >= 0 ? 'var(--accent-green)' : 'var(--accent-red)';
+    balanceEl.innerHTML =
+      '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:400;">Kontanter</div>' +
+      '<div>' + formatNOK(cash) + '</div>' +
+      (invested > 0 ? '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:400;margin-top:6px;">Investert: ' + formatNOK(invested) + '</div>' : '') +
+      '<div style="font-size:0.85rem;color:var(--text-muted);font-weight:400;margin-top:2px;">Totalt: ' + formatNOK(totalValue) +
+      ' <span style="color:' + plColor + '">' + plSign + formatNOK(pl) + '</span></div>';
   }
 
   if (holdingsEl) {
@@ -618,6 +627,30 @@ window.openTradeModal = function(stockIndex, type) {
 
   document.getElementById('cancelTrade').onclick = () => overlay.classList.remove('show');
   overlay.onclick = (e) => { if (e.target === overlay) overlay.classList.remove('show'); };
+};
+
+window.quickTrade = function(stockIndex, type, qty) {
+  const stock = tradingState.stocks[stockIndex];
+  if (!stock || qty <= 0) return;
+
+  if (type === 'buy') {
+    const cost = stock.price * qty;
+    if (cost > tradingState.balance) { alert('Ikke nok midler!'); return; }
+    tradingState.balance -= cost;
+    if (!tradingState.holdings[stock.ticker]) tradingState.holdings[stock.ticker] = { qty: 0, avgPrice: 0 };
+    const h = tradingState.holdings[stock.ticker];
+    h.avgPrice = ((h.avgPrice * h.qty) + cost) / (h.qty + qty);
+    h.qty += qty;
+    tradingState.history.push({ type: 'buy', ticker: stock.ticker, qty, price: stock.price, total: cost, time: Date.now() });
+  } else {
+    const holding = tradingState.holdings[stock.ticker];
+    if (!holding || holding.qty < qty) { alert('Ikke nok aksjer!'); return; }
+    tradingState.balance += stock.price * qty;
+    holding.qty -= qty;
+    tradingState.history.push({ type: 'sell', ticker: stock.ticker, qty, price: stock.price, total: stock.price * qty, time: Date.now() });
+  }
+  saveTrading();
+  renderTrading();
 };
 
 function updateTradeTotal(price) {
