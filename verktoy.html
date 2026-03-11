@@ -132,24 +132,30 @@
         </div>
 
         <div class="trading-container">
+          <div class="portfolio-panel" style="display:grid;grid-template-columns:auto 1fr 1fr auto;gap:16px;align-items:start;">
+            <div>
+              <h4 style="margin-bottom:4px;">Portefølje</h4>
+              <div class="balance-display">100 000,00 kr</div>
+            </div>
+            <div>
+              <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">Beholdninger</h4>
+              <div class="holdings-list">
+                <p class="text-muted" style="font-size:0.85rem;">Ingen beholdninger ennå</p>
+              </div>
+            </div>
+            <div>
+              <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">Siste transaksjoner</h4>
+              <div class="history-list">
+                <p class="text-muted" style="font-size:0.85rem;">Ingen transaksjoner</p>
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-sm" onclick="resetTrading()" style="align-self:center;">Nullstill portefølje</button>
+          </div>
           <div>
             <h4 style="margin-bottom:12px;">Aksjer <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(20 aksjer)</span></h4>
-            <div class="stock-list" style="max-height:500px;overflow-y:auto;">
+            <div class="stock-list" style="max-height:600px;overflow-y:auto;">
               <!-- Rendered by JS -->
             </div>
-          </div>
-          <div class="portfolio-panel">
-            <h4>Portefølje</h4>
-            <div class="balance-display">100 000,00 kr</div>
-            <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;">Beholdninger</h4>
-            <div class="holdings-list">
-              <p class="text-muted" style="font-size:0.85rem;">Ingen beholdninger ennå</p>
-            </div>
-            <h4 style="font-size:0.85rem;color:var(--text-muted);margin-top:20px;margin-bottom:8px;">Siste transaksjoner</h4>
-            <div class="history-list">
-              <p class="text-muted" style="font-size:0.85rem;">Ingen transaksjoner</p>
-            </div>
-            <button class="btn btn-ghost btn-sm" style="margin-top:16px;" onclick="resetTrading()">Nullstill portefølje</button>
           </div>
         </div>
       </div>

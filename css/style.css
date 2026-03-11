@@ -1352,17 +1352,9 @@ code {
 /* --- Paper Trading --- */
 .trading-container {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: 24px;
-  overflow: visible;
   max-width: 100%;
-  min-width: 0;
-}
-
-@media (max-width: 768px) {
-  .trading-container {
-    grid-template-columns: 1fr;
-  }
 }
 
 .stock-list {
@@ -1375,15 +1367,14 @@ code {
 
 .stock-row {
   display: grid;
-  grid-template-columns: minmax(120px, 1.5fr) minmax(70px, auto) minmax(60px, auto) auto;
+  grid-template-columns: minmax(120px, 1.5fr) minmax(80px, auto) minmax(70px, auto) auto;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   padding: 12px 14px;
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   transition: all var(--transition);
-  min-width: 500px;
 }
 
 .stock-row:hover {
