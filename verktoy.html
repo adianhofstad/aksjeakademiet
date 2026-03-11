@@ -113,12 +113,21 @@
         <h3>Papirhandel-simulator</h3>
         <p style="margin-bottom:20px;color:var(--text-secondary);">Øv på aksjehandel med 500 000 kr i virtuell valuta. 20 norske aksjer med live prisoppdateringer.</p>
 
-        <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+        <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
           <label for="difficultySelect" style="font-weight:600;font-size:0.9rem;">Vanskelighetsgrad:</label>
           <select id="difficultySelect" style="padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);font-size:0.85rem;cursor:pointer;">
-            <option value="easy">Enkel — Lav volatilitet, treg</option>
-            <option value="medium" selected>Medium — Normal marked</option>
-            <option value="hard">Vanskelig — Høy volatilitet, rask</option>
+            <option value="easy">Enkel — Lav volatilitet</option>
+            <option value="medium" selected>Medium — Normal</option>
+            <option value="hard">Vanskelig — Høy volatilitet</option>
+          </select>
+          <label for="speedSelect" style="font-weight:600;font-size:0.9rem;margin-left:8px;">Hastighet:</label>
+          <select id="speedSelect" style="padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);font-size:0.85rem;cursor:pointer;">
+            <option value="500">0.5 sek</option>
+            <option value="1000">1 sek</option>
+            <option value="2000">2 sek</option>
+            <option value="3000" selected>3 sek</option>
+            <option value="5000">5 sek</option>
+            <option value="10000">10 sek</option>
           </select>
         </div>
 

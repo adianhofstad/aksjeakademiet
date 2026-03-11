@@ -1278,6 +1278,9 @@ code {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 32px;
+  overflow: hidden;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .tool-section h3 {
@@ -1351,6 +1354,8 @@ code {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -1367,14 +1372,15 @@ code {
 
 .stock-row {
   display: grid;
-  grid-template-columns: 1fr auto auto auto;
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
   align-items: center;
-  gap: 16px;
-  padding: 14px 16px;
+  gap: 10px;
+  padding: 12px 14px;
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   transition: all var(--transition);
+  overflow: hidden;
 }
 
 .stock-row:hover {
@@ -1384,6 +1390,10 @@ code {
 .stock-name {
   font-weight: 600;
   font-size: 0.95rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 .stock-name .ticker {

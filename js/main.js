@@ -272,15 +272,16 @@ const STOCKS = [
 ];
 
 const DIFFICULTY = {
-  easy:   { label: 'Enkel',     volatility: 0.003, interval: 5000, bias: 0.53 },
-  medium: { label: 'Medium',    volatility: 0.008, interval: 3000, bias: 0.50 },
-  hard:   { label: 'Vanskelig', volatility: 0.020, interval: 1500, bias: 0.46 }
+  easy:   { label: 'Enkel',     volatility: 0.003, bias: 0.53 },
+  medium: { label: 'Medium',    volatility: 0.008, bias: 0.50 },
+  hard:   { label: 'Vanskelig', volatility: 0.020, bias: 0.46 }
 };
 
 const START_BALANCE = 500000;
 let tradingState = null;
 let priceInterval = null;
 let currentDifficulty = localStorage.getItem('aksje-difficulty') || 'medium';
+let currentSpeed = parseInt(localStorage.getItem('aksje-speed')) || 3000;
 let stockChartData = {};
 let candleCounter = 0;
 
@@ -327,6 +328,17 @@ function initPaperTrading() {
     });
   }
 
+  // Speed selector
+  const speedSelect = document.getElementById('speedSelect');
+  if (speedSelect) {
+    speedSelect.value = currentSpeed;
+    speedSelect.addEventListener('change', (e) => {
+      currentSpeed = parseInt(e.target.value);
+      localStorage.setItem('aksje-speed', currentSpeed);
+      startPriceUpdates();
+    });
+  }
+
   renderTrading();
   startPriceUpdates();
 }
@@ -367,6 +379,7 @@ function generateStockHistory(basePrice, days) {
 function startPriceUpdates() {
   if (priceInterval) clearInterval(priceInterval);
   const diff = DIFFICULTY[currentDifficulty] || DIFFICULTY.medium;
+  const interval = currentSpeed || 3000;
 
   priceInterval = setInterval(() => {
     candleCounter++;
@@ -417,7 +430,7 @@ function startPriceUpdates() {
     if (typeof drawMainChart === 'function' && document.getElementById('stockChart')) {
       drawMainChart();
     }
-  }, diff.interval);
+  }, interval);
 }
 
 function saveTrading() {
