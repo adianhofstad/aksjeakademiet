@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="no" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verktøy — Aksjeakademiet</title>
+  <meta name="description" content="Interaktive verktøy for norske investorer: kalkulatorer, papirhandel-simulator og aksjediagrammer.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300d4aa'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%230a0f1e' font-family='sans-serif' font-weight='800' font-size='20'>A</text></svg>">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">A</span> Aksjeakademiet</a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="#">Kurs</a>
+        <div class="nav-dropdown">
+          <a href="kurs/nybegynner.html"><span class="dropdown-icon green">N</span><span class="dropdown-text"><strong>Nybegynner</strong><span>10 moduler — Grunnleggende aksjer</span></span></a>
+          <a href="kurs/viderekommen.html"><span class="dropdown-icon blue">V</span><span class="dropdown-text"><strong>Viderekommen</strong><span>9 moduler — Analyse og strategi</span></span></a>
+          <a href="kurs/avansert.html"><span class="dropdown-icon red">A</span><span class="dropdown-text"><strong>Avansert</strong><span>7 moduler — Profesjonell handel</span></span></a>
+        </div>
+      </li>
+      <li><a href="verktoy.html" class="active">Verktøy</a></li>
+      <li><a href="blogg.html">Artikler</a></li>
+      <li><a href="ordliste.html">Ordliste</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Bytt tema"></button>
+      <button class="hamburger" aria-label="Meny" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumbs">
+  <div class="container">
+    <ol>
+      <li><a href="index.html">Hjem</a></li>
+      <li><span class="current">Verktøy</span></li>
+    </ol>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="container">
+    <h1>Verktøy</h1>
+    <p>Kalkulatorer, simulator og interaktive diagrammer for å øve uten risiko.</p>
+  </div>
+</header>
+
+<main class="section">
+  <div class="container">
+    <div class="tools-grid">
+
+      <!-- Compound Interest Calculator -->
+      <div class="tool-section fade-in" id="rentesrente">
+        <h3>Rentesrente-kalkulator</h3>
+        <p style="margin-bottom:20px;color:var(--text-secondary);">Se hvordan sparepengene dine vokser over tid med rentes rente-effekten.</p>
+        <div class="calc-form">
+          <div class="form-group">
+            <label for="principal">Startbeløp (kr)</label>
+            <input type="number" id="principal" value="50000" min="0">
+          </div>
+          <div class="form-group">
+            <label for="rate">Årlig avkastning (%)</label>
+            <input type="number" id="rate" value="8" min="0" max="100" step="0.5">
+          </div>
+          <div class="form-group">
+            <label for="years">Antall år</label>
+            <input type="number" id="years" value="20" min="1" max="100">
+          </div>
+          <div class="form-group">
+            <label for="monthly">Månedlig sparing (kr)</label>
+            <input type="number" id="monthly" value="2000" min="0">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="calcCompound">Beregn</button>
+        <div class="calc-result" id="compoundResult" style="margin-top:20px;">
+          <p class="text-muted">Trykk "Beregn" for å se resultatet.</p>
+        </div>
+        <div class="calc-chart-container">
+          <canvas id="compoundChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Dividend Calculator -->
+      <div class="tool-section fade-in" id="utbyttekalkulator">
+        <h3>Utbyttekalkulator</h3>
+        <p style="margin-bottom:20px;color:var(--text-secondary);">Beregn forventet utbytte basert på investering og utbytteavkastning.</p>
+        <div class="calc-form">
+          <div class="form-group">
+            <label for="divInvestment">Investert beløp (kr)</label>
+            <input type="number" id="divInvestment" value="100000" min="0">
+          </div>
+          <div class="form-group">
+            <label for="divYield">Utbytteavkastning (%)</label>
+            <input type="number" id="divYield" value="4.5" min="0" max="100" step="0.1">
+          </div>
+          <div class="form-group">
+            <label for="divSharePrice">Aksjepris (kr)</label>
+            <input type="number" id="divSharePrice" value="150" min="1">
+          </div>
+        </div>
+        <button class="btn btn-primary" id="calcDividend">Beregn utbytte</button>
+        <div class="calc-result" id="dividendResult" style="margin-top:20px;">
+          <p class="text-muted">Trykk "Beregn utbytte" for å se resultatet.</p>
+        </div>
+      </div>
+
+      <!-- Paper Trading Simulator -->
+      <div class="tool-section fade-in" id="papirhandel">
+        <h3>Papirhandel-simulator</h3>
+        <p style="margin-bottom:20px;color:var(--text-secondary);">Øv på aksjehandel med 500 000 kr i virtuell valuta. 20 norske aksjer med live prisoppdateringer.</p>
+
+        <div style="margin-bottom:16px;display:flex;align-items:center;gap:12px;">
+          <label for="difficultySelect" style="font-weight:600;font-size:0.9rem;">Vanskelighetsgrad:</label>
+          <select id="difficultySelect" style="padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-primary);font-size:0.85rem;cursor:pointer;">
+            <option value="easy">Enkel — Lav volatilitet, treg</option>
+            <option value="medium" selected>Medium — Normal marked</option>
+            <option value="hard">Vanskelig — Høy volatilitet, rask</option>
+          </select>
+        </div>
+
+        <div class="trading-container">
+          <div>
+            <h4 style="margin-bottom:12px;">Aksjer <span style="font-size:0.8rem;color:var(--text-muted);font-weight:400;">(20 aksjer)</span></h4>
+            <div class="stock-list" style="max-height:500px;overflow-y:auto;">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+          <div class="portfolio-panel">
+            <h4>Portefølje</h4>
+            <div class="balance-display">100 000,00 kr</div>
+            <h4 style="font-size:0.85rem;color:var(--text-muted);margin-bottom:8px;">Beholdninger</h4>
+            <div class="holdings-list">
+              <p class="text-muted" style="font-size:0.85rem;">Ingen beholdninger ennå</p>
+            </div>
+            <h4 style="font-size:0.85rem;color:var(--text-muted);margin-top:20px;margin-bottom:8px;">Siste transaksjoner</h4>
+            <div class="history-list">
+              <p class="text-muted" style="font-size:0.85rem;">Ingen transaksjoner</p>
+            </div>
+            <button class="btn btn-ghost btn-sm" style="margin-top:16px;" onclick="resetTrading()">Nullstill portefølje</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trade Modal -->
+      <div class="modal-overlay">
+        <div class="modal" id="tradeModal">
+          <h3 id="tradeType">Kjøp</h3>
+          <p id="tradeStock" style="color:var(--text-secondary);margin-bottom:4px;"></p>
+          <p style="margin-bottom:16px;">Pris: <strong id="tradePrice"></strong></p>
+          <div class="form-group">
+            <label for="tradeQty">Antall aksjer</label>
+            <input type="number" id="tradeQty" value="1" min="1">
+          </div>
+          <div id="quickQtyBtns" style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;"></div>
+          <p style="margin-top:8px;font-size:0.9rem;">Total: <strong id="tradeTotal">0 kr</strong></p>
+          <div class="modal-actions">
+            <button class="btn btn-primary" id="confirmTrade">Bekreft</button>
+            <button class="btn btn-secondary" id="cancelTrade">Avbryt</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Chart -->
+      <div class="tool-section fade-in" id="aksjekart">
+        <h3>Interaktivt aksjediagram</h3>
+        <p style="margin-bottom:20px;color:var(--text-secondary);">Velg en aksje og utforsk kurshistorikken med linje- eller candlestick-visning. Hold musen over for detaljer.</p>
+        <div class="chart-container">
+          <div class="chart-controls">
+            <button data-action="line" class="active">Linje</button>
+            <button data-action="candlestick">Candlestick</button>
+          </div>
+          <canvas id="stockChart" class="chart-canvas"></canvas>
+          <div class="chart-tooltip"></div>
+        </div>
+      </div>
+
+      <!-- Downloadable Resources -->
+      <div class="tool-section fade-in" id="ressurser">
+        <h3>Nedlastbare ressurser</h3>
+        <p style="margin-bottom:20px;color:var(--text-secondary);">Nyttige referanseguider og jukseark for investorer.</p>
+        <div class="features-grid" style="gap:12px;">
+          <div class="card" style="text-align:center;padding:24px;">
+            <div style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:var(--accent-blue);">P/E</div>
+            <h4>Nøkkeltall-oversikt</h4>
+            <p style="font-size:0.85rem;margin-bottom:12px;">Alle viktige nøkkeltall samlet på én side.</p>
+            <a href="kurs/viderekommen.html" class="btn btn-secondary btn-sm">Se i kurset</a>
+          </div>
+          <div class="card" style="text-align:center;padding:24px;">
+            <div style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:var(--accent-green);">TA</div>
+            <h4>Teknisk analyse-guide</h4>
+            <p style="font-size:0.85rem;margin-bottom:12px;">De viktigste indikatorene forklart.</p>
+            <a href="blogg.html#indikatorer" class="btn btn-secondary btn-sm">Les artikkel</a>
+          </div>
+          <div class="card" style="text-align:center;padding:24px;">
+            <div style="font-size:1.2rem;font-weight:800;margin-bottom:12px;color:var(--accent-purple);">A-Aa</div>
+            <h4>Ordliste A-Å</h4>
+            <p style="font-size:0.85rem;margin-bottom:12px;">60+ begreper på norsk og engelsk.</p>
+            <a href="ordliste.html" class="btn btn-secondary btn-sm">Gå til ordliste</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-icon">A</span> Aksjeakademiet</div>
+        <p>Fritt norsk oppslagsverk om aksjer og investering.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kurs</h4>
+        <ul>
+          <li><a href="kurs/nybegynner.html">Nybegynner</a></li>
+          <li><a href="kurs/viderekommen.html">Viderekommen</a></li>
+          <li><a href="kurs/avansert.html">Avansert</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verktøy</h4>
+        <ul>
+          <li><a href="verktoy.html#rentesrente">Kalkulator</a></li>
+          <li><a href="verktoy.html#papirhandel">Papirhandel</a></li>
+          <li><a href="verktoy.html#aksjekart">Aksjediagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Innhold</h4>
+        <ul>
+          <li><a href="blogg.html">Artikler</a></li>
+          <li><a href="ordliste.html">Ordliste</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Aksjeakademiet</span>
+      <span>Kun for utdanningsformål — ikke finansiell rådgivning.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

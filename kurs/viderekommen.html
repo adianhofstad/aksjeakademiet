@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="no" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viderekommende kurs — Aksjeakademiet</title>
+  <meta name="description" content="Viderekommende kurs i aksjehandel. Lær regnskapsanalyse, nøkkeltall, teknisk analyse, risikostyring og sektoranalyse.">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300d4aa'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%230a0f1e' font-family='sans-serif' font-weight='800' font-size='20'>A</text></svg>">
+</head>
+<body data-course="viderekommen">
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo"><span class="logo-icon">A</span> Aksjeakademiet</a>
+    <ul class="nav-links">
+      <li class="has-dropdown">
+        <a href="#" class="active">Kurs</a>
+        <div class="nav-dropdown">
+          <a href="nybegynner.html"><span class="dropdown-icon green">N</span><span class="dropdown-text"><strong>Nybegynner</strong><span>10 moduler — Grunnleggende aksjer</span></span></a>
+          <a href="viderekommen.html"><span class="dropdown-icon blue">V</span><span class="dropdown-text"><strong>Viderekommen</strong><span>9 moduler — Analyse og strategi</span></span></a>
+          <a href="avansert.html"><span class="dropdown-icon red">A</span><span class="dropdown-text"><strong>Avansert</strong><span>7 moduler — Profesjonell handel</span></span></a>
+        </div>
+      </li>
+      <li><a href="../verktoy.html">Verktøy</a></li>
+      <li><a href="../blogg.html">Artikler</a></li>
+      <li><a href="../ordliste.html">Ordliste</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Bytt tema"></button>
+      <button class="hamburger" aria-label="Meny" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<nav class="breadcrumbs">
+  <div class="container">
+    <ol>
+      <li><a href="../index.html">Hjem</a></li>
+      <li><a href="../index.html#laeringssti">Kurs</a></li>
+      <li><span class="current">Viderekommen</span></li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Course Layout -->
+<div class="course-layout">
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="course-sidebar">
+      <button class="sidebar-toggle" aria-label="Vis/skjul sidemeny"><span></span> Moduler</button>
+      <div class="sidebar-header">
+        <h2>Viderekommende kurs</h2>
+      </div>
+      <div class="sidebar-progress">
+        <span class="progress-text">0 av 9 fullført</span>
+        <div class="progress-bar"><div class="fill" style="width:0%"></div></div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#modul-1" class="sidebar-link" data-module="0">1. Balanseregnskapet</a>
+        <a href="#modul-2" class="sidebar-link" data-module="1">2. Resultatregnskap</a>
+        <a href="#modul-3" class="sidebar-link" data-module="2">3. Kontantstrømoppstilling</a>
+        <a href="#modul-4" class="sidebar-link" data-module="3">4. Nøkkeltall (P/E, P/B, EPS, ROE)</a>
+        <a href="#modul-5" class="sidebar-link" data-module="4">5. Grunnleggende teknisk analyse</a>
+        <a href="#modul-6" class="sidebar-link" data-module="5">6. Markedsordre vs. limitordre</a>
+        <a href="#modul-7" class="sidebar-link" data-module="6">7. Risikostyring og posisjonsstørrelse</a>
+        <a href="#modul-8" class="sidebar-link" data-module="7">8. Sektorer og bransjer</a>
+        <a href="#test-deg-selv" class="sidebar-link" data-module="8">Test deg selv</a>
+      </nav>
+    </aside>
+
+    <!-- Course Content -->
+    <main class="course-content">
+
+      <!-- Modul 1: Balanseregnskapet -->
+      <div class="module-section" id="modul-1">
+        <h2>1. Balanseregnskapet</h2>
+
+        <h3>Hva er et balanseregnskap?</h3>
+        <p>Balanseregnskapet er en av de tre viktigste finansielle rapportene for ethvert selskap. Det gir et øyeblikksbilde av selskapets finansielle stilling på et bestemt tidspunkt, typisk ved utgangen av et kvartal eller regnskapsår. Den grunnleggende ligningen i balanseregnskapet er:</p>
+        <p><strong>Eiendeler = Gjeld + Egenkapital</strong></p>
+        <p>Denne ligningen må alltid stemme, derav navnet "balanse". Hvis et selskap eier eiendeler for 10 millioner kroner, må disse være finansiert enten gjennom gjeld (lån) eller egenkapital (penger eierne har investert pluss opptjent overskudd). Balanseregnskapet forteller deg altså hva selskapet eier, hva det skylder, og hva som er igjen til aksjonærene.</p>
+        <p>For norske investorer er balanseregnskapet spesielt viktig fordi det avslører selskapets soliditet. Et selskap med mye egenkapital i forhold til gjeld er generelt mer robust mot økonomiske nedgangstider. Selskaper som Equinor, Telenor og DNB publiserer alle detaljerte balanseregnskap i sine kvartalsrapporter, som er fritt tilgjengelige på Oslo Børs (Euronext) sine nettsider.</p>
+
+        <h3>Omløpsmidler vs. anleggsmidler</h3>
+        <p>Eiendeler i balanseregnskapet deles inn i to hovedkategorier. <strong>Omløpsmidler</strong> (current assets) er eiendeler som forventes å bli konvertert til kontanter eller brukt opp innen 12 måneder. Dette inkluderer:</p>
+        <ul>
+          <li><strong>Kontanter og bankinnskudd:</strong> Penger selskapet har tilgjengelig umiddelbart</li>
+          <li><strong>Kundefordringer:</strong> Penger kunder skylder for varer/tjenester som allerede er levert</li>
+          <li><strong>Varelager:</strong> Varer selskapet har på lager for salg (for eksempel fisk hos Mowi eller olje hos Equinor)</li>
+          <li><strong>Kortsiktige investeringer:</strong> Verdipapirer som er ment å holdes kort tid</li>
+        </ul>
+        <p><strong>Anleggsmidler</strong> (non-current assets) er eiendeler med lengre levetid enn 12 måneder. Disse inkluderer:</p>
+        <ul>
+          <li><strong>Eiendom, anlegg og utstyr:</strong> Bygninger, maskiner, skip (som hos Frontline), oljeplattformer</li>
+          <li><strong>Immaterielle eiendeler:</strong> Patenter, varemerker, goodwill (vanlig etter oppkjøp)</li>
+          <li><strong>Langsiktige investeringer:</strong> Aksjeposter i andre selskaper</li>
+          <li><strong>Utsatt skattefordel:</strong> Skattefordeler som kan brukes i fremtiden</li>
+        </ul>
+        <p>Et praktisk eksempel: Hvis du ser på Norsk Hydros balanseregnskap, vil du se at aluminiumsverkene og kraftverkene utgjør en stor del av anleggsmidlene, mens aluminium på lager og kundefordringer utgjør omløpsmidlene.</p>
+
+        <h3>Kortsiktig vs. langsiktig gjeld</h3>
+        <p><strong>Kortsiktig gjeld</strong> (current liabilities) er forpliktelser som forfaller innen 12 måneder. Dette inkluderer leverandørgjeld, kortsiktige lån, skyldig skatt, og påløpte kostnader. <strong>Langsiktig gjeld</strong> (non-current liabilities) er forpliktelser med forfall lenger enn 12 måneder, som obligasjonslån, banklån med lang løpetid, pensjonsforpliktelser og leasingforpliktelser.</p>
+        <p>For norske banker som DNB er gjelden strukturert annerledes enn for industriselskaper. Kunders innskudd regnes som gjeld for banken, mens utlån regnes som eiendeler. Dette gjør bankenes balanseregnskap spesielt store sammenlignet med andre sektorer.</p>
+
+        <h3>Egenkapitalens komponenter</h3>
+        <p>Egenkapitalen er differansen mellom eiendeler og gjeld, og representerer aksjonærenes verdier i selskapet. Den består typisk av:</p>
+        <ul>
+          <li><strong>Aksjekapital:</strong> Pålydende verdi av utstedte aksjer</li>
+          <li><strong>Overkurs:</strong> Beløpet utover pålydende som er betalt ved aksjeemisjoner</li>
+          <li><strong>Opptjent egenkapital:</strong> Akkumulert overskudd som ikke er utbetalt som utbytte</li>
+          <li><strong>Andre reserver:</strong> Valutaomregningsdifferanser, urealiserte gevinster/tap</li>
+        </ul>
+        <p>Equinor hadde ved utgangen av 2024 en total egenkapital på over 350 milliarder kroner, noe som reflekterte mange år med høye olje- og gassinntekter. Denne sterke egenkapitalen gir selskapet stor finansiell handlefrihet til å investere i fornybar energi og betale utbytte.</p>
+
+        <h3>Hvordan analysere et balanseregnskap</h3>
+        <p>Når du analyserer et balanseregnskap, bør du se på flere forhold. <strong>Gjeldsgrad</strong> (gjeld/egenkapital) viser hvor mye gjeld selskapet har i forhold til egenkapital. En gjeldsgrad over 2 kan indikere høy finansiell risiko. <strong>Likviditetsgrad 1</strong> (omløpsmidler/kortsiktig gjeld) bør være over 1, noe som betyr at selskapet kan betale sine kortsiktige forpliktelser. <strong>Likviditetsgrad 2</strong> trekker fra varelager, da dette kan være vanskelig å selge raskt.</p>
+        <p>Sammenlign alltid balansetall over tid (minst 3-5 år) og mot sammenlignbare selskaper i samme bransje. Et sjømatselskap som SalMar vil ha helt annen balansestruktur enn et teknologiselskap som Crayon. Konteksten er avgjørende for riktig tolkning.</p>
+
+        <div class="quiz-container" data-correct="b" data-module="0" data-explanation="Balanseregnskapet viser eiendeler = gjeld + egenkapital.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hva er den grunnleggende ligningen i et balanseregnskap?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Inntekter - Kostnader = Resultat</button>
+            <button class="quiz-option" data-answer="b">B) Eiendeler = Gjeld + Egenkapital</button>
+            <button class="quiz-option" data-answer="c">C) Kontantstrøm = Innbetalinger - Utbetalinger</button>
+            <button class="quiz-option" data-answer="d">D) Omsetning - Varekostnad = Bruttofortjeneste</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-primary" data-module-nav="1">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 2: Resultatregnskap -->
+      <div class="module-section" id="modul-2">
+        <h2>2. Resultatregnskap</h2>
+
+        <h3>Hva er et resultatregnskap?</h3>
+        <p>Resultatregnskapet (også kalt "income statement" eller "profit and loss statement" på engelsk) viser selskapets inntekter og kostnader over en bestemt periode, typisk et kvartal eller et helt år. Mens balanseregnskapet er et øyeblikksbilde, er resultatregnskapet som en film som viser hva som har skjedd i perioden. Det forteller deg om selskapet tjener penger eller taper penger, og hvor lønnsomheten kommer fra.</p>
+        <p>For investorer er resultatregnskapet kanskje det mest fulgte dokumentet, fordi det direkte påvirker aksjekursen. Når et selskap som Equinor eller Telenor rapporterer kvartalstall, er det resultatregnskapet analytikere og investorer først kikker på. Slår selskapet estimatene, stiger kursen gjerne. Skuffer det, faller kursen.</p>
+
+        <h3>Oppbygning: Fra inntekter til bunnlinje</h3>
+        <p>Resultatregnskapet er bygd opp som en trapp fra toppen (inntekter) til bunnen (nettoresultat). Her er de viktigste linjene:</p>
+        <ul>
+          <li><strong>Driftsinntekter (Revenue):</strong> Total omsetning fra salg av varer og tjenester</li>
+          <li><strong>Varekostnad (COGS):</strong> Direkte kostnader knyttet til produksjon av varer/tjenester</li>
+          <li><strong>Bruttofortjeneste (Gross Profit):</strong> Driftsinntekter minus varekostnad</li>
+          <li><strong>Driftskostnader (Operating Expenses):</strong> Lønn, husleie, markedsføring, administrasjon, avskrivninger</li>
+          <li><strong>Driftsresultat (Operating Profit / EBIT):</strong> Bruttofortjeneste minus driftskostnader</li>
+          <li><strong>Finansposter:</strong> Renteinntekter, rentekostnader, valutagevinster/-tap</li>
+          <li><strong>Resultat før skatt:</strong> Driftsresultat pluss/minus finansposter</li>
+          <li><strong>Skattekostnad:</strong> Selskapsskatt (22% i Norge, pluss petroleumsskatt for oljeselskaper)</li>
+          <li><strong>Nettoresultat (Net Income):</strong> Det endelige resultatet - bunnlinjen</li>
+        </ul>
+
+        <h3>EBITDA: Driftsresultat uten regnskapstekniske poster</h3>
+        <p>EBITDA står for "Earnings Before Interest, Taxes, Depreciation and Amortization" - altså driftsresultat før renter, skatt, avskrivninger og nedskrivninger. Dette er et mye brukt nøkkeltall fordi det viser selskapets operative lønnsomhet uten påvirkning av finansieringsstruktur (renter), skattesituasjon og regnskapsmessige avskrivninger.</p>
+        <p>EBITDA er spesielt nyttig for å sammenligne selskaper med ulik gjeldsgrad eller avskrivningsprofil. For eksempel vil et shippingselskap som Frontline ha store avskrivninger på skip, som trekker ned EBIT, men EBITDA gir et bedre bilde av den reelle driftsevnen. Vær oppmerksom på at EBITDA kan være misvisende fordi det ignorerer reelle kostnader som vedlikehold og reinvesteringer.</p>
+
+        <h3>Fortjenestemarginer</h3>
+        <p>Fortjenestemarginer viser hvor mye av hver inntektskrone som blir til overskudd, og er viktige for å sammenligne lønnsomhet på tvers av selskaper. De viktigste marginene er:</p>
+        <ul>
+          <li><strong>Bruttomargin:</strong> (Bruttofortjeneste / Inntekter) x 100. Software-selskaper som Visma kan ha bruttomarginer på 70-80%, mens dagligvarebutikker typisk ligger på 25-30%.</li>
+          <li><strong>Driftsmargin (EBIT-margin):</strong> (Driftsresultat / Inntekter) x 100. Viser effektiviteten i den daglige driften.</li>
+          <li><strong>Nettoresultatmargin:</strong> (Nettoresultat / Inntekter) x 100. Viser hva som er igjen til aksjonærene etter alle kostnader.</li>
+        </ul>
+        <p>Eksempel: Hvis Mowi har inntekter på 60 milliarder kroner og et nettoresultat på 6 milliarder, er nettoresultatmarginen 10%. Sammenlign dette med Lerøy Seafood for å se hvem som driver mest effektivt i sjømatnæringen.</p>
+
+        <h3>Hvordan lese et resultatregnskap i praksis</h3>
+        <p>Når du leser et resultatregnskap, start med å se på trender over tid. Vokser inntektene? Forbedres marginene? Et selskap med jevnt stigende inntekter og stabile eller forbedrede marginer er typisk en god investering. Vær oppmerksom på engangsposter (som gevinst ved salg av eiendom eller restruktureringskostnader) som kan gi et skjevt bilde. Mange selskaper rapporterer derfor "justert" resultat som fjerner slike poster.</p>
+        <p>Se også på forholdet mellom ulike kostnadslinjer. Hvis lønnskostnadene vokser raskere enn inntektene, kan det tyde på at selskapet mister effektivitet. Hvis FoU-kostnadene (forskning og utvikling) faller, kan det bety at selskapet underinvesterer i fremtiden. Kombinasjon av resultatregnskapet med balanseregnskapet og kontantstrømoppstillingen gir det mest komplette bildet.</p>
+
+        <div class="quiz-container" data-correct="a" data-module="1" data-explanation="Driftsresultatet (EBIT) er bruttofortjeneste minus driftskostnader, og viser lønnsomheten fra kjernevirksomheten.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hva viser driftsresultatet (EBIT) i et resultatregnskap?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Lønnsomheten fra kjernevirksomheten, før renter og skatt</button>
+            <button class="quiz-option" data-answer="b">B) Total omsetning minus varekostnad</button>
+            <button class="quiz-option" data-answer="c">C) Nettoresultatet etter alle kostnader inkludert skatt</button>
+            <button class="quiz-option" data-answer="d">D) Kontantstrømmen fra operasjonelle aktiviteter</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="0">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="2">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 3: Kontantstrømoppstilling -->
+      <div class="module-section" id="modul-3">
+        <h2>3. Kontantstrømoppstilling</h2>
+
+        <h3>Hvorfor kontantstrøm er viktigere enn resultat</h3>
+        <p>Kontantstrømoppstillingen (cash flow statement) viser de faktiske pengebevegelsene inn og ut av selskapet i en periode. Mens resultatregnskapet kan inneholde regnskapsmessige justeringer som avskrivninger, periodiseringer og urealiserte gevinster, viser kontantstrømmen de reelle pengene. Det er et kjent uttrykk i finansverdenen: "Cash is king" - kontanter er konge.</p>
+        <p>Et selskap kan vise positivt resultat i resultatregnskapet, men likevel gå konkurs fordi det ikke har nok kontanter til å betale regningene sine. Dette skjer oftere enn man tror, spesielt blant raskt voksende selskaper som investerer tungt. Norwegian Air Shuttle er et godt norsk eksempel: selskapet hadde perioder med stor passasjervekst, men kontantstrømproblemene ble til slutt så alvorlige at det måtte gjennom restrukturering.</p>
+
+        <h3>Operasjonell kontantstrøm</h3>
+        <p>Operasjonell kontantstrøm (cash flow from operations) viser hvor mye kontanter selskapet genererer fra sin daglige drift. Den starter typisk med nettoresultatet og justerer deretter for ikke-kontante poster som avskrivninger (legges til igjen), endringer i arbeidskapital (kundefordringer, varelager, leverandørgjeld), og andre justeringer.</p>
+        <p>En sunn bedrift bør ha positiv operasjonell kontantstrøm over tid. Hvis et selskap konsekvent rapporterer overskudd, men har negativ operasjonell kontantstrøm, er det et varselflagg. Det kan bety at inntektene er "papirmessige" og ikke konverteres til faktiske kontanter. For eksempel kan et selskap bokføre inntekter fra langsiktige kontrakter uten å ha mottatt betaling ennå.</p>
+        <p>Et sterkt eksempel er Equinor, som typisk genererer enorm operasjonell kontantstrøm fra olje- og gassalg. I perioder med høy oljepris kan den operasjonelle kontantstrømmen overstige 300 milliarder kroner årlig, noe som finansierer både investeringer, utbytte og tilbakekjøp av aksjer.</p>
+
+        <h3>Investeringskontantstrøm</h3>
+        <p>Investeringskontantstrøm (cash flow from investing) viser pengebruk og -inngang knyttet til investeringer. Typiske poster inkluderer:</p>
+        <ul>
+          <li><strong>Kjøp av eiendom, anlegg og utstyr (CAPEX):</strong> Investeringer i produksjonsmidler</li>
+          <li><strong>Oppkjøp av andre selskaper:</strong> Store kontantutbetalinger ved M&A-transaksjoner</li>
+          <li><strong>Salg av eiendeler:</strong> Kontantinngang fra avhendet virksomhet eller utstyr</li>
+          <li><strong>Kjøp/salg av finansielle investeringer:</strong> Aksjer, obligasjoner, etc.</li>
+        </ul>
+        <p>Investeringskontantstrøm er som regel negativ for voksende selskaper, fordi de investerer i fremtidig kapasitet. Aker BP investerer for eksempel milliarder hvert år i nye oljefelt på norsk sokkel. Lav eller negativ investeringsaktivitet over lang tid kan imidlertid tyde på at selskapet underinvesterer.</p>
+
+        <h3>Finansieringskontantstrøm</h3>
+        <p>Finansieringskontantstrøm (cash flow from financing) viser pengebevegelser knyttet til selskapets finansiering. Denne inkluderer opptak og nedbetaling av lån, utstedelse av nye aksjer (emisjoner), tilbakekjøp av egne aksjer, og utbetaling av utbytte. Positiv finansieringskontantstrøm betyr typisk at selskapet henter inn ny kapital, mens negativ betyr at det betaler tilbake gjeld eller utbytter til aksjonærer.</p>
+        <p>For norske investorer er utbyttebetalingene en viktig del av finansieringskontantstrømmen. Selskaper som Yara, Orkla og Gjensidige har lang tradisjon for stabile utbytter, og du kan følge disse betalingene i finansieringsdelen av kontantstrømoppstillingen.</p>
+
+        <h3>Fri kontantstrøm (Free Cash Flow)</h3>
+        <p>Fri kontantstrøm (FCF) er kanskje det viktigste tallet for en aksjeinvestor. Det beregnes som operasjonell kontantstrøm minus kapitalinvesteringer (CAPEX). FCF viser hvor mye kontanter selskapet har igjen etter å ha dekket driftskostnader og nødvendige investeringer - dette er pengene som kan brukes til utbytte, tilbakekjøp av aksjer, nedbetaling av gjeld, eller oppkjøp.</p>
+        <p>Formelen er enkel: <strong>FCF = Operasjonell kontantstrøm - CAPEX</strong>. Et selskap med høy og voksende FCF over tid er typisk en god investering. Telenor er kjent for sterk fri kontantstrøm, noe som finansierer det generøse utbytteprogrammet. Når du verdsetter aksjer ved hjelp av DCF-modellen (diskontert kontantstrøm), er det nettopp den frie kontantstrømmen som diskonteres tilbake til nåverdi.</p>
+
+        <div class="quiz-container" data-correct="c" data-module="2" data-explanation="Fri kontantstrøm (FCF) beregnes som operasjonell kontantstrøm minus kapitalinvesteringer (CAPEX), og viser pengene tilgjengelig for aksjonærer.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hvordan beregnes fri kontantstrøm (Free Cash Flow)?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Nettoresultat minus utbytte</button>
+            <button class="quiz-option" data-answer="b">B) Driftsinntekter minus driftskostnader</button>
+            <button class="quiz-option" data-answer="c">C) Operasjonell kontantstrøm minus kapitalinvesteringer (CAPEX)</button>
+            <button class="quiz-option" data-answer="d">D) Total kontantstrøm fra alle tre kategorier summert</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="1">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="3">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 4: Nøkkeltall -->
+      <div class="module-section" id="modul-4">
+        <h2>4. Nøkkeltall (P/E, P/B, EPS, ROE)</h2>
+
+        <h3>Hvorfor nøkkeltall er viktige</h3>
+        <p>Nøkkeltall (financial ratios) er verktøy som gjør det mulig å sammenligne selskaper med hverandre, uavhengig av størrelse. Uten nøkkeltall ville det vært vanskelig å avgjøre om et selskap er dyrt eller billig, eller om det er mer lønnsomt enn konkurrentene. Ved å bruke standardiserte forholdstall kan du som investor raskt danne deg et bilde av selskapets verdsettelse og lønnsomhet.</p>
+        <p>Det er viktig å understreke at nøkkeltall aldri bør brukes isolert. Et P/E-tall alene sier lite - det er sammenligningen med bransjegjennomsnittet, historiske nivåer og fremtidsutsikter som gir innsikt. Tenk på nøkkeltall som et dashbord i en bil: hvert instrument gir nyttig informasjon, men du trenger hele bildet for å kjøre trygt.</p>
+
+        <h3>P/E-tall (Pris/Fortjeneste)</h3>
+        <p>P/E-forholdet (Price-to-Earnings ratio) er det mest brukte verdsettelsesnøkkeltallet. Det beregnes ved å dele aksjekursen på fortjeneste per aksje (EPS): <strong>P/E = Aksjekurs / EPS</strong>. Et P/E-tall på 15 betyr at investorer er villige til å betale 15 kroner for hver krone selskapet tjener i overskudd.</p>
+        <p>Hva er et "normalt" P/E-tall? Oslo Børs har historisk sett handlet med et gjennomsnittlig P/E rundt 12-16. Vekstselskaper har typisk høyere P/E fordi investorer forventer økt fortjeneste i fremtiden. Modne, stabile selskaper har lavere P/E. For eksempel kan et teknologiselskap som Kahoot! handle på P/E 40-50 i vekstfaser, mens et modent industriselskap som Yara kanskje handler på P/E 10-12.</p>
+        <p>Det finnes to varianter: <strong>Trailing P/E</strong> bruker faktisk historisk EPS (siste 12 måneder), mens <strong>Forward P/E</strong> bruker estimert fremtidig EPS. Forward P/E er ofte mer relevant fordi aksjepriser reflekterer fremtidsforventninger. Vær forsiktig med negative P/E-tall (selskaper med tap) - de gir ikke mening, og du bør da bruke andre nøkkeltall.</p>
+
+        <h3>P/B-tall (Pris/Bok)</h3>
+        <p>P/B-forholdet (Price-to-Book ratio) sammenligner aksjekursen med bokført egenkapital per aksje: <strong>P/B = Aksjekurs / Bokført verdi per aksje</strong>. Et P/B under 1 betyr at aksjen handles til under bokført verdi, noe som kan tyde på at den er underpriset - eller at markedet mener eiendelene er overvurdert i regnskapet.</p>
+        <p>P/B er spesielt nyttig for kapitalintensive bransjer som bank, forsikring og shipping. DNB handler typisk med P/B mellom 1,0 og 1,5, mens et software-selskap kan handle til P/B 10+ fordi de har få fysiske eiendeler men store immaterielle verdier (merkevare, teknologi, kundebase) som ikke fullt ut reflekteres i balansen.</p>
+
+        <h3>EPS (Fortjeneste per aksje)</h3>
+        <p>EPS (Earnings Per Share) viser hvor mye av selskapets overskudd som tilfaller hver aksje: <strong>EPS = Nettoresultat / Antall utestående aksjer</strong>. Dette er et absolutt tall (i kroner), ikke et forholdstall, og det er grunnlaget for P/E-beregningen.</p>
+        <p>Følg utviklingen i EPS over tid. Et selskap med jevnt voksende EPS er attraktivt. Vær oppmerksom på at EPS kan manipuleres gjennom tilbakekjøp av aksjer - færre aksjer betyr høyere EPS selv om totalresultatet er uendret. Bruk derfor <strong>utvannet EPS</strong> (diluted EPS) som tar hensyn til opsjoner og konvertible lån som kan øke antall aksjer.</p>
+
+        <h3>ROE (Egenkapitalavkastning)</h3>
+        <p>ROE (Return on Equity) måler hvor effektivt selskapet bruker aksjonærenes kapital: <strong>ROE = Nettoresultat / Gjennomsnittlig egenkapital x 100</strong>. En ROE på 15% betyr at selskapet genererer 15 øre i overskudd for hver krone av egenkapital. Generelt anses ROE over 15% som godt, mens over 20% er utmerket.</p>
+        <p>Orkla har historisk hatt ROE rundt 10-15%, mens DNB som bank kan ha høyere ROE grunnet høy gearing (mye gjeld relativt til egenkapital). Vær oppmerksom på at høy ROE kombinert med høy gjeldsgrad kan være risikabelt - selskapet kan se lønnsomt ut, men det er bygd på mye gjeld.</p>
+
+        <h3>Andre viktige nøkkeltall</h3>
+        <p>Utover de fire hovednøkkeltallene finnes det flere nyttige forholdstall:</p>
+        <ul>
+          <li><strong>D/E-ratio (Debt-to-Equity):</strong> Gjeld delt på egenkapital. Viser gjeldsgraden. Under 1 er generelt trygt, men varierer mellom bransjer.</li>
+          <li><strong>Current Ratio (Likviditetsgrad 1):</strong> Omløpsmidler delt på kortsiktig gjeld. Bør være over 1,0 for å vise at selskapet kan betale kortsiktige forpliktelser.</li>
+          <li><strong>Utbyttegrad (Payout Ratio):</strong> Andel av overskuddet som utbetales som utbytte. Veldig høy utbyttegrad (over 80%) kan være uholdbar.</li>
+          <li><strong>EV/EBITDA:</strong> Enterprise Value delt på EBITDA. Et alternativ til P/E som tar hensyn til gjeldsstruktur.</li>
+        </ul>
+
+        <div class="quiz-container" data-correct="b" data-module="3" data-explanation="P/E-forholdet beregnes ved å dele aksjekursen på fortjeneste per aksje (EPS). Et høyt P/E betyr at investorer betaler mye per krone i overskudd.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hva betyr det at et selskap har et P/E-tall på 20?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Selskapet har 20% fortjenestemargin</button>
+            <button class="quiz-option" data-answer="b">B) Investorer betaler 20 kroner for hver krone selskapet tjener</button>
+            <button class="quiz-option" data-answer="c">C) Aksjen har steget 20% det siste året</button>
+            <button class="quiz-option" data-answer="d">D) Selskapet har 20 milliarder i omsetning</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="2">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="4">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 5: Grunnleggende teknisk analyse -->
+      <div class="module-section" id="modul-5">
+        <h2>5. Grunnleggende teknisk analyse</h2>
+
+        <h3>Hva er teknisk analyse?</h3>
+        <p>Teknisk analyse er en metode for å evaluere aksjer og andre verdipapirer ved å studere historisk pris- og volumdata. I motsetning til fundamental analyse, som ser på selskapets regnskap og økonomiske helse, fokuserer teknisk analyse utelukkende på kursdiagrammer og mønstre. Grunnideen er at all relevant informasjon allerede er priset inn i kursen, og at historiske prismønstre har en tendens til å gjenta seg.</p>
+        <p>Teknisk analyse brukes mye blant aktive tradere på Oslo Børs, men den kan også være nyttig for langsiktige investorer som ønsker å finne gode kjøps- og salgstidspunkter. Det er viktig å kombinere teknisk analyse med fundamental analyse for best mulig resultat. Teknisk analyse alene er ikke tilstrekkelig for å ta gode investeringsbeslutninger, men den er et verdifullt tilleggsverktøy.</p>
+
+        <h3>Glidende gjennomsnitt (Moving Averages)</h3>
+        <p>Glidende gjennomsnitt er den mest grunnleggende tekniske indikatoren. Den beregner gjennomsnittlig kurs over et bestemt antall dager og skaper en jevnere kurslinje som filtrerer bort daglig støy. De to vanligste typene er:</p>
+        <ul>
+          <li><strong>SMA (Simple Moving Average / Enkelt glidende gjennomsnitt):</strong> Beregnes ved å ta gjennomsnittet av sluttkursene over N dager. SMA 50 er gjennomsnittet av de siste 50 dagenes sluttkurser. Alle dager vektes likt.</li>
+          <li><strong>EMA (Exponential Moving Average / Eksponentielt glidende gjennomsnitt):</strong> Ligner SMA, men gir nyere datapunkter høyere vekting. EMA reagerer derfor raskere på kursendringer enn SMA.</li>
+        </ul>
+        <p>De mest brukte periodene er 20, 50 og 200 dager. Et viktig signal er <strong>"Golden Cross"</strong> - når 50-dagers glidende gjennomsnitt krysser over 200-dagers glidende gjennomsnitt. Dette tolkes som et bullish (positivt) signal. Det motsatte, <strong>"Death Cross"</strong>, oppstår når 50-dagers krysser under 200-dagers og tolkes som bearish (negativt).</p>
+        <p>Eksempel: Hvis Equinor-aksjen handles over sitt 200-dagers glidende gjennomsnitt, er den teknisk sett i en langsiktig opptrend. Mange institusjonelle investorer bruker 200-dagers som en viktig referanse for å avgjøre om de skal være overvektet eller undervektet i en aksje.</p>
+
+        <h3>RSI (Relative Strength Index)</h3>
+        <p>RSI er en momentum-indikator som måler hastigheten og størrelsen på prisendringer på en skala fra 0 til 100. Den ble utviklet av J. Welles Wilder og bruker vanligvis en 14-dagers periode. RSI beregnes ved å sammenligne gjennomsnittlig oppgang mot gjennomsnittlig nedgang i perioden.</p>
+        <p>Tolkningen er som følger:</p>
+        <ul>
+          <li><strong>RSI over 70:</strong> Aksjen anses som overkjøpt (overbought). Dette betyr at kursen kan ha steget for mye, for raskt, og en korrigering kan komme.</li>
+          <li><strong>RSI under 30:</strong> Aksjen anses som oversolgt (oversold). Kursen kan ha falt for mye og kan være moden for en oppgang.</li>
+          <li><strong>RSI rundt 50:</strong> Nøytralt momentum - verken overkjøpt eller oversolgt.</li>
+        </ul>
+        <p>RSI-signaler bør alltid bekreftes med andre indikatorer. En aksje kan forbli overkjøpt i lang tid i sterke opptrender. Divergens mellom RSI og kurs er et spesielt sterkt signal: hvis kursen lager nye topper mens RSI lager lavere topper, kan det signalisere en kommende korreksjon.</p>
+
+        <h3>MACD (Moving Average Convergence Divergence)</h3>
+        <p>MACD er en trendfolgende momentum-indikator som viser forholdet mellom to glidende gjennomsnitt. Den beregnes ved å trekke 26-dagers EMA fra 12-dagers EMA. Resultatet er MACD-linjen. I tillegg beregnes en "signal-linje" som er 9-dagers EMA av MACD-linjen.</p>
+        <p>MACD gir kjøps- og salgssignaler på følgende måte:</p>
+        <ul>
+          <li><strong>Bullish signal:</strong> MACD-linjen krysser over signal-linjen (kjøpssignal)</li>
+          <li><strong>Bearish signal:</strong> MACD-linjen krysser under signal-linjen (salgssignal)</li>
+          <li><strong>Histogram:</strong> Differansen mellom MACD-linjen og signal-linjen visualiseres som et histogram. Når histogrammet vokser, tiltar momentumet.</li>
+        </ul>
+        <p>MACD er spesielt populær blant tradere på Oslo Børs fordi den kombinerer trendidentifikasjon med momentum. For eksempel kan du bruke MACD til å bekrefte en trend i aksjer som Yara eller Norsk Hydro - hvis både kursen og MACD beveger seg oppover, er trenden sannsynligvis sterk.</p>
+
+        <h3>Støtte og motstand (Support and Resistance)</h3>
+        <p><strong>Støttenivåer</strong> er prisnivåer der aksjen historisk har funnet kjøpsinteresse og vendt oppover. Tenk på det som et gulv - kursen "spretter" opp fra dette nivået fordi kjøpere anser aksjen som billig her. <strong>Motstandsnivåer</strong> er det motsatte: prisnivåer der selgere typisk kommer inn og bremser eller reverserer oppgangen. Det er som et tak som kursen sliter med å bryte gjennom.</p>
+        <p>Støtte- og motstandsnivåer kan identifiseres ved å se på historiske topper og bunner, runde tall (50 kr, 100 kr, 200 kr), og glidende gjennomsnitt. Når et motstandsnivå brytes, blir det ofte et nytt støttenivå, og omvendt. For eksempel, hvis Telenor-aksjen gjentatte ganger har snudd ned ved 170 kr og endelig bryter gjennom, kan 170 kr bli et nytt støttenivå.</p>
+
+        <h3>Bruk av diagrammer for timing</h3>
+        <p>Teknisk analyse er mest nyttig for timing - når du skal kjøpe eller selge. Selv om du har funnet et fundamentalt sterkt selskap, kan teknisk analyse hjelpe deg med å finne et bedre inngangspunkt. Noen praktiske tips for norske aksjer:</p>
+        <ul>
+          <li>Kjøp nær støttenivåer, ikke nær motstandsnivåer</li>
+          <li>Vent på bekreftelse: et brudd på motstand bør følges av økt volum</li>
+          <li>Bruk glidende gjennomsnitt som trendfilter: kjøp kun aksjer som handles over 200-dagers SMA</li>
+          <li>Kombiner flere indikatorer: et kjøpssignal fra både RSI og MACD er sterkere enn et enkelt signal</li>
+        </ul>
+        <p>Husk at ingen teknisk indikator er 100% pålitelig. Falske signaler forekommer regelmessig, og det er derfor risikostyring (som vi dekker i modul 7) er så viktig.</p>
+
+        <div class="quiz-container" data-correct="d" data-module="4" data-explanation="RSI-verdier over 70 indikerer at aksjen er overkjøpt og kan være moden for en korreksjon nedover.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hva indikerer en RSI-verdi på 85?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Aksjen er i en langsiktig nedtrend</button>
+            <button class="quiz-option" data-answer="b">B) Aksjen har nøytralt momentum</button>
+            <button class="quiz-option" data-answer="c">C) Aksjen er oversolgt og kan stige</button>
+            <button class="quiz-option" data-answer="d">D) Aksjen er overkjøpt og kan være moden for en korreksjon</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="3">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="5">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 6: Markedsordre vs. limitordre -->
+      <div class="module-section" id="modul-6">
+        <h2>6. Markedsordre vs. limitordre</h2>
+
+        <h3>Innledning: Ordretyper er avgjørende</h3>
+        <p>Når du bestemmer deg for å kjøpe eller selge en aksje, er neste steg å legge inn en ordre hos din megler. Valget av ordretype kan ha stor innvirkning på prisen du faktisk betaler eller mottar. Mange nybegynnere bruker utelukkende markedsordre uten å tenke over det, men å forstå de ulike ordretypene kan spare deg for betydelige beløp over tid, spesielt i aksjer med lavere omsetning på Oslo Børs.</p>
+        <p>De fire hovedtypene ordrer du bør kjenne til er markedsordre, limitordre, stop-loss og stop-limit. Hver type har sine fordeler og ulemper, og den riktige ordretypen avhenger av situasjonen. La oss gå gjennom hver enkelt i detalj.</p>
+
+        <h3>Markedsordre (Market Order)</h3>
+        <p>En markedsordre er den enkleste ordretypen. Du ber megleren om å kjøpe eller selge aksjen umiddelbart til best tilgjengelig pris. Fordelen er at ordren nesten alltid blir utført raskt. Ulempen er at du ikke har kontroll over nøyaktig hvilken pris du får.</p>
+        <p>I likvide aksjer som Equinor eller DNB, der det omsettes for milliarder kroner daglig, er forskjellen mellom kjøps- og salgskurs (spreaden) typisk bare noen øre. Her er markedsordre helt greit. Men i mindre likvide aksjer - for eksempel småselskaper på Euronext Growth - kan spreaden være stor. Hvis siste omsatte kurs er 50 kr, men beste salgspris er 52 kr, vil din markedsordre kjøpe til 52 kr, 4% over sist omsatte.</p>
+        <p>Bruk markedsordre når du absolutt må ha aksjen umiddelbart, og når aksjen er likvid nok til at spreaden er liten.</p>
+
+        <h3>Limitordre (Limit Order)</h3>
+        <p>En limitordre spesifiserer den maksimale prisen du er villig til å betale (ved kjøp) eller den minimale prisen du er villig til å akseptere (ved salg). Ordren blir kun utført hvis markedsprisen når ditt spesifiserte nivå eller bedre.</p>
+        <p>Eksempel: Du ønsker å kjøpe Mowi-aksjer, som handles til 190 kr. Du mener 185 kr er et bedre inngangspunkt og legger inn en limitordre på 185 kr. Ordren vil kun utføres hvis noen er villig til å selge til 185 kr eller lavere. Fordelen er priskontroll - du betaler aldri mer enn du ønsker. Ulempen er at ordren kanskje aldri blir utført hvis kursen ikke når ditt nivå.</p>
+        <p>Limitordre er spesielt nyttige i følgende situasjoner:</p>
+        <ul>
+          <li>Aksjer med lav likviditet og store spreader</li>
+          <li>Når du ønsker å kjøpe på et spesifikt støttenivå</li>
+          <li>Ved handel rundt børsåpning (kl. 09:00) når kursene kan svinge mye</li>
+          <li>Når du handler store volumer som kan flytte kursen</li>
+        </ul>
+
+        <h3>Stop-loss-ordre</h3>
+        <p>En stop-loss-ordre er designet for å begrense tap. Du setter en kurs under nåværende markedspris, og hvis aksjen faller til dette nivået, utløses automatisk en markedsordre for å selge. Stop-loss er et av de viktigste risikostyringsverktøyene for enhver investor.</p>
+        <p>Eksempel: Du kjøper Norsk Hydro til 70 kr. Du setter en stop-loss på 63 kr (10% under kjøpskurs). Hvis aksjen faller til 63 kr, selges aksjen automatisk, og ditt maksimale tap er begrenset til ca. 10%. Uten stop-loss kan tapet bli mye større hvis du ikke følger med på markedet daglig.</p>
+        <p>En viktig begrensning: stop-loss garanterer ikke at du selger til nøyaktig 63 kr. Hvis aksjen faller raskt (for eksempel på grunn av en resultatvarsel), kan den hoppe forbi 63 kr og du ender opp med å selge til en lavere pris. I ekstreme tilfeller, som ved handelspauser, kan differansen være betydelig. Trailing stop-loss er en variant der stop-nivået automatisk justeres oppover etterhvert som aksjen stiger, noe som beskytter gevinst.</p>
+
+        <h3>Stop-limit-ordre</h3>
+        <p>En stop-limit-ordre kombinerer stop-loss og limitordre. Den har to priser: en stop-pris som utløser ordren, og en limit-pris som er den minste du vil selge for. Når stop-prisen nås, aktiveres en limitordre i stedet for en markedsordre.</p>
+        <p>Eksempel: Du eier Kongsberg Gruppen til 800 kr. Du setter stop ved 750 kr og limit ved 740 kr. Hvis aksjen faller til 750 kr, aktiveres en limitordre som selger, men aldri lavere enn 740 kr. Fordelen er at du unngår å selge til en veldig lav pris i et krasj. Ulempen er at ordren kanskje ikke utføres i det hele tatt hvis kursen faller gjennom begge nivåene raskt.</p>
+
+        <h3>Når skal du bruke hvilken ordretype?</h3>
+        <p>Her er en enkel oppsummering for å velge riktig ordretype:</p>
+        <ul>
+          <li><strong>Markedsordre:</strong> Likvide aksjer, når timing er viktigere enn nøyaktig pris</li>
+          <li><strong>Limitordre:</strong> Illikvide aksjer, når du har en spesifikk målpris, eller ved store ordre</li>
+          <li><strong>Stop-loss:</strong> For å beskytte mot store tap, spesielt når du ikke kan overvåke markedet daglig</li>
+          <li><strong>Stop-limit:</strong> Når du ønsker tap-beskyttelse men ikke vil selge til "enhver pris" i et flash-krasj</li>
+        </ul>
+        <p>De fleste norske nettmeglere som Nordnet, DNB Markets og Pareto Securities støtter alle disse ordretypene. Gjør deg kjent med plattformen din og test gjerne med små beløp først for å forstå hvordan ordretypene fungerer i praksis.</p>
+
+        <div class="quiz-container" data-correct="a" data-module="5" data-explanation="En limitordre lar deg sette en maksimalpris du er villig til å betale, og ordren utføres kun hvis prisen er lik eller lavere enn ditt limit.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hvilken ordretype gir deg best kontroll over kjøpsprisen?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Limitordre - du setter en maksimalpris du er villig til å betale</button>
+            <button class="quiz-option" data-answer="b">B) Markedsordre - du kjøper til best tilgjengelig pris umiddelbart</button>
+            <button class="quiz-option" data-answer="c">C) Stop-loss - du selger automatisk ved et bestemt nivå</button>
+            <button class="quiz-option" data-answer="d">D) Stop-limit - du kombinerer stop og limit for å selge</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="4">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="6">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 7: Risikostyring og posisjonsstørrelse -->
+      <div class="module-section" id="modul-7">
+        <h2>7. Risikostyring og posisjonsstørrelse</h2>
+
+        <h3>Hvorfor risikostyring er den viktigste ferdigheten</h3>
+        <p>Mange nybegynnere fokuserer nesten utelukkende på å finne de beste aksjene, men profesjonelle investorer vet at risikostyring er minst like viktig - kanskje viktigere. En investor som tar 50% tap trenger en påfølgende gevinst på 100% bare for å komme tilbake til utgangspunktet. Risikostyring handler om å overleve i markedet lenge nok til at avkastningen din kan akkumuleres over tid.</p>
+        <p>Den legendariske investoren Warren Buffett har to regler: Regel 1 - Aldri tap penger. Regel 2 - Aldri glem regel 1. Selv om det er umulig å unngå alle tap, illustrerer det poenget: å beskytte kapitalen din er fundamentalt. En investor som unngår store tap, men oppnår moderate gevinster, vil over tid slå en investor som veksler mellom store gevinster og store tap.</p>
+
+        <h3>Posisjonsstørrelse: 1-2%-regelen</h3>
+        <p>En av de mest effektive risikostyringsreglene er 1-2%-regelen. Den sier at du aldri bør risikere mer enn 1-2% av din totale porteføljeverdi på en enkelt handel. "Risikere" betyr her det potensielle tapet hvis din stop-loss utløses - ikke hele investeringsbeløpet.</p>
+        <p>La oss ta et konkret eksempel: Du har en portefølje verdt 500 000 kr og følger 1%-regelen. Maksimalt tap per handel er da 5 000 kr. Du ønsker å kjøpe Aker BP til 250 kr og setter stop-loss på 237,50 kr (5% under kjøpskurs). Risikoen per aksje er 12,50 kr. Antall aksjer du kan kjøpe: 5 000 kr / 12,50 kr = 400 aksjer. Total investering: 400 x 250 kr = 100 000 kr (20% av porteføljen), men risikoen er kun 5 000 kr (1%).</p>
+        <p>Denne regelen sikrer at selv en serie med tap ikke ødelegger porteføljen din. Med 1%-regelen kan du tåle 20 tap på rad og fortsatt ha 82% av kapitalen intakt. Det gir deg tid til å justere strategien din uten å bli tvunget ut av markedet.</p>
+
+        <h3>Diversifisering: Ikke legg alle eggene i én kurv</h3>
+        <p>Diversifisering er en annen hjørnestein i risikostyring. Ved å spre investeringene dine over flere aksjer, sektorer og potensielt markeder, reduserer du risikoen for at et enkelt selskap eller en enkelt hendelse ødelegger porteføljen din. Her er noen diversifiseringsstrategier:</p>
+        <ul>
+          <li><strong>Aksjediversifisering:</strong> Hold minst 10-15 aksjer for å redusere selskapsspesifikk risiko</li>
+          <li><strong>Sektordiversifisering:</strong> Unngå å ha for mye i én sektor (for eksempel ikke bare energiaksjer på Oslo Børs)</li>
+          <li><strong>Geografisk diversifisering:</strong> Kombiner norske aksjer med internasjonale gjennom fond eller direkteinvestering</li>
+          <li><strong>Aktivaklassediversifisering:</strong> Kombiner aksjer med obligasjoner, eiendom og eventuelt andre aktivaklasser</li>
+        </ul>
+        <p>Oslo Børs er sterkt dominert av energi, sjømat og finans. Hvis du kun investerer i norske aksjer, er du allerede konsentrert. Vurder derfor å supplere med internasjonale indeksfond, for eksempel gjennom KLP AksjeGlobal Indeks eller DNB Global Indeks, for bedre spredning.</p>
+
+        <h3>Risiko/belønning-forholdet (Risk/Reward Ratio)</h3>
+        <p>Risiko/belønning-forholdet (R:R) sammenligner potensielt tap med potensiell gevinst for en handel. Det beregnes som: <strong>R:R = Potensiell gevinst / Potensiell tap</strong>. Et R:R på 3:1 betyr at du kan tjene tre ganger så mye som du risikerer å tape.</p>
+        <p>Profesjonelle tradere sikter typisk mot minimum 2:1 eller 3:1 risiko/belønning. Med et R:R på 3:1 trenger du bare å ha rett i 25% av handlene dine for å gå i null (uten å ta hensyn til kostnader). Med 50% treffsikkerhet og 3:1 R:R vil du tjene gode penger over tid.</p>
+        <p>Eksempel: Du kjøper Kongsberg Gruppen til 900 kr med stop-loss på 855 kr (risiko: 45 kr per aksje). Ditt kursmål er 1 035 kr (potensiell gevinst: 135 kr per aksje). R:R = 135/45 = 3:1. Dette er en attraktiv handel fra et risiko/belønning-perspektiv, selv om du ikke kan vite om kursmålet vil nås.</p>
+
+        <h3>Porteføljeallokering</h3>
+        <p>Porteføljeallokering handler om hvordan du fordeler kapitalen din mellom ulike investeringer. En vanlig tilnærming er kjerneportefølje pluss satellittportefølje:</p>
+        <ul>
+          <li><strong>Kjerneportefølje (60-80%):</strong> Indeksfond, store stabile selskaper, langsiktige posisjoner</li>
+          <li><strong>Satellittportefølje (20-40%):</strong> Enkeltaksjer, vekstselskaper, mer aktive handler</li>
+        </ul>
+        <p>En annen retningslinje er aldersbasert allokering: "100 minus din alder" i aksjer, resten i obligasjoner. En 30-åring ville da ha 70% i aksjer og 30% i obligasjoner. Denne regelen er forenklet, men illustrerer prinsippet: jo yngre du er, jo mer risiko kan du ta fordi du har tid til å hente inn eventuelle tap.</p>
+        <p>Uansett hvilken allokeringsstrategi du velger, bør du rebalansere porteføljen regelmessig (for eksempel halvårlig). Hvis aksjer har steget mye og nå utgjør en større andel enn planlagt, selg litt og kjøp obligasjoner for å gjenopprette ønsket allokering. Denne disiplinen tvinger deg til å "selge dyrt og kjøpe billig" systematisk.</p>
+
+        <div class="quiz-container" data-correct="c" data-module="6" data-explanation="1-2%-regelen sier at du aldri bør risikere mer enn 1-2% av total porteføljeverdi på en enkelt handel. Med 500 000 kr og 1%-regel er maks risiko 5 000 kr.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Du har en portefølje på 500 000 kr og følger 1%-regelen. Hva er det maksimale beløpet du bør risikere på en enkelt handel?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) 50 000 kr</button>
+            <button class="quiz-option" data-answer="b">B) 10 000 kr</button>
+            <button class="quiz-option" data-answer="c">C) 5 000 kr</button>
+            <button class="quiz-option" data-answer="d">D) 500 kr</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="5">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="7">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 8: Sektorer og bransjer -->
+      <div class="module-section" id="modul-8">
+        <h2>8. Sektorer og bransjer</h2>
+
+        <h3>GICS sektorklassifisering</h3>
+        <p>Global Industry Classification Standard (GICS) er det mest brukte systemet for å klassifisere selskaper i sektorer og bransjer. GICS ble utviklet av MSCI og S&P, og deler selskaper inn i 11 hovedsektorer. Hver sektor har videre undergrupper (bransjegrupper, bransjer og underbransjer) for mer presis klassifisering.</p>
+        <p>De 11 GICS-sektorene er:</p>
+        <ul>
+          <li><strong>Energi:</strong> Olje, gass, fornybar energi (Equinor, Aker BP, Var Energi)</li>
+          <li><strong>Materialer:</strong> Kjemikalier, metaller, byggematerialer (Norsk Hydro, Yara)</li>
+          <li><strong>Industri:</strong> Konglomerater, forsvar, transport (Kongsberg Gruppen, Wallenius Wilhelmsen)</li>
+          <li><strong>Forbruksvarer:</strong> Bil, klær, luksusgoder</li>
+          <li><strong>Konsumvarer:</strong> Mat, dagligvare, husholdning (Orkla, Mowi, SalMar)</li>
+          <li><strong>Helsevern:</strong> Farmasi, bioteknologi, medisinsk utstyr (Nordic Nanovector, Photocure)</li>
+          <li><strong>Finans:</strong> Bank, forsikring, eiendom (DNB, Storebrand, Gjensidige)</li>
+          <li><strong>IT:</strong> Programvare, hardware, halvledere (Crayon, Nordic Semiconductor)</li>
+          <li><strong>Kommunikasjon:</strong> Telekom, media, underholdning (Telenor, Schibsted)</li>
+          <li><strong>Forsyning:</strong> Kraft, vann, gass (Statkraft - ikke børsnotert, men Scatec)</li>
+          <li><strong>Eiendom:</strong> REITs, eiendomsutvikling (Entra, Olav Thon Eiendomsselskap)</li>
+        </ul>
+        <p>Å forstå sektorklassifisering hjelper deg med å sammenligne riktige selskaper med hverandre. Det gir liten mening å sammenligne P/E-tallet til DNB (bank) med Equinor (energi) direkte, fordi bransjene har helt ulik dynamikk og normalnivåer for nøkkeltall.</p>
+
+        <h3>Norske nøkkelsektorer</h3>
+        <p>Oslo Børs har en unik sektorsammensetning sammenlignet med de fleste andre børser i verden. Forståelse av de viktigste norske sektorene er avgjørende for å investere smart på Oslo Børs:</p>
+        <p><strong>Energi</strong> er den klart dominerende sektoren og utgjør ofte 30-40% av Oslo Børs' markedsverdi. Equinor alene står for en enorm andel. Sektoren påvirkes sterkt av oljeprisen, OPEC-beslutninger og det grønne skiftet. Norsk sokkel er moden, men fortsatt svært lønnsom. Aker BP og Var Energi er andre store aktører.</p>
+        <p><strong>Sjømat</strong> er en sektor der Norge er verdensledende. Selskaper som Mowi, SalMar, Lerøy Seafood og Grieg Seafood er blant verdens største oppdrettsselskaper. Sektoren påvirkes av laksepris, biologiske forhold, reguleringer og grunnrenteskatt. Lakseprisen kan svinge kraftig, noe som gjør disse aksjene volatile.</p>
+        <p><strong>Shipping og offshore</strong> har lang tradisjon i Norge. Frontline, Golden Ocean og Hafnia opererer i tank-, tørrbulk- og produkttankmarkedet. Borr Drilling og Seadrill opererer rigger. Sektoren er svært syklisk og påvirkes av fraktrater, verdenshandel og skipstilbud/etterspørsel.</p>
+        <p><strong>Bank og finans</strong> domineres av DNB, Norges klart største bank. SpareBank 1-alliansen, Storebrand (livsforsikring og kapitalforvaltning) og Gjensidige (skadeforsikring) er andre viktige aktører. Bankaksjer påvirkes av rentenivå, boligmarked og regulatoriske krav.</p>
+
+        <h3>Sektorrotasjon</h3>
+        <p>Sektorrotasjon er en investeringsstrategi basert på ideen om at ulike sektorer presterer best i ulike faser av konjunktursyklusen. Konjunktursyklusen har typisk fire faser, og investorer kan posisjonere seg deretter:</p>
+        <ul>
+          <li><strong>Tidlig oppgang (recovery):</strong> Finans, industri og forbruksvarer leder an. Renter er lave, kredittveksten tiltar.</li>
+          <li><strong>Mid-syklus (expansion):</strong> IT, kommunikasjon og materialer gjør det bra. Økonomien vokser jevnt.</li>
+          <li><strong>Sen syklus (late cycle):</strong> Energi og materialer stiger pga. kapasitetsbegrensninger og inflasjon.</li>
+          <li><strong>Resesjon (contraction):</strong> Defensive sektorer som konsumvarer, helsevern og forsyning holder seg best.</li>
+        </ul>
+        <p>I norsk kontekst betyr dette for eksempel at energiaksjer som Equinor typisk gjør det godt i perioder med økonomisk vekst og stigende råvarepriser, mens Orkla (konsumvarer) og Gjensidige (forsikring) er tryggere havner i nedgangstider. Sektorrotasjon krever at du har en oppfatning om hvor i konjunktursyklusen vi befinner oss, noe som er utfordrende men mulig med makroøkonomisk analyse.</p>
+
+        <h3>Sykliske vs. defensive sektorer</h3>
+        <p><strong>Sykliske sektorer</strong> er sterkt påvirket av konjunkturer og økonomisk vekst. Når økonomien vokser, øker etterspørselen etter deres produkter, og omvendt. Eksempler inkluderer energi (Equinor), materialer (Norsk Hydro), shipping (Frontline) og forbruksvarer. Sykliske aksjer kan gi høy avkastning i oppgangstider, men faller også mer i nedgangstider.</p>
+        <p><strong>Defensive sektorer</strong> leverer produkter og tjenester folk trenger uansett økonomisk situasjon. Etterspørselen er relativt stabil. Eksempler inkluderer konsumvarer (mat, husholdning), helsevern, forsyning og telekommunikasjon. Telenor er et typisk defensivt selskap - folk trenger mobiltelefoni uansett konjunkturer. Defensive aksjer gir typisk lavere, men mer stabil avkastning og høyere utbytte.</p>
+        <p>En balansert norsk portefølje bør inneholde både sykliske og defensive aksjer. Vektingen kan justeres basert på din markedsutsikt. Hvis du er optimistisk (bull), øk andelen sykliske aksjer. Hvis du er forsiktig (bear), vekt mot defensive aksjer.</p>
+
+        <h3>Hvordan analysere en sektor</h3>
+        <p>Når du analyserer en sektor, bør du vurdere følgende faktorer:</p>
+        <ul>
+          <li><strong>Makrodrivere:</strong> Hva driver etterspørselen? For energi er det oljepris og geopolitikk. For sjømat er det global proteetterspørsel og laksepris.</li>
+          <li><strong>Konkurranseintensitet:</strong> Få store aktører (oligopol) gir bedre lønnsomhet enn mange små (perfekt konkurranse).</li>
+          <li><strong>Reguleringer:</strong> Grunnrenteskatt på oppdrett, utslippskrav for shipping, kapitalkrav for banker - reguleringer kan endre bransjedynamikken dramatisk.</li>
+          <li><strong>Trender:</strong> Det grønne skiftet påvirker energi, digitalisering påvirker IT og finans, demografiske endringer påvirker helsevern.</li>
+          <li><strong>Verdsettelse:</strong> Sammenlign sektorens gjennomsnittlige P/E, P/B og utbyttegrad med historiske nivåer. Er sektoren dyr eller billig relativt til sin egen historie?</li>
+        </ul>
+        <p>En nyttig ressurs for sektoranalyse er Oslo Børs sin sektorindeks-oversikt, der du kan se avkastningen for hver sektor over tid. Du kan også bruke Nordnet eller Yahoo Finance til å filtrere aksjer etter sektor og sammenligne nøkkeltall innenfor hver bransje. Regelmessig sektoranalyse gir deg et informert grunnlag for å allokere porteføljen din optimalt.</p>
+
+        <div class="quiz-container" data-correct="b" data-module="7" data-explanation="Defensive sektorer som konsumvarer og helsevern holder seg best i nedgangstider fordi etterspørselen etter deres produkter er relativt stabil uavhengig av konjunkturer.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Hvilken type sektor holder seg typisk best under en økonomisk resesjon?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Sykliske sektorer som energi og shipping</button>
+            <button class="quiz-option" data-answer="b">B) Defensive sektorer som konsumvarer og helsevern</button>
+            <button class="quiz-option" data-answer="c">C) IT-sektoren fordi teknologi alltid vokser</button>
+            <button class="quiz-option" data-answer="d">D) Finanssektoren fordi bankene alltid tjener penger</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="6">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="8">Test deg selv →</button>
+        </div>
+      </div>
+
+      <!-- TEST DEG SELV -->
+      <div class="module-section" id="test-deg-selv">
+        <h2>Test deg selv</h2>
+        <p>Denne testen dekker alt du har lært i det viderekommende kurset. Svar på alle spørsmålene for å teste kunnskapene dine!</p>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 1 av 9</h4>
+          <div class="quiz-container" data-correct="b" data-module="8" data-explanation="Den grunnleggende ligningen i balanseregnskapet er: Eiendeler = Gjeld + Egenkapital. Denne ligningen må alltid stemme, og forteller oss hvordan selskapets eiendeler er finansiert.">
+            <p class="quiz-question">Hva er den grunnleggende ligningen i balanseregnskapet?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Inntekter − Kostnader = Resultat</button>
+              <button class="quiz-option" data-answer="b">B) Eiendeler = Gjeld + Egenkapital</button>
+              <button class="quiz-option" data-answer="c">C) Kontanter = Inntekter − Utgifter</button>
+              <button class="quiz-option" data-answer="d">D) Omsetning = Varekost + Fortjeneste</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 2 av 9</h4>
+          <div class="quiz-container" data-correct="c" data-module="8" data-explanation="Resultatregnskapet viser selskapets inntekter minus kostnader over en periode, og gir deg bunnlinjen: resultatet (overskudd eller underskudd).">
+            <p class="quiz-question">Hva viser et resultatregnskap?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Selskapets eiendeler og gjeld på et bestemt tidspunkt</button>
+              <button class="quiz-option" data-answer="b">B) Hvordan kontanter strømmer inn og ut av selskapet</button>
+              <button class="quiz-option" data-answer="c">C) Inntekter minus kostnader over en periode, som gir resultatet</button>
+              <button class="quiz-option" data-answer="d">D) Aksjonærenes eierandel i selskapet</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 3 av 9</h4>
+          <div class="quiz-container" data-correct="a" data-module="8" data-explanation="Operasjonell kontantstrøm viser kontanter generert fra selskapets daglige kjernevirksomhet, altså den løpende driften. Dette skilles fra investerings- og finansieringsaktiviteter.">
+            <p class="quiz-question">Hva viser operasjonell kontantstrøm?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Kontanter generert fra selskapets daglige drift</button>
+              <button class="quiz-option" data-answer="b">B) Penger brukt på kjøp av nye maskiner og utstyr</button>
+              <button class="quiz-option" data-answer="c">C) Kontanter fra opptak av nye lån og utstedelse av aksjer</button>
+              <button class="quiz-option" data-answer="d">D) Utbytte utbetalt til aksjonærene</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 4 av 9</h4>
+          <div class="quiz-container" data-correct="d" data-module="8" data-explanation="Et lavt P/E-tall kan indikere at aksjen er billig relativt til selskapets inntjening. Det betyr at du betaler mindre per krone i overskudd sammenlignet med aksjer med høyere P/E.">
+            <p class="quiz-question">Hva kan et lavt P/E-tall (pris/fortjeneste) indikere?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Selskapet har høy gjeld</button>
+              <button class="quiz-option" data-answer="b">B) Aksjen er overvurdert av markedet</button>
+              <button class="quiz-option" data-answer="c">C) Selskapet betaler mye utbytte</button>
+              <button class="quiz-option" data-answer="d">D) Aksjen kan være billig relativt til inntjeningen</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 5 av 9</h4>
+          <div class="quiz-container" data-correct="b" data-module="8" data-explanation="Når RSI (Relative Strength Index) er over 70, anses aksjen som overkjøpt. Dette betyr at aksjen har steget mye på kort tid og kan være moden for en korreksjon nedover.">
+            <p class="quiz-question">Hva betyr det i teknisk analyse når RSI (Relative Strength Index) er over 70?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Aksjen er oversolgt og kan stige</button>
+              <button class="quiz-option" data-answer="b">B) Aksjen kan være overkjøpt og moden for en korreksjon</button>
+              <button class="quiz-option" data-answer="c">C) Aksjen har lav volatilitet</button>
+              <button class="quiz-option" data-answer="d">D) Det er et godt tidspunkt å kjøpe aksjen</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 6 av 9</h4>
+          <div class="quiz-container" data-correct="c" data-module="8" data-explanation="En markedsordre utføres umiddelbart til gjeldende markedspris, mens en limitordre kun utføres hvis aksjen når den prisen du har satt. Limitordre gir deg mer kontroll over prisen du handler til.">
+            <p class="quiz-question">Hva er hovedforskjellen mellom en markedsordre og en limitordre?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Markedsordre kan kun brukes på Oslo Børs, limitordre fungerer internasjonalt</button>
+              <button class="quiz-option" data-answer="b">B) Limitordre er alltid billigere å plassere enn markedsordre</button>
+              <button class="quiz-option" data-answer="c">C) Markedsordre handles umiddelbart til gjeldende pris, limitordre handles kun til spesifisert pris</button>
+              <button class="quiz-option" data-answer="d">D) Markedsordre brukes for kjøp og limitordre brukes for salg</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 7 av 9</h4>
+          <div class="quiz-container" data-correct="a" data-module="8" data-explanation="Diversifisering betyr å spre investeringene dine over ulike aksjer, sektorer og eventuelt aktivaklasser. Målet er å redusere risiko, fordi tap i én investering kan oppveies av gevinster i andre.">
+            <p class="quiz-question">Hva er diversifisering i sammenheng med risikostyring?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Å spre investeringene over ulike aksjer og sektorer for å redusere risiko</button>
+              <button class="quiz-option" data-answer="b">B) Å investere alt i den aksjen som har steget mest</button>
+              <button class="quiz-option" data-answer="c">C) Å kjøpe og selge aksjer ofte for å maksimere avkastning</button>
+              <button class="quiz-option" data-answer="d">D) Å bruke belåning for å øke eksponeringen mot markedet</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 8 av 9</h4>
+          <div class="quiz-container" data-correct="d" data-module="8" data-explanation="Sykliske sektorer som energi, shipping og industri følger konjunktursykluser og svinger med økonomien. Defensive sektorer som konsumvarer og helsevern er mer stabile fordi folk trenger disse produktene uansett økonomisk situasjon.">
+            <p class="quiz-question">Hva kjennetegner forskjellen mellom sykliske og defensive sektorer?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Sykliske sektorer gir alltid høyere avkastning enn defensive</button>
+              <button class="quiz-option" data-answer="b">B) Defensive sektorer finnes kun på utenlandske børser</button>
+              <button class="quiz-option" data-answer="c">C) Sykliske sektorer er alltid tryggest å investere i</button>
+              <button class="quiz-option" data-answer="d">D) Sykliske sektorer følger konjunkturer, mens defensive er stabile uavhengig av økonomisk syklus</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="final-quiz-container">
+          <h4>Spørsmål 9 av 9</h4>
+          <div class="quiz-container" data-correct="c" data-module="8" data-explanation="Golden Cross oppstår når 50-dagers glidende gjennomsnitt krysser over 200-dagers glidende gjennomsnitt. Dette er et bullish (positivt) signal i teknisk analyse som indikerer at en langsiktig opptrend kan være i ferd med å starte.">
+            <p class="quiz-question">Hva er et «Golden Cross» i teknisk analyse?</p>
+            <div class="quiz-options">
+              <button class="quiz-option" data-answer="a">A) Når RSI krysser over 50-nivået</button>
+              <button class="quiz-option" data-answer="b">B) Når aksjekursen treffer et nytt all-time high</button>
+              <button class="quiz-option" data-answer="c">C) Når 50-dagers glidende gjennomsnitt krysser over 200-dagers glidende gjennomsnitt</button>
+              <button class="quiz-option" data-answer="d">D) Når MACD-linjen krysser nullpunktet</button>
+            </div>
+            <div class="quiz-feedback"></div>
+          </div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="7">← Forrige leksjon</button>
+          <a href="avansert.html" class="btn btn-primary">Gå til avansert kurs →</a>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo"><span class="logo-icon">A</span> Aksjeakademiet</div>
+        <p>Fritt norsk oppslagsverk om aksjer og investering.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kurs</h4>
+        <ul>
+          <li><a href="nybegynner.html">Nybegynner</a></li>
+          <li><a href="viderekommen.html">Viderekommen</a></li>
+          <li><a href="avansert.html">Avansert</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verktøy</h4>
+        <ul>
+          <li><a href="../verktoy.html#rentesrente">Kalkulator</a></li>
+          <li><a href="../verktoy.html#papirhandel">Papirhandel</a></li>
+          <li><a href="../verktoy.html#aksjekart">Aksjediagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Innhold</h4>
+        <ul>
+          <li><a href="../blogg.html">Artikler</a></li>
+          <li><a href="../ordliste.html">Ordliste</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Aksjeakademiet</span>
+      <span>Kun for utdanningsformål — ikke finansiell rådgivning.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
