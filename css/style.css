@@ -1278,7 +1278,7 @@ code {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-lg);
   padding: 32px;
-  overflow: visible;
+  overflow: hidden;
   max-width: 100%;
   box-sizing: border-box;
 }
@@ -1364,8 +1364,7 @@ code {
 }
 
 .stock-row {
-  display: grid;
-  grid-template-columns: 2fr 100px 80px auto;
+  display: flex;
   align-items: center;
   gap: 12px;
   padding: 12px 14px;
@@ -1374,6 +1373,8 @@ code {
   border: 1px solid var(--border-color);
   transition: all var(--transition);
   overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .stock-row:hover {
@@ -1384,7 +1385,9 @@ code {
   font-weight: 600;
   font-size: 0.95rem;
   min-width: 0;
+  flex: 1 1 0;
   line-height: 1.3;
+  overflow: hidden;
 }
 
 .stock-name .stock-name-text {
@@ -1405,6 +1408,7 @@ code {
   font-weight: 700;
   font-size: 1rem;
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .stock-change {
@@ -1413,6 +1417,7 @@ code {
   padding: 4px 8px;
   border-radius: var(--radius-sm);
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 
 .stock-change.positive {
@@ -1429,6 +1434,8 @@ code {
   display: flex;
   gap: 6px;
   align-items: center;
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .stock-actions .btn {
@@ -1459,32 +1466,12 @@ code {
   border-radius: 3px;
 }
 
-/* Stock row responsive: wrap to 2 rows on narrow screens */
+/* Stock row responsive */
 @media (max-width: 768px) {
   .stock-row {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
+    flex-wrap: wrap;
     gap: 6px 10px;
     padding: 10px 12px;
-  }
-  .stock-name {
-    grid-column: 1;
-    grid-row: 1;
-  }
-  .stock-price {
-    grid-column: 2;
-    grid-row: 1;
-    text-align: right;
-  }
-  .stock-change {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: start;
-  }
-  .stock-actions {
-    grid-column: 2;
-    grid-row: 2;
-    justify-self: end;
   }
   .stock-actions .btn {
     padding: 5px 10px;
@@ -1493,28 +1480,11 @@ code {
 }
 
 @media (max-width: 480px) {
-  .stock-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    align-items: center;
-  }
   .stock-name {
-    flex: 1 1 60%;
-    min-width: 0;
-    white-space: normal;
-  }
-  .stock-price {
-    flex: 0 0 auto;
-    text-align: right;
-    font-size: 0.9rem;
-  }
-  .stock-change {
-    flex: 0 0 auto;
+    flex: 1 1 50%;
   }
   .stock-actions {
     flex: 1 1 100%;
-    display: flex;
   }
   .stock-actions .btn {
     flex: 1;
