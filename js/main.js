@@ -455,11 +455,11 @@ function renderStockList() {
     const sign = change >= 0 ? '+' : '';
     return `
       <div class="stock-row">
-        <div class="stock-name"><span class="stock-name-text">${stock.name}</span> <span class="ticker">${stock.ticker}</span></div>
+        <div class="stock-name"><span class="stock-name-text">${stock.name}</span><br><span class="ticker">${stock.ticker}</span></div>
         <div class="stock-price">${stock.price.toFixed(2)} kr</div>
         <div class="stock-change ${cls}">${sign}${changePct}%</div>
         <div class="stock-actions">
-          <button class="btn btn-primary btn-sm" onclick="openTradeModal(${i}, 'buy')">Kjop</button>
+          <button class="btn btn-primary btn-sm" onclick="openTradeModal(${i}, 'buy')">Kjøp</button>
           <button class="btn btn-secondary btn-sm" onclick="openTradeModal(${i}, 'sell')">Selg</button>
           <button class="btn btn-ghost btn-sm chart-btn" onclick="showStockChart('${stock.ticker}')">Graf</button>
         </div>
