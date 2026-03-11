@@ -1354,8 +1354,9 @@ code {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 24px;
-  overflow: hidden;
+  overflow: visible;
   max-width: 100%;
+  min-width: 0;
 }
 
 @media (max-width: 768px) {
@@ -1368,11 +1369,12 @@ code {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .stock-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  grid-template-columns: minmax(100px, 1.5fr) minmax(70px, auto) minmax(55px, auto) auto;
   align-items: center;
   gap: 10px;
   padding: 12px 14px;
@@ -1380,7 +1382,7 @@ code {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   transition: all var(--transition);
-  overflow: hidden;
+  min-width: 0;
 }
 
 .stock-row:hover {
@@ -1390,10 +1392,15 @@ code {
 .stock-name {
   font-weight: 600;
   font-size: 0.95rem;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.stock-name .stock-name-text {
+  display: block;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  min-width: 0;
 }
 
 .stock-name .ticker {
@@ -1457,6 +1464,69 @@ code {
 .stock-list::-webkit-scrollbar-thumb {
   background: var(--border-color);
   border-radius: 3px;
+}
+
+/* Stock row responsive: wrap to 2 rows on narrow screens */
+@media (max-width: 768px) {
+  .stock-row {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 6px 10px;
+    padding: 10px 12px;
+  }
+  .stock-name {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .stock-price {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: right;
+  }
+  .stock-change {
+    grid-column: 1;
+    grid-row: 2;
+    justify-self: start;
+  }
+  .stock-actions {
+    grid-column: 2;
+    grid-row: 2;
+    justify-self: end;
+  }
+  .stock-actions .btn {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stock-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .stock-name {
+    flex: 1 1 60%;
+    min-width: 0;
+    white-space: normal;
+  }
+  .stock-price {
+    flex: 0 0 auto;
+    text-align: right;
+    font-size: 0.9rem;
+  }
+  .stock-change {
+    flex: 0 0 auto;
+  }
+  .stock-actions {
+    flex: 1 1 100%;
+    display: flex;
+  }
+  .stock-actions .btn {
+    flex: 1;
+    text-align: center;
+  }
 }
 
 .portfolio-panel {
