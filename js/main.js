@@ -461,15 +461,19 @@ function renderStockList() {
       <td class="stock-actions">
         <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',1)">+1</button>
         <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',10)">+10</button>
+        <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',100)">+100</button>
+        <button class="btn btn-primary btn-sm" onclick="quickTrade(${i},'buy',1000)">+1k</button>
         ${held > 0 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',1)">-1</button>' : ''}
         ${held >= 10 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',10)">-10</button>' : ''}
+        ${held >= 100 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',100)">-100</button>' : ''}
+        ${held >= 1000 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',1000)">-1k</button>' : ''}
         ${held > 0 ? '<button class="btn btn-secondary btn-sm" onclick="quickTrade('+i+',\'sell\',' + held + ')">Selg alt</button>' : ''}
       </td>
     </tr>`;
   }).join('');
 
   list.innerHTML = `<table class="stock-table"><colgroup>
-    <col style="width:35%"><col style="width:15%"><col style="width:12%"><col style="width:38%">
+    <col style="width:28%"><col style="width:14%"><col style="width:10%"><col style="width:48%">
   </colgroup><tbody>${rows}</tbody></table>`;
 }
 
