@@ -1,5 +1,5 @@
 /* ============================================
-   Aksjeakademiet — Main JavaScript
+   Addern Investing — Main JavaScript
    Theme, Nav, Quizzes, Paper Trading, Charts
    ============================================ */
 
