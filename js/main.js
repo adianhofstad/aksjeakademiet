@@ -277,6 +277,120 @@ const DIFFICULTY = {
   hard:   { label: 'Vanskelig', volatility: 0.020, bias: 0.46 }
 };
 
+/* ---------- Market Events System ---------- */
+const MARKET_EVENTS = [
+  // Negative global events
+  { id: 'crash',         name: 'Børskrakk!',                emoji: '📉', type: 'global', impact: -0.15, volatilityMult: 3.0,  durationTicks: 40, description: 'Panikksalg i markedet — aksjekursene stuper.' },
+  { id: 'recession',     name: 'Resesjon',                  emoji: '🏚️', type: 'global', impact: -0.06, volatilityMult: 1.8,  durationTicks: 80, description: 'Økonomien krymper. Forbrukertillit er på bunn.' },
+  { id: 'war',           name: 'Krig bryter ut',            emoji: '⚔️', type: 'global', impact: -0.10, volatilityMult: 2.5,  durationTicks: 60, description: 'Geopolitisk konflikt skaper usikkerhet i markedene.' },
+  { id: 'pandemic',      name: 'Pandemi',                   emoji: '🦠', type: 'global', impact: -0.12, volatilityMult: 2.8,  durationTicks: 70, description: 'Global helsekrise. Reise og handel rammes hardt.' },
+  { id: 'rate_hike',     name: 'Renteheving',               emoji: '🏦', type: 'global', impact: -0.04, volatilityMult: 1.5,  durationTicks: 30, description: 'Sentralbanken hever renten kraftig.' },
+  { id: 'inflation',     name: 'Høy inflasjon',             emoji: '💸', type: 'global', impact: -0.03, volatilityMult: 1.4,  durationTicks: 50, description: 'Prisene stiger raskt. Kjøpekraften svekkes.' },
+  { id: 'trade_war',     name: 'Handelskrig',               emoji: '🚢', type: 'global', impact: -0.05, volatilityMult: 1.6,  durationTicks: 45, description: 'Tollbarrierer og sanksjoner rammer verdenshandelen.' },
+  { id: 'bank_crisis',   name: 'Bankkrise',                 emoji: '🏦', type: 'global', impact: -0.08, volatilityMult: 2.2,  durationTicks: 35, description: 'Flere banker sliter. Frykt for systemkollaps.' },
+  // Positive global events
+  { id: 'bull_run',      name: 'Bull-marked!',              emoji: '🐂', type: 'global', impact: +0.08, volatilityMult: 1.5,  durationTicks: 50, description: 'Optimisme i markedet — kursene stiger bredt.' },
+  { id: 'rate_cut',      name: 'Rentekutt',                 emoji: '📈', type: 'global', impact: +0.04, volatilityMult: 1.3,  durationTicks: 30, description: 'Sentralbanken kutter renten. Billigere lån stimulerer.' },
+  { id: 'stimulus',      name: 'Stimulanspakke',            emoji: '💰', type: 'global', impact: +0.05, volatilityMult: 1.4,  durationTicks: 40, description: 'Regjeringen sprøyter penger inn i økonomien.' },
+  { id: 'peace_deal',    name: 'Fredsavtale',               emoji: '🕊️', type: 'global', impact: +0.06, volatilityMult: 1.2,  durationTicks: 25, description: 'Geopolitisk avspenning gir markedsoptimisme.' },
+  { id: 'tech_boom',     name: 'Teknologiboom',             emoji: '🚀', type: 'global', impact: +0.07, volatilityMult: 1.6,  durationTicks: 45, description: 'Teknologisektoren eksploderer i verdi.' },
+  // Neutral / mixed events
+  { id: 'sideways',      name: 'Sidelengs marked',          emoji: '➡️', type: 'global', impact: 0.00,  volatilityMult: 0.3,  durationTicks: 60, description: 'Markedet beveger seg knapt. Investorer avventer.' },
+  { id: 'high_vol',      name: 'Ekstrem volatilitet',       emoji: '🎢', type: 'global', impact: 0.00,  volatilityMult: 3.5,  durationTicks: 25, description: 'Ville svingninger — opp og ned i raskt tempo.' },
+  // Sector-specific events
+  { id: 'oil_crash',     name: 'Oljepris kollapser',        emoji: '🛢️', type: 'sector', tickers: ['EQNR','AKRBP','FLNG','FRONTL'], impact: -0.12, volatilityMult: 2.5, durationTicks: 40, description: 'Oljeprisen stuper. Energiaksjer rammes hardt.' },
+  { id: 'oil_boom',      name: 'Oljepris skyter opp',       emoji: '🛢️', type: 'sector', tickers: ['EQNR','AKRBP','FLNG','FRONTL'], impact: +0.10, volatilityMult: 2.0, durationTicks: 35, description: 'Oljeprisen stiger kraftig. Energiaksjer boomer.' },
+  { id: 'fish_disease',  name: 'Laksesykdom',               emoji: '🐟', type: 'sector', tickers: ['MOWI','SALM'], impact: -0.10, volatilityMult: 2.0, durationTicks: 30, description: 'Sykdom i oppdrettsanlegg. Lakseaksjer faller.' },
+  { id: 'fish_demand',   name: 'Rekordsalg av laks',        emoji: '🐟', type: 'sector', tickers: ['MOWI','SALM'], impact: +0.08, volatilityMult: 1.5, durationTicks: 30, description: 'Global etterspørsel etter laks øker kraftig.' },
+  { id: 'tech_scandal',  name: 'Teknologiskandale',         emoji: '💻', type: 'sector', tickers: ['KAHOT','CRAYN','TOM'], impact: -0.09, volatilityMult: 2.0, durationTicks: 25, description: 'Datatyveri og skandaler rammer tech-aksjer.' },
+  { id: 'defense_spend', name: 'Økt forsvarsbudsjett',      emoji: '🛡️', type: 'sector', tickers: ['KOG'], impact: +0.12, volatilityMult: 1.8, durationTicks: 35, description: 'NATO øker forsvarsutgiftene. Kongsberg stiger.' },
+  { id: 'green_shift',   name: 'Grønt skifte',              emoji: '🌱', type: 'sector', tickers: ['SCATC','RECSI','NHY'], impact: +0.09, volatilityMult: 1.6, durationTicks: 40, description: 'Nye klimaavtaler gir boost til grønne aksjer.' },
+  { id: 'aluminium_drop',name: 'Aluminiumpris faller',      emoji: '🏭', type: 'sector', tickers: ['NHY'], impact: -0.08, volatilityMult: 1.8, durationTicks: 30, description: 'Kina dumper aluminium. Norsk Hydro rammes.' },
+];
+
+let activeEvent = null;
+let eventTicksLeft = 0;
+let eventCooldown = 0;
+
+function tryTriggerEvent() {
+  if (activeEvent) {
+    eventTicksLeft--;
+    if (eventTicksLeft <= 0) {
+      activeEvent = null;
+      renderEventBanner();
+    }
+    return;
+  }
+  if (eventCooldown > 0) { eventCooldown--; return; }
+  // ~3% chance per tick to trigger an event
+  if (Math.random() < 0.03) {
+    const event = MARKET_EVENTS[Math.floor(Math.random() * MARKET_EVENTS.length)];
+    activeEvent = { ...event };
+    eventTicksLeft = event.durationTicks;
+    eventCooldown = 0;
+    // Apply instant shock to affected stocks
+    applyEventShock(event);
+    renderEventBanner();
+  }
+}
+
+function applyEventShock(event) {
+  tradingState.stocks.forEach(stock => {
+    const affected = event.type === 'global' || (event.tickers && event.tickers.includes(stock.ticker));
+    if (!affected) return;
+    // Instant price shock (fraction of total impact)
+    const shock = event.impact * (0.3 + Math.random() * 0.3);
+    stock.price = Math.max(1, stock.price * (1 + shock));
+    stock.price = Math.round(stock.price * 100) / 100;
+  });
+}
+
+function getEventModifiers(stock) {
+  if (!activeEvent) return { impactBias: 0, volMult: 1.0 };
+  const affected = activeEvent.type === 'global' || (activeEvent.tickers && activeEvent.tickers.includes(stock.ticker));
+  if (!affected) return { impactBias: 0, volMult: 1.0 };
+  // Gradual impact per tick spread over remaining duration
+  const perTickImpact = activeEvent.impact / activeEvent.durationTicks;
+  return { impactBias: perTickImpact, volMult: activeEvent.volatilityMult };
+}
+
+function renderEventBanner() {
+  let banner = document.getElementById('marketEventBanner');
+  if (!activeEvent) {
+    if (banner) banner.style.display = 'none';
+    return;
+  }
+  if (!banner) {
+    const container = document.querySelector('.trading-container');
+    if (!container) return;
+    banner = document.createElement('div');
+    banner.id = 'marketEventBanner';
+    banner.style.cssText = 'padding:12px 16px;border-radius:10px;margin-bottom:12px;font-size:0.95rem;font-weight:600;display:flex;align-items:center;gap:10px;animation:eventPulse 2s ease-in-out infinite;';
+    container.insertBefore(banner, container.firstChild);
+    // Add animation keyframes
+    if (!document.getElementById('eventPulseStyle')) {
+      const style = document.createElement('style');
+      style.id = 'eventPulseStyle';
+      style.textContent = `
+        @keyframes eventPulse { 0%,100%{opacity:1} 50%{opacity:0.8} }
+        #marketEventBanner.event-negative { background:linear-gradient(135deg,#ff4d4d22,#ff4d4d11); border:1px solid #ff4d4d55; color:#ff4d4d; }
+        #marketEventBanner.event-positive { background:linear-gradient(135deg,#00c85322,#00c85311); border:1px solid #00c85355; color:#00c853; }
+        #marketEventBanner.event-neutral  { background:linear-gradient(135deg,#ffab0022,#ffab0011); border:1px solid #ffab0055; color:#ffab00; }
+        #marketEventBanner .event-timer { margin-left:auto; font-size:0.8rem; opacity:0.7; }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+  banner.style.display = 'flex';
+  const cls = activeEvent.impact < -0.02 ? 'event-negative' : activeEvent.impact > 0.02 ? 'event-positive' : 'event-neutral';
+  banner.className = cls;
+  banner.innerHTML = `
+    <span style="font-size:1.4rem;">${activeEvent.emoji}</span>
+    <span>${activeEvent.name}: ${activeEvent.description}</span>
+    <span class="event-timer">${eventTicksLeft} ticks igjen</span>
+  `;
+}
+
 const START_BALANCE = 500000;
 let tradingState = null;
 let priceInterval = null;
@@ -354,8 +468,8 @@ function generateStockHistory(basePrice, days) {
     date.setDate(date.getDate() + i);
     if (date.getDay() === 0 || date.getDay() === 6) continue;
 
-    const vol = 0.012;
-    const change = (Math.random() - 0.48) * price * vol * 2;
+    const vol = 0.015;
+    const change = (Math.random() - 0.50) * price * vol * 2;
     const open = price;
     const close = price + change;
     const high = Math.max(open, close) + Math.random() * price * vol;
@@ -383,10 +497,14 @@ function startPriceUpdates() {
 
   priceInterval = setInterval(() => {
     candleCounter++;
+    tryTriggerEvent();
     tradingState.stocks.forEach(stock => {
       stock.prevPrice = stock.price;
-      const change = (Math.random() - diff.bias) * stock.price * diff.volatility;
-      stock.price = Math.max(stock.price * 0.3, stock.price + change);
+      const { impactBias, volMult } = getEventModifiers(stock);
+      const effectiveVol = diff.volatility * volMult;
+      const effectiveBias = diff.bias - impactBias * 10; // shift bias toward event direction
+      const change = (Math.random() - effectiveBias) * stock.price * effectiveVol;
+      stock.price = Math.max(1, stock.price + change);
       stock.price = Math.round(stock.price * 100) / 100;
 
       // Update latest candle
@@ -418,6 +536,7 @@ function startPriceUpdates() {
     }
 
     renderStockPrices();
+    renderEventBanner();
     saveTrading();
 
     // Redraw chart if modal visible
