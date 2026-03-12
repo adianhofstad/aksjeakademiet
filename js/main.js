@@ -272,9 +272,9 @@ const STOCKS = [
 ];
 
 const DIFFICULTY = {
-  easy:   { label: 'Enkel',     volatility: 0.003, bias: 0.53 },
-  medium: { label: 'Medium',    volatility: 0.008, bias: 0.50 },
-  hard:   { label: 'Vanskelig', volatility: 0.020, bias: 0.46 }
+  easy:   { label: 'Enkel',     volatility: 0.005, bias: 0.52 },
+  medium: { label: 'Medium',    volatility: 0.010, bias: 0.505 },
+  hard:   { label: 'Vanskelig', volatility: 0.025, bias: 0.48 }
 };
 
 /* ---------- Market Events System ---------- */
@@ -502,8 +502,20 @@ function startPriceUpdates() {
       stock.prevPrice = stock.price;
       const { impactBias, volMult } = getEventModifiers(stock);
       const effectiveVol = diff.volatility * volMult;
-      const effectiveBias = diff.bias - impactBias * 10; // shift bias toward event direction
-      const change = (Math.random() - effectiveBias) * stock.price * effectiveVol;
+      const effectiveBias = diff.bias - impactBias * 10;
+
+      // Per-stock random drift that shifts every ~50 ticks (some stocks trend down)
+      if (!stock._drift || candleCounter % 50 === 0) {
+        stock._drift = (Math.random() - 0.55) * 0.002; // slight negative skew
+      }
+
+      // Mean reversion: if price is far above base, pull it down (and vice versa)
+      const base = stock.basePrice || stock.price;
+      const deviation = (stock.price - base) / base;
+      const meanRevert = -deviation * 0.003;
+
+      const randomChange = (Math.random() - effectiveBias) * stock.price * effectiveVol;
+      const change = randomChange + stock.price * stock._drift + stock.price * meanRevert;
       stock.price = Math.max(1, stock.price + change);
       stock.price = Math.round(stock.price * 100) / 100;
 
