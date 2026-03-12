@@ -322,12 +322,12 @@ function tryTriggerEvent() {
     return;
   }
   if (eventCooldown > 0) { eventCooldown--; return; }
-  // ~3% chance per tick to trigger an event
-  if (Math.random() < 0.03) {
+  // ~0.5% chance per tick, plus cooldown after each event
+  if (Math.random() < 0.005) {
     const event = MARKET_EVENTS[Math.floor(Math.random() * MARKET_EVENTS.length)];
     activeEvent = { ...event };
     eventTicksLeft = event.durationTicks;
-    eventCooldown = 0;
+    eventCooldown = 80 + Math.floor(Math.random() * 120); // 80-200 tick cooldown after event ends
     // Apply instant shock to affected stocks
     applyEventShock(event);
     renderEventBanner();
