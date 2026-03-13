@@ -55,7 +55,7 @@
         <h2>Viderekommende kurs</h2>
       </div>
       <div class="sidebar-progress">
-        <span class="progress-text">0 av 9 fullført</span>
+        <span class="progress-text">0 av 10 fullført</span>
         <div class="progress-bar"><div class="fill" style="width:0%"></div></div>
       </div>
       <nav class="sidebar-nav">
@@ -64,10 +64,11 @@
         <a href="#modul-3" class="sidebar-link" data-module="2">3. Kontantstrømoppstilling</a>
         <a href="#modul-4" class="sidebar-link" data-module="3">4. Nøkkeltall (P/E, P/B, EPS, ROE)</a>
         <a href="#modul-5" class="sidebar-link" data-module="4">5. Grunnleggende teknisk analyse</a>
-        <a href="#modul-6" class="sidebar-link" data-module="5">6. Markedsordre vs. limitordre</a>
-        <a href="#modul-7" class="sidebar-link" data-module="6">7. Risikostyring og posisjonsstørrelse</a>
-        <a href="#modul-8" class="sidebar-link" data-module="7">8. Sektorer og bransjer</a>
-        <a href="#test-deg-selv" class="sidebar-link" data-module="8">Test deg selv</a>
+        <a href="#modul-6" class="sidebar-link" data-module="5">6. Candlestick-mønstre</a>
+        <a href="#modul-7" class="sidebar-link" data-module="6">7. Markedsordre vs. limitordre</a>
+        <a href="#modul-8" class="sidebar-link" data-module="7">8. Risikostyring og posisjonsstørrelse</a>
+        <a href="#modul-9" class="sidebar-link" data-module="8">9. Sektorer og bransjer</a>
+        <a href="#test-deg-selv" class="sidebar-link" data-module="9">Test deg selv</a>
       </nav>
     </aside>
 
@@ -363,9 +364,77 @@
         </div>
       </div>
 
-      <!-- Modul 6: Markedsordre vs. limitordre -->
+      <!-- Modul 6: Candlestick-mønstre -->
       <div class="module-section" id="modul-6">
-        <h2>6. Markedsordre vs. limitordre</h2>
+        <h2>6. Candlestick-mønstre</h2>
+
+        <h3>Hva er candlesticks?</h3>
+        <p>Candlestick-diagrammer (lysestakediagrammer) er den mest populære måten å visualisere prisdata i teknisk analyse. Hver «stake» representerer prisbevegelsen for én periode (dag, uke, time osv.) og viser fire viktige datapunkter: <strong>åpningskurs</strong>, <strong>høyeste kurs</strong>, <strong>laveste kurs</strong> og <strong>sluttkurs</strong>.</p>
+        <p>Selve «kroppen» på staken viser forskjellen mellom åpnings- og sluttkurs. En <strong>grønn (bullish)</strong> stake betyr at sluttkursen er høyere enn åpningskursen — kursen gikk opp. En <strong>rød (bearish)</strong> stake betyr det motsatte — kursen gikk ned. «Vekene» (skyggene) over og under kroppen viser henholdsvis høyeste og laveste kurs i perioden.</p>
+        <p>Candlestick-mønstre ble opprinnelig utviklet av japanske rishandlere på 1700-tallet og ble introdusert til vestlige markeder av Steve Nison. De brukes i dag av tradere over hele verden, inkludert på Oslo Børs.</p>
+
+        <h3>Enkle bullish-mønstre (kjøpssignaler)</h3>
+        <p>Disse mønstrene signaliserer at kursen kan være i ferd med å snu oppover, og er spesielt pålitelige når de dukker opp ved et støttenivå eller etter en nedtrend:</p>
+        <ul>
+          <li><strong>Hammer:</strong> En kort kropp med lang nedre veke (minst 2× kroppen) og liten eller ingen øvre veke. Viser at selgere presset kursen kraftig ned i løpet av dagen, men kjøpere tok over og drev kursen tilbake opp. Signaliserer potensiell bunndannelse.</li>
+          <li><strong>Bullish Engulfing:</strong> Et tomønster der en stor grønn stake «sluker» hele kroppen til den forrige røde staken. Viser et kraftig skifte fra salgspress til kjøpspress. Jo større den grønne staken er i forhold til den røde, jo sterkere er signalet.</li>
+          <li><strong>Morning Star:</strong> Et tremønster som markerer en potensiell bunn. Først en stor rød stake, deretter en liten stake (som viser usikkerhet), og til slutt en stor grønn stake som lukker godt inn i den første røde stakens kropp. Viser at selgerne mistet kontrollen og kjøperne overtok.</li>
+          <li><strong>Piercing Line:</strong> Et tomønster der en grønn stake åpner under forrige røde stakers bunn, men lukker over midtpunktet av den røde staken. Viser at kjøpere presser tilbake etter en nedtur.</li>
+        </ul>
+
+        <h3>Enkle bearish-mønstre (salgssignaler)</h3>
+        <p>Disse mønstrene signaliserer at kursen kan være i ferd med å snu nedover, og er viktigst ved motstandsnivåer eller etter en opptrend:</p>
+        <ul>
+          <li><strong>Shooting Star:</strong> En kort kropp med lang øvre veke og liten nedre veke. Motsatt av Hammer. Viser at kjøpere prøvde å presse kursen opp, men selgere overtok og drev den tilbake ned. Signaliserer potensiell topp.</li>
+          <li><strong>Bearish Engulfing:</strong> En stor rød stake sluker hele kroppen til den forrige grønne staken. Kraftig skifte fra kjøps- til salgspress. Spesielt viktig etter en lang opptrend.</li>
+          <li><strong>Evening Star:</strong> Motsatt av Morning Star. Stor grønn stake, deretter en liten stake, og til slutt en stor rød stake. Signaliserer topp og potensiell trendvending nedover.</li>
+          <li><strong>Dark Cloud Cover:</strong> Motsatt av Piercing Line. En rød stake åpner over forrige grønne stakers topp, men lukker under midtpunktet. Sterkt salgssignal.</li>
+        </ul>
+
+        <h3>Usikkerhetsmønstre (Doji)</h3>
+        <p>En <strong>Doji</strong> oppstår når åpnings- og sluttkurs er nesten identiske, slik at kroppen er svært tynn. Dojien signaliserer usikkerhet og balanse mellom kjøpere og selgere. Den er mest betydningsfull etter en sterk trend:</p>
+        <ul>
+          <li><strong>Standard Doji:</strong> Tynn kropp med omtrent like lange øvre og nedre veker. Ren usikkerhet.</li>
+          <li><strong>Dragonfly Doji:</strong> Lang nedre veke, ingen øvre veke. Lik en Hammer uten kropp. Bullish signal ved bunn av nedtrend.</li>
+          <li><strong>Gravestone Doji:</strong> Lang øvre veke, ingen nedre veke. Lik en Shooting Star uten kropp. Bearish signal ved topp av opptrend.</li>
+        </ul>
+        <p>En enkelt Doji er sjelden nok til å handle på alene. Vent på bekreftelse fra neste stake. En Doji etterfulgt av en sterk grønn stake er et kjøpssignal; etterfulgt av en sterk rød stake er et salgssignal.</p>
+
+        <h3>Praktisk bruk: Når kjøpe og selge?</h3>
+        <p>Candlestick-mønstre er mest pålitelige når de kombineres med andre verktøy fra teknisk analyse:</p>
+        <ul>
+          <li><strong>Støtte/motstand:</strong> En Hammer ved et kjent støttenivå er et mye sterkere kjøpssignal enn en Hammer midt i ingensteds.</li>
+          <li><strong>Volum:</strong> Mønstre med høyt handelsvolum er mer pålitelige. En Bullish Engulfing med dobbelt normalvolum er et sterkt signal.</li>
+          <li><strong>Trend:</strong> Reverseringsmønstre fungerer best etter en klar trend. En Morning Star etter en 20% nedgang er mer betydningsfull enn etter en flat periode.</li>
+          <li><strong>RSI/MACD:</strong> Hvis RSI viser oversolgt (under 30) samtidig som du ser en Hammer, styrkes kjøpssignalet betraktelig.</li>
+        </ul>
+
+        <div class="callout tip">
+          <h4>Viktig huskeregel</h4>
+          <p>Ingen candlestick-mønster fungerer 100% av tiden. Bruk alltid stop-loss for å begrense tap, og bekreft signaler med volum og andre indikatorer. Øv deg med papirhandel (simulert trading) før du handler med ekte penger. Candlesticks er et verktøy — ikke en krystallkule.</p>
+        </div>
+
+        <div class="quiz-container" data-correct="b" data-module="5" data-explanation="En Hammer har en kort kropp med lang nedre veke, noe som viser at selgere presset kursen ned men kjøpere tok tilbake kontrollen. Den signaliserer potensiell bunndannelse, spesielt ved støttenivåer.">
+          <h3>Kunnskapssjekk</h3>
+          <p class="quiz-question">Du ser en Hammer-candlestick etter en 15% nedgang i en aksje som nå er ved et kjent støttenivå. RSI viser 28. Hva er den mest sannsynlige tolkningen?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" data-answer="a">A) Aksjen vil fortsette å falle — selg umiddelbart</button>
+            <button class="quiz-option" data-answer="b">B) Flere signaler peker mot en potensiell bunn — vurder kjøp med stop-loss</button>
+            <button class="quiz-option" data-answer="c">C) Hammeren betyr ingenting uten MACD-krysning</button>
+            <button class="quiz-option" data-answer="d">D) Du bør vente til RSI er over 70 før du handler</button>
+          </div>
+          <div class="quiz-feedback"></div>
+        </div>
+
+        <div class="module-nav">
+          <button class="btn btn-secondary" data-module-nav="4">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="6">Neste leksjon →</button>
+        </div>
+      </div>
+
+      <!-- Modul 7: Markedsordre vs. limitordre -->
+      <div class="module-section" id="modul-7">
+        <h2>7. Markedsordre vs. limitordre</h2>
 
         <h3>Innledning: Ordretyper er avgjørende</h3>
         <p>Når du bestemmer deg for å kjøpe eller selge en aksje, er neste steg å legge inn en ordre hos din megler. Valget av ordretype kan ha stor innvirkning på prisen du faktisk betaler eller mottar. Mange nybegynnere bruker utelukkende markedsordre uten å tenke over det, men å forstå de ulike ordretypene kan spare deg for betydelige beløp over tid, spesielt i aksjer med lavere omsetning på Oslo Børs.</p>
@@ -406,7 +475,7 @@
         </ul>
         <p>De fleste norske nettmeglere som Nordnet, DNB Markets og Pareto Securities støtter alle disse ordretypene. Gjør deg kjent med plattformen din og test gjerne med små beløp først for å forstå hvordan ordretypene fungerer i praksis.</p>
 
-        <div class="quiz-container" data-correct="a" data-module="5" data-explanation="En limitordre lar deg sette en maksimalpris du er villig til å betale, og ordren utføres kun hvis prisen er lik eller lavere enn ditt limit.">
+        <div class="quiz-container" data-correct="a" data-module="6" data-explanation="En limitordre lar deg sette en maksimalpris du er villig til å betale, og ordren utføres kun hvis prisen er lik eller lavere enn ditt limit.">
           <h3>Kunnskapssjekk</h3>
           <p class="quiz-question">Hvilken ordretype gir deg best kontroll over kjøpsprisen?</p>
           <div class="quiz-options">
@@ -419,14 +488,14 @@
         </div>
 
         <div class="module-nav">
-          <button class="btn btn-secondary" data-module-nav="4">← Forrige leksjon</button>
-          <button class="btn btn-primary" data-module-nav="6">Neste leksjon →</button>
+          <button class="btn btn-secondary" data-module-nav="5">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="7">Neste leksjon →</button>
         </div>
       </div>
 
-      <!-- Modul 7: Risikostyring og posisjonsstørrelse -->
-      <div class="module-section" id="modul-7">
-        <h2>7. Risikostyring og posisjonsstørrelse</h2>
+      <!-- Modul 8: Risikostyring og posisjonsstørrelse -->
+      <div class="module-section" id="modul-8">
+        <h2>8. Risikostyring og posisjonsstørrelse</h2>
 
         <h3>Hvorfor risikostyring er den viktigste ferdigheten</h3>
         <p>Mange nybegynnere fokuserer nesten utelukkende på å finne de beste aksjene, men profesjonelle investorer vet at risikostyring er minst like viktig - kanskje viktigere. En investor som tar 50% tap trenger en påfølgende gevinst på 100% bare for å komme tilbake til utgangspunktet. Risikostyring handler om å overleve i markedet lenge nok til at avkastningen din kan akkumuleres over tid.</p>
@@ -461,7 +530,7 @@
         <p>En annen retningslinje er aldersbasert allokering: "100 minus din alder" i aksjer, resten i obligasjoner. En 30-åring ville da ha 70% i aksjer og 30% i obligasjoner. Denne regelen er forenklet, men illustrerer prinsippet: jo yngre du er, jo mer risiko kan du ta fordi du har tid til å hente inn eventuelle tap.</p>
         <p>Uansett hvilken allokeringsstrategi du velger, bør du rebalansere porteføljen regelmessig (for eksempel halvårlig). Hvis aksjer har steget mye og nå utgjør en større andel enn planlagt, selg litt og kjøp obligasjoner for å gjenopprette ønsket allokering. Denne disiplinen tvinger deg til å "selge dyrt og kjøpe billig" systematisk.</p>
 
-        <div class="quiz-container" data-correct="c" data-module="6" data-explanation="1-2%-regelen sier at du aldri bør risikere mer enn 1-2% av total porteføljeverdi på en enkelt handel. Med 500 000 kr og 1%-regel er maks risiko 5 000 kr.">
+        <div class="quiz-container" data-correct="c" data-module="7" data-explanation="1-2%-regelen sier at du aldri bør risikere mer enn 1-2% av total porteføljeverdi på en enkelt handel. Med 500 000 kr og 1%-regel er maks risiko 5 000 kr.">
           <h3>Kunnskapssjekk</h3>
           <p class="quiz-question">Du har en portefølje på 500 000 kr og følger 1%-regelen. Hva er det maksimale beløpet du bør risikere på en enkelt handel?</p>
           <div class="quiz-options">
@@ -474,14 +543,14 @@
         </div>
 
         <div class="module-nav">
-          <button class="btn btn-secondary" data-module-nav="5">← Forrige leksjon</button>
-          <button class="btn btn-primary" data-module-nav="7">Neste leksjon →</button>
+          <button class="btn btn-secondary" data-module-nav="6">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="8">Neste leksjon →</button>
         </div>
       </div>
 
-      <!-- Modul 8: Sektorer og bransjer -->
-      <div class="module-section" id="modul-8">
-        <h2>8. Sektorer og bransjer</h2>
+      <!-- Modul 9: Sektorer og bransjer -->
+      <div class="module-section" id="modul-9">
+        <h2>9. Sektorer og bransjer</h2>
 
         <h3>GICS sektorklassifisering</h3>
         <p>Global Industry Classification Standard (GICS) er det mest brukte systemet for å klassifisere selskaper i sektorer og bransjer. GICS ble utviklet av MSCI og S&P, og deler selskaper inn i 11 hovedsektorer. Hver sektor har videre undergrupper (bransjegrupper, bransjer og underbransjer) for mer presis klassifisering.</p>
@@ -534,7 +603,7 @@
         </ul>
         <p>En nyttig ressurs for sektoranalyse er Oslo Børs sin sektorindeks-oversikt, der du kan se avkastningen for hver sektor over tid. Du kan også bruke Nordnet eller Yahoo Finance til å filtrere aksjer etter sektor og sammenligne nøkkeltall innenfor hver bransje. Regelmessig sektoranalyse gir deg et informert grunnlag for å allokere porteføljen din optimalt.</p>
 
-        <div class="quiz-container" data-correct="b" data-module="7" data-explanation="Defensive sektorer som konsumvarer og helsevern holder seg best i nedgangstider fordi etterspørselen etter deres produkter er relativt stabil uavhengig av konjunkturer.">
+        <div class="quiz-container" data-correct="b" data-module="8" data-explanation="Defensive sektorer som konsumvarer og helsevern holder seg best i nedgangstider fordi etterspørselen etter deres produkter er relativt stabil uavhengig av konjunkturer.">
           <h3>Kunnskapssjekk</h3>
           <p class="quiz-question">Hvilken type sektor holder seg typisk best under en økonomisk resesjon?</p>
           <div class="quiz-options">
@@ -547,8 +616,8 @@
         </div>
 
         <div class="module-nav">
-          <button class="btn btn-secondary" data-module-nav="6">← Forrige leksjon</button>
-          <button class="btn btn-primary" data-module-nav="8">Test deg selv →</button>
+          <button class="btn btn-secondary" data-module-nav="7">← Forrige leksjon</button>
+          <button class="btn btn-primary" data-module-nav="9">Test deg selv →</button>
         </div>
       </div>
 
@@ -684,7 +753,7 @@
         </div>
 
         <div class="module-nav">
-          <button class="btn btn-secondary" data-module-nav="7">← Forrige leksjon</button>
+          <button class="btn btn-secondary" data-module-nav="8">← Forrige leksjon</button>
           <a href="avansert.html" class="btn btn-primary">Gå til avansert kurs →</a>
         </div>
       </div>
