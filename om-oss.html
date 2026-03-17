@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="no" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Om oss — Addern Investing</title>
+  <meta name="description" content="Lær mer om Addern Investing — hvem vi er, hva vi gjør, og hvorfor vi bygger Norges beste frie oppslagsverk om aksjer og investering.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300d4aa'/><text x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' fill='%230a0f1e' font-family='sans-serif' font-weight='800' font-size='20'>A</text></svg>">
+  <style>
+    /* Video sections */
+    .video-section {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-section video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,15,30,0.4) 0%, rgba(10,15,30,0.7) 100%);
+      z-index: 1;
+    }
+    .video-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 800px;
+    }
+    .video-content h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .video-content p {
+      color: rgba(255,255,255,0.85);
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+    .scroll-indicator svg {
+      width: 24px;
+      height: 24px;
+      stroke: rgba(255,255,255,0.6);
+      fill: none;
+      stroke-width: 2;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* Story section */
+    .story-section {
+      background: var(--bg-primary);
+      padding: 120px 24px;
+    }
+    .story-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .story-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-green);
+      margin-bottom: 20px;
+    }
+    .story-inner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .story-inner p {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+    .story-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Middle video — shorter */
+    .video-section--mid {
+      min-height: 60vh;
+    }
+
+    /* Ending section */
+    .video-content--end h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .video-content--end .btn {
+      margin-top: 8px;
+    }
+
+    /* Fade-in on scroll */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><span class="logo-icon">A</span> Addern Investing</a>
+    <ul class="nav-links">
+      <li><a href="index.html#kurs">Kurs</a></li>
+      <li><a href="verktoy.html">Verktøy</a></li>
+      <li><a href="blogg.html">Artikler</a></li>
+      <li><a href="ordliste.html">Ordliste</a></li>
+      <li><a href="om-oss.html" class="active">Om oss</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" aria-label="Bytt tema"></button>
+      <button class="hamburger" aria-label="Meny" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- SECTION 1: Hero video -->
+<section class="video-section">
+  <video autoplay muted loop playsinline>
+    <source src="video/hero.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="video-content">
+    <h1>Om Addern Investing</h1>
+    <p>Vi gjør kunnskap om aksjer og investering tilgjengelig for alle — gratis, på norsk, uten støy.</p>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- SECTION 2: Story + middle video -->
+<section class="story-section">
+  <div class="story-inner fade-up">
+    <span class="story-label">Vår historie</span>
+    <h2>Bygget for de som vil forstå — ikke bare følge</h2>
+    <p>Addern Investing ble startet med en enkel idé: at alle fortjener tilgang til god, nøytral kunnskap om aksjer og investering. Ikke bak betalingsmurer, ikke pakket inn i salgssnakk — bare ærlig, forståelig opplæring.</p>
+    <p>Vi tror at finansiell kunnskap er en av de viktigste ferdighetene du kan ha. Når du forstår hvordan aksjemarkedet fungerer, tar du bedre beslutninger — ikke bare om penger, men om fremtiden din.</p>
+    <p>Derfor bygger vi et fritt norsk oppslagsverk med kurs fra nybegynner til avansert, interaktive verktøy, en komplett ordliste og dybdeartikler. Alt er åpent, alt er gratis, og alt er skrevet for at du faktisk skal forstå det.</p>
+  </div>
+</section>
+
+<section class="video-section video-section--mid">
+  <video autoplay muted loop playsinline>
+    <source src="video/middle.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</section>
+
+<!-- SECTION 3: Ending video + CTA -->
+<section class="video-section">
+  <video autoplay muted loop playsinline>
+    <source src="video/ending.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="video-content video-content--end">
+    <h2>Kunnskap er den beste investeringen</h2>
+    <p>Start reisen din i dag — helt gratis.</p>
+    <a href="index.html#kurs" class="btn btn-primary btn-lg">Utforsk kursene</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <span class="logo-icon">A</span>
+          Addern Investing
+        </div>
+        <p>Fritt norsk oppslagsverk om aksjer og investering.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Kurs</h4>
+        <ul>
+          <li><a href="index.html#kurs">Nybegynner</a></li>
+          <li><a href="index.html#kurs">Viderekommen</a></li>
+          <li><a href="index.html#kurs">Avansert</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Verktøy</h4>
+        <ul>
+          <li><a href="verktoy.html#rentesrente">Kalkulator</a></li>
+          <li><a href="verktoy.html#papirhandel">Papirhandel</a></li>
+          <li><a href="verktoy.html#aksjekart">Aksjediagram</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Innhold</h4>
+        <ul>
+          <li><a href="blogg.html">Artikler</a></li>
+          <li><a href="ordliste.html">Ordliste</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Addern Investing</span>
+      <span>Kun for utdanningsformål — ikke finansiell rådgivning.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script>
+// Fade-in on scroll
+(function() {
+  const els = document.querySelectorAll('.fade-up');
+  if (!els.length) return;
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  els.forEach(function(el) { observer.observe(el); });
+})();
+</script>
+</body>
+</html>
