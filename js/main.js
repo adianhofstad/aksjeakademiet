@@ -4,7 +4,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
+  initFullscreen();
   initMobileNav();
   initScrollAnimations();
   initCourseSidebar();
@@ -17,29 +17,29 @@ document.addEventListener('DOMContentLoaded', () => {
   initBlogRouting();
 });
 
-/* ---------- Theme Toggle ---------- */
-function initTheme() {
-  const toggle = document.querySelector('.theme-toggle');
+/* ---------- Fullscreen Toggle ---------- */
+function initFullscreen() {
+  const toggle = document.querySelector('.fullscreen-toggle');
   if (!toggle) return;
 
-  const saved = localStorage.getItem('aksje-theme');
-  if (saved) {
-    document.documentElement.setAttribute('data-theme', saved);
+  function updateIcon() {
+    var isFS = !!document.fullscreenElement;
+    toggle.setAttribute('aria-label', isFS ? 'Avslutt fullskjerm' : 'Fullskjerm');
+    toggle.innerHTML = isFS
+      ? '<svg viewBox="0 0 24 24"><polyline points="4 14 4 20 10 20"/><polyline points="20 10 20 4 14 4"/><line x1="14" y1="10" x2="20" y2="4"/><line x1="4" y1="20" x2="10" y2="14"/></svg>'
+      : '<svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>';
   }
-  updateThemeIcon(toggle);
 
-  toggle.addEventListener('click', () => {
-    const current = document.documentElement.getAttribute('data-theme');
-    const next = current === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('aksje-theme', next);
-    updateThemeIcon(toggle);
+  toggle.addEventListener('click', function() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(function() {});
+    } else {
+      document.exitFullscreen().catch(function() {});
+    }
   });
-}
 
-function updateThemeIcon(btn) {
-  const theme = document.documentElement.getAttribute('data-theme');
-  btn.setAttribute('aria-label', theme === 'light' ? 'Bytt til mork modus' : 'Bytt til lys modus');
+  document.addEventListener('fullscreenchange', updateIcon);
+  updateIcon();
 }
 
 /* ---------- Mobile Nav & Dropdowns ---------- */
