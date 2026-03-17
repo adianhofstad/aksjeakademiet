@@ -22,8 +22,12 @@ function initFullscreen() {
   const toggle = document.querySelector('.fullscreen-toggle');
   if (!toggle) return;
 
+  function getFS() {
+    return document.fullscreenElement || document.webkitFullscreenElement || null;
+  }
+
   function updateIcon() {
-    var isFS = !!document.fullscreenElement;
+    var isFS = !!getFS();
     toggle.setAttribute('aria-label', isFS ? 'Avslutt fullskjerm' : 'Fullskjerm');
     toggle.innerHTML = isFS
       ? '<svg viewBox="0 0 24 24"><polyline points="4 14 4 20 10 20"/><polyline points="20 10 20 4 14 4"/><line x1="14" y1="10" x2="20" y2="4"/><line x1="4" y1="20" x2="10" y2="14"/></svg>'
@@ -31,14 +35,18 @@ function initFullscreen() {
   }
 
   toggle.addEventListener('click', function() {
-    if (!document.fullscreenElement) {
-      document.documentElement.requestFullscreen().catch(function() {});
+    var el = document.documentElement;
+    if (!getFS()) {
+      if (el.requestFullscreen) el.requestFullscreen().catch(function() {});
+      else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
     } else {
-      document.exitFullscreen().catch(function() {});
+      if (document.exitFullscreen) document.exitFullscreen().catch(function() {});
+      else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
     }
   });
 
   document.addEventListener('fullscreenchange', updateIcon);
+  document.addEventListener('webkitfullscreenchange', updateIcon);
   updateIcon();
 }
 
