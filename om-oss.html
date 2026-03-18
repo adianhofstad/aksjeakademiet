@@ -190,6 +190,40 @@
       min-height: 60vh;
     }
 
+    /* Mobile video sections */
+    @media (max-width: 768px) {
+      .video-section {
+        min-height: 60vh;
+      }
+      .video-section--mid {
+        min-height: 40vh;
+      }
+      .video-content h1 {
+        font-size: 1.8rem;
+      }
+      .video-content p {
+        font-size: 0.95rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .video-section {
+        min-height: 50vh;
+      }
+      .video-section--mid {
+        min-height: 35vh;
+      }
+      .video-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 16px;
+      }
+      .video-content p {
+        font-size: 0.9rem;
+      }
+      .video-content--end h2 {
+        font-size: 1.3rem;
+      }
+    }
+
     /* Ending section */
     .video-content--end h2 {
       font-family: var(--font-heading);
@@ -328,6 +362,20 @@
         <div class="partner-card-body">
           <h3>Grexern Aviation</h3>
           <p>Med grunnlegger Adrian Goxhuli tar Grexern Aviation oss til nye høyder — et flyselskap med ambisjon og visjon.</p>
+        </div>
+      </div>
+      <div class="partner-card">
+        <img src="images/partner-minh.png" alt="Minh Kampsport — partner av Addern Investing">
+        <div class="partner-card-body">
+          <h3>Minh Kampsport</h3>
+          <p>Minh Anh Vo og Minh Kampsport trener fremtidens mestere — med utøvere som Jon Jones, Charles Oliveira og Justin Gaethje på laget er dette en partner som leverer på øverste nivå.</p>
+        </div>
+      </div>
+      <div class="partner-card">
+        <img src="images/partner-bislimern.png" alt="Bislimern Management — partner av Addern Investing">
+        <div class="partner-card-body">
+          <h3>Bislimern Management</h3>
+          <p>Bislimern Management er et fotballagentur som hjelper talenter med å signere kontrakter og nå sine karrieremål — en partner som bygger fremtidens stjerner.</p>
         </div>
       </div>
     </div>
