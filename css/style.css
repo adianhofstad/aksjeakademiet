@@ -210,6 +210,16 @@ code {
   font-weight: 800;
 }
 
+.nav-logo .logo-img {
+  height: 36px;
+  width: auto;
+}
+
+.footer .logo-img {
+  height: 32px;
+  width: auto;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
