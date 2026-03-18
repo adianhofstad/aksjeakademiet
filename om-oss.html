@@ -121,6 +121,70 @@
       margin-bottom: 0;
     }
 
+    /* Partners section */
+    .partners-section {
+      background: var(--bg-secondary, #0d1224);
+      padding: 100px 24px;
+    }
+    .partners-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .partners-label {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-green);
+      margin-bottom: 16px;
+    }
+    .partners-inner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.2;
+      margin-bottom: 48px;
+    }
+    .partners-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+    .partner-card {
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-primary, #0a0f1e);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .partner-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .partner-card img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .partner-card-body {
+      padding: 24px;
+    }
+    .partner-card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+    .partner-card-body p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
     /* Middle video — shorter */
     .video-section--mid {
       min-height: 60vh;
@@ -201,6 +265,30 @@
     <p>Addern Investing ble startet med en enkel idé: at alle fortjener tilgang til god, nøytral kunnskap om aksjer og investering. Ikke bak betalingsmurer, ikke pakket inn i salgssnakk — bare ærlig, forståelig opplæring.</p>
     <p>Vi tror at finansiell kunnskap er en av de viktigste ferdighetene du kan ha. Når du forstår hvordan aksjemarkedet fungerer, tar du bedre beslutninger — ikke bare om penger, men om fremtiden din.</p>
     <p>Derfor bygger vi et fritt norsk oppslagsverk med kurs fra nybegynner til avansert, interaktive verktøy, en komplett ordliste og dybdeartikler. Alt er åpent, alt er gratis, og alt er skrevet for at du faktisk skal forstå det.</p>
+  </div>
+</section>
+
+<!-- SECTION: Våre partnere -->
+<section class="partners-section">
+  <div class="partners-inner fade-up">
+    <span class="partners-label">Samarbeid</span>
+    <h2>Våre partnere</h2>
+    <div class="partners-grid">
+      <div class="partner-card">
+        <img src="images/partner-goxhulern-auto.png" alt="Goxhulern Auto — partner av Addern Investing">
+        <div class="partner-card-body">
+          <h3>Goxhulern Auto</h3>
+          <p>En stolt partner som deler vår visjon om å bygge sterke relasjoner og skape verdi sammen.</p>
+        </div>
+      </div>
+      <div class="partner-card">
+        <img src="images/partner-schavern-law.png" alt="Schavern Law Firm — partner av Addern Investing">
+        <div class="partner-card-body">
+          <h3>Schavern Law Firm</h3>
+          <p>Sammen former vi fremtiden — med tillit, kompetanse og et felles mål om suksess.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
