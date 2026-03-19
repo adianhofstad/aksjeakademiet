@@ -590,8 +590,8 @@ code {
   font-family: var(--font-body);
   font-size: 0.95rem;
   font-weight: 600;
-  padding: 12px 28px;
-  border-radius: var(--radius-md);
+  padding: 10px 24px;
+  border-radius: 100px;
   border: none;
   cursor: pointer;
   transition: all var(--transition);
@@ -636,8 +636,8 @@ code {
 }
 
 .btn-lg {
-  font-size: 1.05rem;
-  padding: 16px 36px;
+  font-size: 1rem;
+  padding: 12px 32px;
 }
 
 .btn-danger {
@@ -697,6 +697,281 @@ code {
   padding-top: var(--nav-height);
   background: var(--bg-hero-gradient);
   overflow: hidden;
+}
+
+/* --- Hero Scroll Animation Section --- */
+.hero-scroll {
+  position: relative;
+  min-height: 140vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: var(--nav-height);
+  background: var(--bg-hero-gradient);
+  overflow: hidden;
+}
+
+.hero-scroll-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 60px 20px 80px;
+  perspective: 1000px;
+}
+
+/* Header */
+.hero-scroll-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 48px;
+  will-change: transform, opacity;
+}
+
+.hero-scroll-header h1 {
+  margin-bottom: 20px;
+}
+
+.hero-title-accent {
+  background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-scroll-header p {
+  font-size: 1.15rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 3D Card */
+.hero-scroll-card {
+  max-width: 900px;
+  margin: 0 auto;
+  will-change: transform;
+  transform-style: preserve-3d;
+  border-radius: 24px;
+  box-shadow:
+    0 0 #0000004d,
+    0 9px 20px #0000004a,
+    0 37px 37px #00000042,
+    0 84px 50px #00000026,
+    0 149px 60px #0000000a,
+    0 233px 65px #00000003;
+}
+
+.hero-card-inner {
+  background: #1a2236;
+  border: 2px solid var(--border-color-strong);
+  border-radius: 24px;
+  padding: 8px;
+  overflow: hidden;
+}
+
+/* Dashboard preview */
+.hero-dashboard {
+  background: var(--bg-primary);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.hero-dash-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #111827;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.hero-dash-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.hero-dash-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hero-dash-title {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.hero-dash-body {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  min-height: 340px;
+}
+
+.hero-dash-sidebar {
+  background: #0d1526;
+  padding: 16px 12px;
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-dash-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.hero-dash-menu-item svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.hero-dash-menu-item.active {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+}
+
+.hero-dash-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-dash-welcome h3 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+
+.hero-dash-welcome p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.hero-dash-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.hero-dash-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-dash-card-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.hero-dash-card-badge.green {
+  background: var(--accent-green-dim);
+  color: var(--accent-green);
+}
+
+.hero-dash-card-badge.blue {
+  background: var(--accent-blue-dim);
+  color: var(--accent-blue);
+}
+
+.hero-dash-card-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hero-dash-progress {
+  height: 4px;
+  background: rgba(148, 163, 184, 0.12);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.hero-dash-progress-bar {
+  height: 100%;
+  background: var(--accent-green);
+  border-radius: 100px;
+  transition: width 1s ease;
+}
+
+.hero-dash-progress-bar.blue {
+  background: var(--accent-blue);
+}
+
+.hero-dash-progress-text {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+}
+
+.hero-dash-chart {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.hero-dash-chart-label {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.hero-dash-chart svg {
+  width: 100%;
+  height: 60px;
+}
+
+/* Footer (CTA + stats) */
+.hero-scroll-footer {
+  max-width: 720px;
+  margin: 48px auto 0;
+  text-align: center;
+}
+
+.hero-scroll-footer .hero-cta {
+  justify-content: center;
+}
+
+.hero-scroll-footer .hero-stats {
+  justify-content: center;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .hero-scroll { min-height: 120vh; }
+  .hero-scroll-inner { padding: 40px 16px 60px; }
+  .hero-dash-body { grid-template-columns: 1fr; }
+  .hero-dash-sidebar { display: none; }
+  .hero-dash-cards { grid-template-columns: 1fr; }
+  .hero-scroll-card { border-radius: 16px; }
+  .hero-card-inner { border-radius: 16px; padding: 6px; }
+  .hero-dashboard { border-radius: 12px; }
+}
+
+@media (max-width: 480px) {
+  .hero-scroll-header h1 { font-size: 1.5rem; }
+  .hero-scroll-header p { font-size: 0.92rem; }
 }
 
 .hero-bg {

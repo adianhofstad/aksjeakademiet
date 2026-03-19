@@ -37,6 +37,192 @@
     .lib-card[data-level="avansert"]:hover .lib-card-arrow{color:var(--accent-red)}
     .lib-card.hidden{display:none}
     @media(max-width:700px){.lib-grid{grid-template-columns:1fr}.lib-card{padding:22px 18px}}
+
+    /* --- Trusted Partners Ticker --- */
+    .trusted-section {
+      background: var(--bg-secondary);
+      padding: 48px 0 52px;
+      text-align: center;
+      overflow: hidden;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .trusted-heading {
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+    .trusted-ticker-wrap {
+      position: relative;
+      width: 100%;
+    }
+    .trusted-fade {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 80px;
+      z-index: 2;
+      pointer-events: none;
+    }
+    .trusted-fade-left {
+      left: 0;
+      background: linear-gradient(to right, var(--bg-secondary), transparent);
+    }
+    .trusted-fade-right {
+      right: 0;
+      background: linear-gradient(to left, var(--bg-secondary), transparent);
+    }
+    .trusted-ticker {
+      overflow: hidden;
+      width: 100%;
+    }
+    .trusted-track {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      width: max-content;
+      animation: tickerScroll 40s linear infinite;
+    }
+    @keyframes tickerScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .trusted-ticker:hover .trusted-track {
+      animation-play-state: paused;
+    }
+
+    /* Each logo — unique font styles */
+    .tlogo {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 5px;
+      white-space: nowrap;
+      color: rgba(255,255,255,0.35);
+      transition: color 0.3s;
+      flex-shrink: 0;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .tlogo:hover {
+      color: rgba(255,255,255,0.85);
+    }
+    .tlogo small {
+      font-size: 0.6em;
+      opacity: 0.7;
+      letter-spacing: 0.08em;
+    }
+
+    /* Unique font per company */
+    .tlogo-goxhulern {
+      font-family: 'Impact', 'Arial Black', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tlogo-goxhulern small { font-family: 'Georgia', serif; font-style: italic; text-transform: none; font-weight: 400; }
+
+    .tlogo-schavern {
+      font-family: 'Courier New', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .tlogo-schavern small { font-family: 'Courier New', monospace; font-weight: 400; letter-spacing: 0.2em; }
+
+    .tlogo-bambulder {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      text-transform: none;
+    }
+    .tlogo-bambulder small { font-style: normal; text-transform: uppercase; font-weight: 700; letter-spacing: 0.15em; font-family: 'Arial', sans-serif; font-size: 0.5em; }
+
+    .tlogo-luddern {
+      font-family: 'Arial Black', 'Gadget', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    .tlogo-luddern small { font-family: 'Brush Script MT', 'Segoe Script', cursive; text-transform: lowercase; font-weight: 400; font-size: 0.65em; letter-spacing: 0; }
+
+    .tlogo-lukestrom {
+      font-family: 'Trebuchet MS', 'Lucida Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+    .tlogo-lukestrom small { font-family: 'Trebuchet MS', sans-serif; font-weight: 400; text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.55em; }
+
+    .tlogo-sh {
+      font-family: 'Georgia', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+    .tlogo-sh small { font-family: 'Palatino', 'Book Antiqua', serif; font-weight: 400; font-size: 0.4em; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .tlogo-tavares {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      font-size: 1.4rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .tlogo-tavares small { font-weight: 300; letter-spacing: 0.25em; font-size: 0.5em; }
+
+    .tlogo-grexern {
+      font-family: 'Copperplate', 'Copperplate Gothic Light', 'Gill Sans', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .tlogo-grexern small { font-family: 'Arial Narrow', Arial, sans-serif; font-weight: 700; letter-spacing: 0.1em; font-size: 0.55em; }
+
+    .tlogo-minh {
+      font-family: 'Impact', 'Haettenschweiler', sans-serif;
+      font-size: 1.7rem;
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+    }
+    .tlogo-minh small { font-family: 'Verdana', sans-serif; font-weight: 400; font-size: 0.45em; letter-spacing: 0.15em; }
+
+    .tlogo-bislimern {
+      font-family: 'Didot', 'Bodoni MT', 'Times New Roman', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      font-style: italic;
+      letter-spacing: 0.03em;
+    }
+    .tlogo-bislimern small { font-style: normal; font-family: 'Futura', 'Century Gothic', sans-serif; text-transform: uppercase; font-weight: 700; letter-spacing: 0.12em; font-size: 0.5em; }
+
+    .tlogo-eriksen {
+      font-family: 'Palatino Linotype', 'Book Antiqua', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tlogo-eriksen small { font-family: 'Brush Script MT', 'Segoe Script', cursive; text-transform: none; font-weight: 400; font-size: 0.7em; letter-spacing: 0; }
+
+    .tlogo-vega {
+      font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .tlogo-vega small { font-weight: 300; letter-spacing: 0.1em; font-size: 0.55em; }
   </style>
 </head>
 <body>
@@ -66,7 +252,7 @@
   <a href="#artikler">Artikler</a>
 </div>
 
-<section class="hero" id="kom-i-gang">
+<section class="hero-scroll" id="kom-i-gang">
   <div class="hero-bg">
     <div class="hero-grid"></div>
     <svg viewBox="0 0 1200 400" preserveAspectRatio="none">
@@ -76,14 +262,103 @@
         points="0,380 50,370 100,375 150,360 200,365 250,340 300,350 350,330 400,340 450,310 500,320 550,290 600,300 650,280 700,290 750,260 800,270 850,250 900,260 950,230 1000,240 1050,220 1100,230 1150,210 1200,200"/>
     </svg>
   </div>
-  <div class="container">
-    <div class="hero-content">
+
+  <div class="hero-scroll-inner">
+    <!-- Title section (moves up on scroll) -->
+    <div class="hero-scroll-header" id="hero-header">
       <div class="hero-badge">
         <span class="pulse"></span>
         Fritt oppslagsverk
       </div>
-      <h1>Addern Investing</h1>
-      <p>Et fritt norsk oppslagsverk om aksjer og investering. 27 leksjoner, 60+ begreper, interaktive verktøy og dybdeartikler — alt samlet på ett sted.</p>
+      <h1>Lær aksjer og investering<br><span class="hero-title-accent">fra bunnen av</span></h1>
+      <p>27 leksjoner, 60+ begreper, interaktive verktøy og dybdeartikler — alt samlet på ett sted.</p>
+    </div>
+
+    <!-- 3D scroll card -->
+    <div class="hero-scroll-card" id="hero-card">
+      <div class="hero-card-inner">
+        <!-- Dashboard preview inside the card -->
+        <div class="hero-dashboard">
+          <div class="hero-dash-nav">
+            <div class="hero-dash-dots">
+              <span style="background:#ef4444;"></span>
+              <span style="background:#f59e0b;"></span>
+              <span style="background:#00d4aa;"></span>
+            </div>
+            <div class="hero-dash-title">Addern Investing — Kursplattform</div>
+          </div>
+          <div class="hero-dash-body">
+            <div class="hero-dash-sidebar">
+              <div class="hero-dash-menu-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                Kurs
+              </div>
+              <div class="hero-dash-menu-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                Verktøy
+              </div>
+              <div class="hero-dash-menu-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                Artikler
+              </div>
+              <div class="hero-dash-menu-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Ordliste
+              </div>
+            </div>
+            <div class="hero-dash-content">
+              <div class="hero-dash-welcome">
+                <h3>Velkommen tilbake!</h3>
+                <p>Fortsett der du slapp</p>
+              </div>
+              <div class="hero-dash-cards">
+                <div class="hero-dash-card">
+                  <div class="hero-dash-card-badge green">Nybegynner</div>
+                  <div class="hero-dash-card-title">Hva er aksjer?</div>
+                  <div class="hero-dash-progress">
+                    <div class="hero-dash-progress-bar" style="width:100%"></div>
+                  </div>
+                  <div class="hero-dash-progress-text">Fullført</div>
+                </div>
+                <div class="hero-dash-card">
+                  <div class="hero-dash-card-badge green">Nybegynner</div>
+                  <div class="hero-dash-card-title">Aksjemarkedet og børsen</div>
+                  <div class="hero-dash-progress">
+                    <div class="hero-dash-progress-bar" style="width:65%"></div>
+                  </div>
+                  <div class="hero-dash-progress-text">65% fullført</div>
+                </div>
+                <div class="hero-dash-card">
+                  <div class="hero-dash-card-badge blue">Viderekommen</div>
+                  <div class="hero-dash-card-title">Nøkkeltall (P/E, P/B, EPS)</div>
+                  <div class="hero-dash-progress">
+                    <div class="hero-dash-progress-bar blue" style="width:20%"></div>
+                  </div>
+                  <div class="hero-dash-progress-text">20% fullført</div>
+                </div>
+              </div>
+              <!-- Mini chart -->
+              <div class="hero-dash-chart">
+                <div class="hero-dash-chart-label">Porteføljesimulering</div>
+                <svg viewBox="0 0 400 80" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#00d4aa" stop-opacity="0.3"/>
+                      <stop offset="100%" stop-color="#00d4aa" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                  <path d="M0,60 L30,55 60,58 90,45 120,50 150,35 180,40 210,28 240,32 270,20 300,25 330,15 360,18 400,8 L400,80 L0,80Z" fill="url(#chartGrad)"/>
+                  <polyline fill="none" stroke="#00d4aa" stroke-width="2" points="0,60 30,55 60,58 90,45 120,50 150,35 180,40 210,28 240,32 270,20 300,25 330,15 360,18 400,8"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats and CTA below card -->
+    <div class="hero-scroll-footer">
       <div class="hero-cta">
         <a href="#kurs" class="btn btn-primary btn-lg">Utforsk kurs</a>
         <a href="ordliste.html" class="btn btn-secondary btn-lg">Slå opp begrep</a>
@@ -101,6 +376,31 @@
           <div class="number">23</div>
           <div class="label">Dybdeartikler</div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trusted By Partners — Auto-scrolling logos -->
+<section class="trusted-section">
+  <h3 class="trusted-heading">Støttet av våre partnere</h3>
+  <div class="trusted-ticker-wrap">
+    <div class="trusted-fade trusted-fade-left"></div>
+    <div class="trusted-fade trusted-fade-right"></div>
+    <div class="trusted-ticker" id="trusted-ticker">
+      <div class="trusted-track">
+        <a href="partner.html?id=goxhulern-auto" class="tlogo tlogo-goxhulern">GOXHULERN<small>AUTO</small></a>
+        <a href="partner.html?id=schavern" class="tlogo tlogo-schavern">SCHAVERN<small>AI</small></a>
+        <a href="partner.html?id=bambulder" class="tlogo tlogo-bambulder">bambulder<small>SCOUTING</small></a>
+        <a href="partner.html?id=luddern" class="tlogo tlogo-luddern">LUDDERN<small>gambling</small></a>
+        <a href="partner.html?id=lukestrom" class="tlogo tlogo-lukestrom">Lukestrøm<small>ELEKTRO</small></a>
+        <a href="partner.html?id=sh-sparebank" class="tlogo tlogo-sh">SH<small>SPAREBANK</small></a>
+        <a href="partner.html?id=tavares" class="tlogo tlogo-tavares">TAVARES<small>INDUSTRIES</small></a>
+        <a href="partner.html?id=grexern" class="tlogo tlogo-grexern">GREXERN<small>AVIATION</small></a>
+        <a href="partner.html?id=minh" class="tlogo tlogo-minh">MINH<small>KAMPSPORT</small></a>
+        <a href="partner.html?id=bislimern" class="tlogo tlogo-bislimern">Bislimern<small>MGMT</small></a>
+        <a href="partner.html?id=eriksen" class="tlogo tlogo-eriksen">ERIKSEN<small>FILM CO.</small></a>
+        <a href="partner.html?id=vega" class="tlogo tlogo-vega">VEGA<small>FITNESS</small></a>
       </div>
     </div>
   </div>
@@ -430,13 +730,61 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Addern Investing</span>
-      <span>Kun for utdanningsformål — ikke finansiell rådgivning.</span>
+      <span>Kun for utdanningsformål — ikke finansiell rådgivning. All informasjon om partnere og selskaper er fiktiv og kun for underholdningsformål.</span>
     </div>
   </div>
 </footer>
 
 <script src="js/main.js"></script>
 <script>
+// --- Trusted Ticker: duplicate items for seamless loop ---
+(function() {
+  var track = document.querySelector('.trusted-track');
+  if (!track) return;
+  var items = track.innerHTML;
+  track.innerHTML = items + items;
+})();
+
+// --- Hero Scroll Animation ---
+(function() {
+  const hero = document.querySelector('.hero-scroll');
+  const header = document.getElementById('hero-header');
+  const card = document.getElementById('hero-card');
+  if (!hero || !header || !card) return;
+
+  const isMobile = () => window.innerWidth <= 768;
+
+  function updateScroll() {
+    const rect = hero.getBoundingClientRect();
+    const heroH = hero.offsetHeight;
+    const viewH = window.innerHeight;
+
+    // Progress: 0 when top of hero is at top of viewport, 1 when bottom reaches top
+    const scrolled = -rect.top;
+    const total = heroH - viewH;
+    const progress = Math.max(0, Math.min(1, scrolled / total));
+
+    // Header: translate up and fade out
+    const headerY = progress * -120;
+    const headerOpacity = 1 - progress * 1.8;
+    header.style.transform = `translateY(${headerY}px)`;
+    header.style.opacity = Math.max(0, headerOpacity);
+
+    // Card: rotate from 20deg to 0, scale from 1.05 to 1 (or 0.7 to 0.9 on mobile)
+    const rotate = 20 - progress * 20;
+    const scaleStart = isMobile() ? 0.7 : 1.05;
+    const scaleEnd = isMobile() ? 0.9 : 1;
+    const scale = scaleStart + progress * (scaleEnd - scaleStart);
+    const cardY = (1 - progress) * -60;
+
+    card.style.transform = `perspective(1000px) rotateX(${rotate}deg) scale(${scale}) translateY(${cardY}px)`;
+  }
+
+  window.addEventListener('scroll', updateScroll, { passive: true });
+  window.addEventListener('resize', updateScroll);
+  updateScroll();
+})();
+
 (function(){
   const filters = document.querySelectorAll('.lib-filter');
   const cards = document.querySelectorAll('.lib-card');

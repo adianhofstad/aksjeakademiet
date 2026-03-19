@@ -124,12 +124,19 @@
     /* Partners section */
     .partners-section {
       background: var(--bg-secondary, #0d1224);
-      padding: 100px 24px;
+      padding: 100px 0;
+      overflow: hidden;
     }
-    .partners-inner {
+    .partners-header {
       max-width: 1000px;
       margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 48px;
     }
+    .partners-header-text {}
     .partners-label {
       display: inline-block;
       font-size: 0.78rem;
@@ -139,51 +146,332 @@
       color: var(--accent-green);
       margin-bottom: 16px;
     }
-    .partners-inner h2 {
+    .partners-header h2 {
       font-family: var(--font-heading);
       font-size: clamp(1.8rem, 4vw, 2.8rem);
       font-weight: 800;
       color: var(--text-primary);
       line-height: 1.2;
-      margin-bottom: 48px;
+      margin-bottom: 12px;
     }
-    .partners-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 32px;
+    .partners-header p {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 420px;
     }
-    .partner-card {
+    .partners-nav {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+    .partners-nav button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color-strong);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .partners-nav button:hover:not(:disabled) {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-primary);
+      border-color: var(--text-muted);
+    }
+    .partners-nav button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+    .partners-nav button svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Carousel track */
+    .partners-carousel {
+      position: relative;
+      width: 100%;
+    }
+    .partners-track {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 0 24px;
+    }
+    .partners-track::-webkit-scrollbar { display: none; }
+
+    /* Partner card — gallery style with overlay */
+    .partner-slide {
+      flex: 0 0 320px;
+      scroll-snap-align: start;
       border-radius: 16px;
       overflow: hidden;
-      background: var(--bg-primary, #0a0f1e);
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      min-height: 420px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
-    .partner-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
-    }
-    .partner-card img {
+    .partner-slide:hover { transform: translateY(-4px); }
+
+    .partner-slide img {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      aspect-ratio: 16/9;
+      height: 100%;
       object-fit: cover;
       object-position: center top;
-      display: block;
+      transition: transform 0.4s ease;
     }
-    .partner-card-body {
-      padding: 24px;
+    .partner-slide:hover img {
+      transform: scale(1.05);
     }
-    .partner-card-body h3 {
+
+    /* Gradient overlay */
+    .partner-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10, 15, 30, 0.95) 0%,
+        rgba(10, 15, 30, 0.5) 40%,
+        rgba(10, 15, 30, 0.05) 100%
+      );
+      z-index: 1;
+    }
+
+    /* Text content at bottom */
+    .partner-slide-content {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 28px 24px;
+    }
+    .partner-slide-content h3 {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: #fff;
       margin-bottom: 8px;
     }
-    .partner-card-body p {
+    .partner-slide-content p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.88rem;
+      line-height: 1.6;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 16px;
+    }
+    .partner-slide-arrow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-green);
+      transition: gap 0.2s;
+    }
+    .partner-slide:hover .partner-slide-arrow { gap: 10px; }
+    .partner-slide-arrow svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Dots */
+    .partners-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 32px;
+    }
+    .partners-dots button {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      padding: 0;
+      transition: all 0.3s;
+    }
+    .partners-dots button.active {
+      background: var(--accent-green);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 768px) {
+      .partners-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .partners-nav { display: none; }
+      .partner-slide { flex: 0 0 280px; min-height: 380px; }
+    }
+
+    /* --- Partner Modal --- */
+    .partner-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 18, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .partner-modal-backdrop.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .partner-modal {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.92);
+      z-index: 9999;
+      width: 90%;
+      max-width: 760px;
+      max-height: 85vh;
+      background: var(--bg-secondary, #111827);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .partner-modal.open {
+      opacity: 1;
+      pointer-events: all;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .partner-modal-hero {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+    }
+    .partner-modal-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .partner-modal-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, var(--bg-secondary, #111827) 0%, transparent 60%);
+    }
+    .partner-modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      transition: background 0.2s;
+    }
+    .partner-modal-close:hover { background: rgba(0,0,0,0.7); }
+    .partner-modal-body {
+      padding: 0 32px 32px;
+      overflow-y: auto;
+      max-height: calc(85vh - 260px);
+    }
+    .partner-modal-body h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      margin-top: -20px;
+    }
+    .partner-modal-founded {
+      font-size: 0.82rem;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .partner-modal-body p {
       color: var(--text-secondary);
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .partner-modal-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 24px 0;
+      padding: 20px 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    .partner-modal-stat {
+      text-align: center;
+    }
+    .partner-modal-stat .pm-number {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent-green);
+    }
+    .partner-modal-stat .pm-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .partner-modal-tags {
+      margin-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .partner-modal-tags span {
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+    .partner-modal-tags .pm-sep {
+      display: inline-block;
+      margin: 0 7px;
+      color: rgba(148,163,184,0.3);
+      font-weight: 300;
+    }
+    @media (max-width: 600px) {
+      .partner-modal { width: 95%; border-radius: 16px; }
+      .partner-modal-hero { height: 200px; }
+      .partner-modal-body { padding: 0 20px 24px; }
+      .partner-modal-body h2 { font-size: 1.4rem; }
+      .partner-modal-stats { grid-template-columns: repeat(2, 1fr); }
     }
 
     /* Middle video — shorter */
@@ -303,97 +591,150 @@
   </div>
 </section>
 
-<!-- SECTION: Våre partnere -->
-<section class="partners-section">
-  <div class="partners-inner fade-up">
-    <span class="partners-label">Samarbeid</span>
-    <h2>Våre partnere</h2>
-    <div class="partners-grid">
-      <div class="partner-card">
-        <img src="images/partner-goxhulern-auto.png" alt="Goxhulern Auto — partner av Addern Investing">
-        <div class="partner-card-body">
+<!-- SECTION: Våre partnere — Carousel -->
+<section class="partners-section" id="partnere">
+  <div class="partners-header fade-up">
+    <div class="partners-header-text">
+      <span class="partners-label">Samarbeid</span>
+      <h2>Våre partnere</h2>
+      <p>Selskaper og gründere som deler vår visjon om å gjøre finanskunnskap tilgjengelig for alle.</p>
+    </div>
+    <div class="partners-nav">
+      <button id="partner-prev" aria-label="Forrige" disabled>
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button id="partner-next" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="partners-carousel fade-up">
+    <div class="partners-track" id="partners-track">
+
+      <div class="partner-slide" data-partner="goxhulern-auto">
+        <img src="images/partner-goxhulern-auto.png" alt="Goxhulern Auto" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Goxhulern Auto</h3>
           <p>Vi er stolte av vårt partnerskap med Dennis Goxhuli og Goxhulern Auto — en bilforhandler som deler vår lidenskap for kvalitet og tillit.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-schavern-law.png" alt="Schavern AI Development — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="schavern">
+        <img src="images/partner-schavern-law.png" alt="Schavern AI Development" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Schavern AI Development</h3>
           <p>Sammen med Albin Schanevius og Schavern AI Development driver vi innovasjon — fra automatisering til avansert dataanalyse.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-bambulder-scouting.jpg" alt="Bambulder Scouting Agency — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="bambulder">
+        <img src="images/partner-bambulder-scouting.jpg" alt="Bambulder Scouting Agency" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Bambulder Scouting Agency</h3>
           <p>Gjennom vårt samarbeid med Oliver Eik og Bambulder Scouting Agency kobler vi talent med muligheter — på og utenfor banen.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-luddern-gambling.jpg" alt="Luddern Gambling — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="luddern">
+        <img src="images/partner-luddern-gambling.jpg" alt="Luddern Gambling" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Luddern Gambling</h3>
           <p>Ludvik Olavsen og Luddern Gambling bringer spenning og strategi til bordet — en partner som alltid satser på suksess.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-lukestrom-elektro.jpg" alt="Lukestrøm Elektro — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="lukestrom">
+        <img src="images/partner-lukestrom-elektro.jpg" alt="Lukestrøm Elektro" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Lukestrøm Elektro</h3>
           <p>Med Kasper Westerem og Lukestrøm Elektro i ryggen styrker vi forbindelsen mellom teknologi og fremtiden.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-sh-sparebank.jpg" alt="SH Sparebank — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="sh-sparebank">
+        <img src="images/partner-sh-sparebank.jpg" alt="SH Sparebank" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>SH Sparebank</h3>
           <p>Vårt samarbeid med Linus Strømnes-Hopmoen og SH Sparebank er et intuitivt partnerskap bygget på felles verdier og finansiell innsikt.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-tavares-industries.jpg" alt="Tavares Industries — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="tavares">
+        <img src="images/partner-tavares-industries.jpg" alt="Tavares Industries" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Tavares Industries</h3>
           <p>Yure Tavares og Tavares Industries er en hyperteknologisk kraft — sammen utforsker vi grensene for innovasjon og fremtidens løsninger.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-grexern-aviation.jpg" alt="Grexern Aviation — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="grexern">
+        <img src="images/partner-grexern-aviation.jpg" alt="Grexern Aviation" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Grexern Aviation</h3>
           <p>Med grunnlegger Adrian Goxhuli tar Grexern Aviation oss til nye høyder — et flyselskap med ambisjon og visjon.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-minh.png" alt="Minh Kampsport — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="minh">
+        <img src="images/partner-minh.png" alt="Minh Kampsport" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Minh Kampsport</h3>
-          <p>Minh Anh Vo og Minh Kampsport trener fremtidens mestere — med utøvere som Jon Jones, Charles Oliveira og Justin Gaethje på laget er dette en partner som leverer på øverste nivå.</p>
+          <p>Minh Anh Vo og Minh Kampsport trener fremtidens mestere — med utøvere som Jon Jones, Charles Oliveira og Justin Gaethje på laget.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-bislimern.png" alt="Bislimern Management — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="bislimern">
+        <img src="images/partner-bislimern.png" alt="Bislimern Management" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Bislimern Management</h3>
-          <p>Leotrim Bislimi og Bislimern Management er et fotballagentur som hjelper talenter med å signere kontrakter og nå sine karrieremål — en partner som bygger fremtidens stjerner.</p>
+          <p>Leotrim Bislimi og Bislimern Management er et fotballagentur som hjelper talenter med å signere kontrakter og nå sine karrieremål.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-eriksen-film.png" alt="Eriksen Film Co. — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="eriksen">
+        <img src="images/partner-eriksen-film.png" alt="Eriksen Film Co." loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Eriksen Film Co.</h3>
-          <p>Leon Bye Eriksen og Eriksen Film Co. bringer historier til live gjennom film — en kreativ kraft i filmbransjen og en stolt partner av Addern Investing.</p>
+          <p>Leon Bye Eriksen og Eriksen Film Co. bringer historier til live gjennom film — en kreativ kraft i filmbransjen.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
-      <div class="partner-card">
-        <img src="images/partner-vega-fitness.png" alt="Vega Fitness — partner av Addern Investing">
-        <div class="partner-card-body">
+
+      <div class="partner-slide" data-partner="vega">
+        <img src="images/partner-vega-fitness.png" alt="Vega Fitness" loading="lazy">
+        <div class="partner-slide-overlay"></div>
+        <div class="partner-slide-content">
           <h3>Vega Fitness</h3>
-          <p>Influencer Cristiano Vega og Vega Fitness inspirerer tusenvis til en sunnere livsstil — en partner som bygger styrke både fysisk og mentalt.</p>
+          <p>Influencer Cristiano Vega og Vega Fitness inspirerer tusenvis til en sunnere livsstil — styrke både fysisk og mentalt.</p>
+          <span class="partner-slide-arrow">Les mer <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
         </div>
       </div>
+
     </div>
+
+    <div class="partners-dots" id="partners-dots"></div>
   </div>
 </section>
 
@@ -455,10 +796,27 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Addern Investing</span>
-      <span>Kun for utdanningsformål — ikke finansiell rådgivning.</span>
+      <span>Kun for utdanningsformål — ikke finansiell rådgivning. All informasjon om partnere og selskaper på denne siden er fiktiv og kun for underholdningsformål.</span>
     </div>
   </div>
 </footer>
+
+<!-- Partner Modal -->
+<div class="partner-modal-backdrop" id="partner-backdrop"></div>
+<div class="partner-modal" id="partner-modal">
+  <div class="partner-modal-hero">
+    <img id="pm-image" src="" alt="">
+    <div class="partner-modal-hero-overlay"></div>
+    <button class="partner-modal-close" id="pm-close">&times;</button>
+  </div>
+  <div class="partner-modal-body">
+    <h2 id="pm-title"></h2>
+    <div class="partner-modal-founded" id="pm-founded"></div>
+    <div id="pm-text"></div>
+    <div class="partner-modal-stats" id="pm-stats"></div>
+    <div class="partner-modal-tags" id="pm-tags"></div>
+  </div>
+</div>
 
 <script src="js/main.js"></script>
 <script>
@@ -475,6 +833,276 @@
     });
   }, { threshold: 0.15 });
   els.forEach(function(el) { observer.observe(el); });
+})();
+
+// --- Partner Carousel ---
+(function() {
+  const track = document.getElementById('partners-track');
+  const prevBtn = document.getElementById('partner-prev');
+  const nextBtn = document.getElementById('partner-next');
+  const dotsContainer = document.getElementById('partners-dots');
+  if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+
+  const slides = track.querySelectorAll('.partner-slide');
+  const slideCount = slides.length;
+  let currentIndex = 0;
+
+  // Create dots
+  slides.forEach(function(_, i) {
+    const dot = document.createElement('button');
+    dot.setAttribute('aria-label', 'Gå til slide ' + (i + 1));
+    if (i === 0) dot.classList.add('active');
+    dot.addEventListener('click', function() { scrollToSlide(i); });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll('button');
+
+  function scrollToSlide(index) {
+    if (index < 0 || index >= slideCount) return;
+    currentIndex = index;
+    const slide = slides[index];
+    const trackRect = track.getBoundingClientRect();
+    const slideRect = slide.getBoundingClientRect();
+    const scrollLeft = track.scrollLeft + slideRect.left - trackRect.left - 24;
+    track.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+    updateState();
+  }
+
+  function updateState() {
+    prevBtn.disabled = currentIndex <= 0;
+    nextBtn.disabled = currentIndex >= slideCount - 1;
+    dots.forEach(function(dot, i) {
+      dot.classList.toggle('active', i === currentIndex);
+    });
+  }
+
+  // Detect current slide from scroll position
+  function detectCurrentSlide() {
+    const trackLeft = track.getBoundingClientRect().left;
+    let closest = 0;
+    let closestDist = Infinity;
+    slides.forEach(function(slide, i) {
+      var dist = Math.abs(slide.getBoundingClientRect().left - trackLeft - 24);
+      if (dist < closestDist) {
+        closestDist = dist;
+        closest = i;
+      }
+    });
+    if (closest !== currentIndex) {
+      currentIndex = closest;
+      updateState();
+    }
+  }
+
+  track.addEventListener('scroll', function() {
+    clearTimeout(track._scrollTimer);
+    track._scrollTimer = setTimeout(detectCurrentSlide, 100);
+  }, { passive: true });
+
+  prevBtn.addEventListener('click', function() { scrollToSlide(currentIndex - 1); });
+  nextBtn.addEventListener('click', function() { scrollToSlide(currentIndex + 1); });
+
+  updateState();
+})();
+
+// --- Partner Modal ---
+(function() {
+  var partnerData = {
+    'goxhulern-auto': {
+      title: 'Goxhulern Auto',
+      founded: 'Grunnlagt 2024 · Drammen, Norge',
+      image: 'images/partner-goxhulern-auto.png',
+      text: '<p>Goxhulern Auto er en raskt voksende bilforhandler grunnlagt av Dennis Goxhuli, med hovedkontor i Drammen. Selskapet spesialiserer seg på import og salg av premium bruktbiler fra det europeiske markedet, med fokus på tyske kvalitetsmerker som BMW, Mercedes-Benz og Audi.</p><p>Det som skiller Goxhulern Auto fra konkurrentene er deres proprietære inspeksjonssystem — hvert kjøretøy går gjennom en 147-punkts kvalitetskontroll før det settes ut for salg. Selskapet har også utviklet en AI-drevet prissettingsmodell som analyserer over 30 000 datapunkter for å garantere markedets mest konkurransedyktige priser.</p><p>I 2025 lanserte Goxhulern Auto sin digitale plattform med 3D-visning av alle kjøretøy, og planlegger ekspansjon til Bergen og Stavanger innen Q3 2026. Selskapet har allerede solgt over 800 kjøretøy og har en kundetilfredshet på 4.9/5 basert på uavhengige anmeldelser.</p>',
+      stats: [
+        { number: '800+', label: 'Biler solgt' },
+        { number: '4.9/5', label: 'Kundevurdering' },
+        { number: '147', label: 'Punkts kontroll' }
+      ],
+      tags: ['Bilforhandler', 'Premium import', 'AI-prissetting', 'Kvalitetskontroll']
+    },
+    'schavern': {
+      title: 'Schavern AI Development',
+      founded: 'Grunnlagt 2023 · Oslo, Norge',
+      image: 'images/partner-schavern-law.png',
+      text: '<p>Schavern AI Development, ledet av Albin Schanevius, er et norsk teknologiselskap som utvikler avanserte AI-løsninger for bedriftsmarkedet. Selskapet har spesialisert seg på maskinlæring, naturlig språkbehandling og prediktiv analyse.</p><p>Deres flaggskipprodukt, «SchavernOS», er en enterprise AI-plattform som automatiserer komplekse forretningsprosesser. Plattformen brukes allerede av flere nordiske selskaper innen finans, logistikk og helsesektoren. I løpet av det siste året har SchavernOS prosessert over 12 millioner datapunkter og redusert operasjonelle kostnader med gjennomsnittlig 34% for kundene sine.</p><p>Selskapet har nylig inngått et samarbeid med NTNU om forskning på generativ AI for norsk språk, og har mottatt 4,2 millioner kroner i støtte fra Innovasjon Norge. Schavern AI jobber også med en hemmelig forskningsavdeling som utvikler autonome beslutningssystemer for forsvarssektoren.</p>',
+      stats: [
+        { number: '12M+', label: 'Datapunkter prosessert' },
+        { number: '34%', label: 'Kostnadsreduksjon' },
+        { number: '4.2M', label: 'NOK i støtte' }
+      ],
+      tags: ['Kunstig intelligens', 'Maskinlæring', 'Enterprise', 'NLP', 'Forsvarsteknologi']
+    },
+    'bambulder': {
+      title: 'Bambulder Scouting Agency',
+      founded: 'Grunnlagt 2024 · Sandefjord, Norge',
+      image: 'images/partner-bambulder-scouting.jpg',
+      text: '<p>Bambulder Scouting Agency er et profesjonelt talentscoutingbyrå grunnlagt av Oliver Eik, med nettverk som strekker seg over 14 europeiske land. Selskapet jobber med å identifisere og utvikle unge fotballtalenter i alderen 14–21 år.</p><p>Med et team på 23 speidere fordelt over Skandinavia, Storbritannia og Sør-Europa bruker Bambulder avansert videoanalyse og prestasjonsdata for å evaluere spillere. Deres algoritme analyserer over 200 tekniske og fysiske parametere per spiller, og sammenligner dem med historiske data fra spillere som har lyktes på toppnivå.</p><p>Siden oppstarten har Bambulder formidlet 47 spilleroverganger til klubber i Eliteserien, Championship og Eredivisie. Tre av spillerne de har oppdaget har allerede fått A-landslagsdebuterer. Selskapet har også et samarbeid med Premier League-klubber om utveksling av scoutingdata.</p>',
+      stats: [
+        { number: '47', label: 'Overganger formidlet' },
+        { number: '14', label: 'Land i nettverket' },
+        { number: '23', label: 'Aktive speidere' }
+      ],
+      tags: ['Fotball-scouting', 'Talentutvikling', 'Dataanalyse', 'Overganger', 'Europa']
+    },
+    'luddern': {
+      title: 'Luddern Gambling',
+      founded: 'Grunnlagt 2024 · Tønsberg, Norge',
+      image: 'images/partner-luddern-gambling.jpg',
+      text: '<p>Luddern Gambling, grunnlagt av Ludvik Olavsen, er et innovativt selskap som utvikler avanserte sannsynlighetsmodeller og statistiske analyser for sportsbetting-markedet. Selskapet opererer som en teknologileverandør — ikke som et spillselskap — og leverer prediksjonsmodeller til lisensierte aktører i Europa.</p><p>Kjernen i teknologien er «LuddernEngine», en proprietær algoritme som analyserer over 450 variabler per kamp, inkludert spillerform, værdata, historiske møter, reisedistanser og til og med sosiale medier-sentiment. Modellen har en dokumentert treffsikkerhet på 67.3% over 10 000+ analyserte kamper — langt over bransjegjennomsnittet.</p><p>Selskapet har også utviklet et ansvarlig spill-verktøy som bruker atferdsmønster-analyse for å identifisere risikospillere. Dette verktøyet er allerede implementert hos tre europeiske spilloperatører og har bidratt til å redusere problematisk spillatferd med 28%.</p>',
+      stats: [
+        { number: '67.3%', label: 'Treffsikkerhet' },
+        { number: '450+', label: 'Variabler per kamp' },
+        { number: '10K+', label: 'Kamper analysert' }
+      ],
+      tags: ['Prediksjonsmodeller', 'Sportsanalyse', 'Ansvarlig spill', 'Statistikk', 'Algoritmer']
+    },
+    'lukestrom': {
+      title: 'Lukestrøm Elektro',
+      founded: 'Grunnlagt 2023 · Horten, Norge',
+      image: 'images/partner-lukestrom-elektro.jpg',
+      text: '<p>Lukestrøm Elektro, drevet av Kasper Westerem, er et elektroselskap som kombinerer tradisjonelt elektrikerarbeid med smart-hjem-teknologi og fornybar energi. Selskapet har spesialisert seg på installasjoner for boliger, næringsbygg og industrianlegg i Vestfold-regionen.</p><p>Det som gjør Lukestrøm unikt er deres «SmartGrid»-løsning — et helintegrert system som kobler solcellepaneler, batterisystemer, elbil-ladere og smart-hjem-styring i én plattform. Kunder kan overvåke og optimalisere energiforbruket sitt i sanntid via en mobilapp utviklet in-house.</p><p>Selskapet har installert over 340 solcelleanlegg og 120 smart-hjem-systemer. I samarbeid med forskningsinstitusjoner jobber Lukestrøm med utvikling av neste generasjons energilagring basert på solid-state batteriteknologi. Selskapet har også en kontrakt med tre kommuner om oppgradering av offentlig belysning til AI-styrt LED-teknologi.</p>',
+      stats: [
+        { number: '340+', label: 'Solcelleanlegg' },
+        { number: '120', label: 'Smart-hjem installert' },
+        { number: '3', label: 'Kommunekontrakter' }
+      ],
+      tags: ['Elektro', 'Solenergi', 'Smart-hjem', 'Fornybar energi', 'IoT']
+    },
+    'sh-sparebank': {
+      title: 'SH Sparebank',
+      founded: 'Grunnlagt 2024 · Sandefjord, Norge',
+      image: 'images/partner-sh-sparebank.jpg',
+      text: '<p>SH Sparebank, grunnlagt av Linus Strømnes-Hopmoen, er en digital neobank som retter seg mot unge investorer og førstegangssparere i Norden. Banken tilbyr kontoer uten gebyrer, automatiserte spareplaner og integrerte investeringsverktøy — alt designet for å senke terskelen for å komme i gang med sparing og investering.</p><p>Bankens mobilapp har en innebygd «finanscoach» drevet av AI som gir personlige sparetips basert på brukerens forbruksmønstre. Appen har allerede over 15 000 aktive brukere og har hjulpet kundene med å spare til sammen over 42 millioner kroner siden lanseringen.</p><p>SH Sparebank har nylig fått innvilget banklisens fra Finanstilsynet og har inngått et samarbeid med Visa om utstedelse av deres første fysiske debetkort. Selskapet har hentet 18 millioner kroner i en seed-runde ledet av nordiske venturekapitalfond, og planlegger lansering i Sverige og Danmark innen 2027.</p>',
+      stats: [
+        { number: '15K+', label: 'Aktive brukere' },
+        { number: '42M', label: 'NOK i sparinger' },
+        { number: '18M', label: 'NOK i funding' }
+      ],
+      tags: ['Neobank', 'Fintech', 'Sparing', 'AI-rådgivning', 'Investering']
+    },
+    'tavares': {
+      title: 'Tavares Industries',
+      founded: 'Grunnlagt 2023 · Oslo / São Paulo',
+      image: 'images/partner-tavares-industries.jpg',
+      text: '<p>Tavares Industries, ledet av Yure Tavares, er et hyperteknologisk konglomerat med kontorer i Oslo og São Paulo. Selskapet opererer i skjæringspunktet mellom kunstig intelligens, robotikk og forsvarsteknologi — og er en av de raskest voksende teknologibedriftene i Norden.</p><p>Selskapets mest kjente produkt er «TI-Sentinel», et autonomt overvåkningssystem som bruker dronesverm-teknologi og computer vision for å beskytte kritisk infrastruktur. Systemet er allerede i bruk hos militære installasjoner i tre NATO-land og har kontrakter med det norske forsvaret verdt over 85 millioner kroner.</p><p>Tavares Industries utvikler også sivile produkter, inkludert autonome logistikkroboter for varehus og en AI-plattform for prediktivt vedlikehold i oljeindustrien. Selskapets forskningsavdeling, «TI Labs», jobber med eksperimentell kvantekryptografi og nevromorfe prosessorer. I 2025 ble selskapet verdsatt til over 200 millioner kroner etter en Series A-runde med deltakelse fra Telenor Venture og internasjonale forsvarsfond.</p>',
+      stats: [
+        { number: '85M+', label: 'NOK i forsvarskontrakter' },
+        { number: '3', label: 'NATO-land' },
+        { number: '200M', label: 'NOK verdsettelse' }
+      ],
+      tags: ['Forsvarsteknologi', 'AI & Robotikk', 'Dronesverm', 'Kvantekryptografi', 'Autonome systemer']
+    },
+    'grexern': {
+      title: 'Grexern Aviation',
+      founded: 'Grunnlagt 2024 · Sandefjord, Norge',
+      image: 'images/partner-grexern-aviation.jpg',
+      text: '<p>Grexern Aviation, grunnlagt av Adrian Goxhuli, er et ambisiøst flyselskap som har som mål å revolusjonere regional luftfart i Skandinavia. Selskapet fokuserer på korte ruter mellom mellomstore norske byer — strekninger som i dag er dårlig betjent av de store flyselskapene.</p><p>Grexern skiller seg ut med sin flåte av elektriske og hybride fly. Selskapet har signert en intensjonsavtale med Heart Aerospace om levering av 12 ES-30 elektriske passasjerfly, med planlagt leveranse i 2027. Inntil de elektriske flyene er klare, opererer Grexern med leasede turboprop-fly på rutene Sandefjord–Haugesund, Sandefjord–Kristiansand og Sandefjord–Molde.</p><p>I tillegg til passasjertrafikk har Grexern Aviation en frakt-divisjon som tilbyr same-day delivery mellom norske byer. Selskapet har inngått et samarbeid med Posten Norge og flere e-handelsaktører. Grexern har hentet 32 millioner kroner i startkapital og har fått konsesjon fra Luftfartstilsynet for drift på 8 innenriksruter.</p>',
+      stats: [
+        { number: '12', label: 'Elektriske fly bestilt' },
+        { number: '8', label: 'Rutekonsesjon' },
+        { number: '32M', label: 'NOK i kapital' }
+      ],
+      tags: ['Luftfart', 'Elektriske fly', 'Regional transport', 'Frakt', 'Bærekraft']
+    },
+    'minh': {
+      title: 'Minh Kampsport',
+      founded: 'Grunnlagt 2023 · Drammen, Norge',
+      image: 'images/partner-minh.png',
+      text: '<p>Minh Kampsport, grunnlagt av Minh Anh Vo, er et av Norges mest prestisjetunge kampsportakademier. Med treningsfasiliteter på over 1 200 kvadratmeter i Drammen tilbyr akademiet trening i MMA, brasiliansk jiu-jitsu, muay thai og boksing — for alt fra nybegynnere til profesjonelle utøvere.</p><p>Det som gjør Minh Kampsport helt unikt er deres nettverk av verdensmestere som fungerer som trenere og mentorer. Akademiet har formelle treningssamarbeid med legender som Jon «Bones» Jones, Charles «Do Bronx» Oliveira og Justin «The Highlight» Gaethje. Disse samarbeidene inkluderer årlige treningsleirer i Norge og utvekslingsprogrammer for lovende norske utøvere.</p><p>Akademiet har produsert 14 nasjonale mestere og 3 nordiske mestere i ulike disipliner. Minh Kampsport driver også et ungdomsprogram kalt «Warriors of Tomorrow» som tilbyr gratis trening til ungdom i risikosonen. Programmet har over 200 deltakere og har fått støtte fra Kulturdepartementet.</p>',
+      stats: [
+        { number: '14', label: 'Nasjonale mestere' },
+        { number: '1200m²', label: 'Treningsareal' },
+        { number: '200+', label: 'Ungdom i programmet' }
+      ],
+      tags: ['MMA', 'Kampsport', 'BJJ', 'Muay Thai', 'Ungdomsutvikling']
+    },
+    'bislimern': {
+      title: 'Bislimern Management',
+      founded: 'Grunnlagt 2024 · Oslo, Norge',
+      image: 'images/partner-bislimern.png',
+      text: '<p>Bislimern Management, ledet av Leotrim Bislimi, er et fotballagentbyrå som representerer unge talenter i norsk og europeisk fotball. Selskapet har spesialisert seg på å finne, utvikle og forhandle kontrakter for spillere i alderen 16–25 år.</p><p>Med en stall på 34 aktive spillere fordelt over Eliteserien, OBOS-ligaen og flere europeiske andredivisjoner, har Bislimern Management raskt etablert seg som et av de mest innflytelsesrike agentbyråene i norsk fotball. Byrået har forhandlet kontraktsavtaler til en samlet verdi av over 78 millioner kroner bare det siste året.</p><p>Bislimern tilbyr sine spillere mer enn bare kontraktsforhandlinger. Byrået har et helhetlig konsept som inkluderer personlig merkevarebygging, mediehåndtering, økonomisk rådgivning og karriereplanlegging etter fotballen. De samarbeider også med FIFA-lisensierte agenter i England, Tyskland og Spania for å åpne dører til de største ligaene. To av byråets spillere er allerede på radaren til Bundesliga-klubber.</p>',
+      stats: [
+        { number: '34', label: 'Aktive spillere' },
+        { number: '78M', label: 'NOK i kontraktsverdier' },
+        { number: '5', label: 'Ligaer representert' }
+      ],
+      tags: ['Fotballagent', 'Kontraktsforhandling', 'Spillerutvikling', 'Merkevarebygging', 'Europa']
+    },
+    'eriksen': {
+      title: 'Eriksen Film Co.',
+      founded: 'Grunnlagt 2024 · Larvik, Norge',
+      image: 'images/partner-eriksen-film.png',
+      text: '<p>Eriksen Film Co., grunnlagt av Leon Bye Eriksen, er et filmproduksjonsselskap som har gjort seg bemerket med sin unike visuelle stil og fortellerteknikk. Selskapet produserer alt fra kortfilmer og dokumentarer til reklamefilm og musikkvideoer.</p><p>Til tross for sin unge alder har Eriksen Film Co. allerede vunnet flere priser, inkludert «Beste kortfilm» ved Nordisk Filmfestival 2025 og en honourable mention ved Sundance Film Festival for dokumentaren «Stille Vann» — en rå skildring av ungdomsliv i norske småbyer.</p><p>Selskapet bruker cutting-edge filmteknologi, inkludert RED V-Raptor kameraer, FPV-drone-cinematografi og AI-assistert fargegradering. Eriksen Film har produsert reklamefilm for merkevarer som Hurtigruten, Helly Hansen og Visit Norway. De jobber for tiden med sin første spillefilm, «Skyggedalen», en norsk thriller med planlagt premiere på kino i 2027. Budsjettet er på 14 millioner kroner, delvis finansiert av Norsk Filminstitutt.</p>',
+      stats: [
+        { number: '2', label: 'Filmpriser' },
+        { number: '14M', label: 'NOK filmbudsjett' },
+        { number: '40+', label: 'Produksjoner' }
+      ],
+      tags: ['Film', 'Dokumentar', 'Reklame', 'Cinematografi', 'Norsk film']
+    },
+    'vega': {
+      title: 'Vega Fitness',
+      founded: 'Grunnlagt 2023 · Bergen, Norge',
+      image: 'images/partner-vega-fitness.png',
+      text: '<p>Vega Fitness, bygget av influencer og fitnessentreprenør Cristiano Vega, er et helhetlig trenings- og livsstilsmerke som har tatt sosiale medier med storm. Med over 380 000 følgere på tvers av Instagram, TikTok og YouTube har Cristiano bygget et av Norges største fitnesscommunityer.</p><p>Merkevaren inkluderer en treningsapp med over 200 treningsprogrammer, personlige ernæringsplaner basert på AI-analyse, og en egen linje med treningsklær og kosttilskudd. Vega Fitness-appen har blitt lastet ned over 85 000 ganger og har et aktivt brukerbase på 22 000 månedlige brukere.</p><p>I 2025 lanserte Vega Fitness sine egne fysiske treningssentre under navnet «Vega Gym». Det første senteret åpnet i Bergen med 2 500 kvadratmeter treningsareal, og det andre er under bygging i Oslo med planlagt åpning i juni 2026. Selskapet har også inngått sponsoravtaler med Gymshark, MyProtein og Garmin. Cristiano Vega ble nylig kåret til «Årets fitnessinfluencer» av Trening.no.</p>',
+      stats: [
+        { number: '380K', label: 'Følgere' },
+        { number: '85K', label: 'App-nedlastinger' },
+        { number: '2', label: 'Treningssentre' }
+      ],
+      tags: ['Fitness', 'Influencer', 'Treningsapp', 'Kosttilskudd', 'Treningssenter']
+    }
+  };
+
+  var backdrop = document.getElementById('partner-backdrop');
+  var modal = document.getElementById('partner-modal');
+  var pmImage = document.getElementById('pm-image');
+  var pmTitle = document.getElementById('pm-title');
+  var pmFounded = document.getElementById('pm-founded');
+  var pmText = document.getElementById('pm-text');
+  var pmStats = document.getElementById('pm-stats');
+  var pmTags = document.getElementById('pm-tags');
+  var pmClose = document.getElementById('pm-close');
+
+  function openModal(id) {
+    var d = partnerData[id];
+    if (!d) return;
+    pmImage.src = d.image;
+    pmImage.alt = d.title;
+    pmTitle.textContent = d.title;
+    pmFounded.textContent = d.founded;
+    pmText.innerHTML = d.text;
+    pmStats.innerHTML = d.stats.map(function(s) {
+      return '<div class="partner-modal-stat"><div class="pm-number">' + s.number + '</div><div class="pm-label">' + s.label + '</div></div>';
+    }).join('');
+    pmTags.innerHTML = d.tags.map(function(t) {
+      return '<span>' + t + '</span>';
+    }).join('<span class="pm-sep">·</span>');
+    backdrop.classList.add('open');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Attach click to slides
+  document.querySelectorAll('.partner-slide').forEach(function(slide) {
+    slide.addEventListener('click', function() {
+      var id = this.getAttribute('data-partner');
+      if (id) openModal(id);
+    });
+  });
+
+  pmClose.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
 })();
 </script>
 </body>
