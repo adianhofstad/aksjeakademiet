@@ -192,9 +192,6 @@ function markModuleComplete(courseId, moduleIndex) {
   if (link) link.classList.add('completed');
 
   updateProgressDisplay(courseId);
-
-  // Sync to cloud if logged in
-  if (window.aksjeAuth) window.aksjeAuth.syncModule(courseId, moduleIndex);
 }
 
 function updateProgressDisplay(courseId) {
