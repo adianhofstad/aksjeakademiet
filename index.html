@@ -38,6 +38,34 @@
     .lib-card.hidden{display:none}
     @media(max-width:700px){.lib-grid{grid-template-columns:1fr}.lib-card{padding:22px 18px}}
 
+    /* --- Gooey Text Morph --- */
+    .gooey-wrap {
+      position: relative;
+      display: block;
+      width: 100%;
+      height: clamp(3rem, 8vw, 5.5rem);
+      filter: url(#gooey-threshold);
+      text-align: center;
+      margin-top: 8px;
+    }
+    .gooey-text {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      display: inline-block;
+      white-space: nowrap;
+      background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: clamp(2.2rem, 7vw, 4.5rem);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
     /* --- Trusted Partners Ticker --- */
     .trusted-section {
       background: var(--bg-secondary);
@@ -227,6 +255,18 @@
 </head>
 <body>
 
+<svg style="position:absolute;width:0;height:0;" aria-hidden="true">
+  <defs>
+    <filter id="gooey-threshold">
+      <feColorMatrix in="SourceGraphic" type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 255 -140"/>
+    </filter>
+  </defs>
+</svg>
+
 <nav class="nav">
   <div class="nav-inner">
     <a href="index.html" class="nav-logo">
@@ -270,7 +310,8 @@
         <span class="pulse"></span>
         Fritt oppslagsverk
       </div>
-      <h1>Lær aksjer og investering<br><span class="hero-title-accent">fra bunnen av</span></h1>
+      <h1>Lær</h1>
+      <div class="gooey-wrap"><span class="gooey-text" id="gooey1"></span><span class="gooey-text" id="gooey2"></span></div>
       <p>27 leksjoner, 60+ begreper, interaktive verktøy og dybdeartikler — alt samlet på ett sted.</p>
     </div>
 
@@ -737,6 +778,79 @@
 
 <script src="js/main.js"></script>
 <script>
+// --- Gooey Text Morph ---
+(function() {
+  var texts = [
+    'Aksjer & Investering',
+    'Teknisk Analyse',
+    'Nøkkeltall',
+    'Risikostyring',
+    'Porteføljebygging',
+    'Handelspsykologi',
+    'Markedsanalyse',
+    'Candlestick-mønstre',
+    'Verdsettelse (DCF)',
+    'Opsjoner & Futures'
+  ];
+  var el1 = document.getElementById('gooey1');
+  var el2 = document.getElementById('gooey2');
+  if (!el1 || !el2) return;
+
+  var morphTime = 1.2;
+  var cooldownTime = 2;
+  var textIndex = texts.length - 1;
+  var time = new Date();
+  var morph = 0;
+  var cooldown = cooldownTime;
+
+  el1.textContent = texts[texts.length - 1];
+  el2.textContent = texts[0];
+
+  function setMorph(fraction) {
+    el2.style.filter = 'blur(' + Math.min(8 / fraction - 8, 100) + 'px)';
+    el2.style.opacity = (Math.pow(fraction, 0.4) * 100) + '%';
+    var f2 = 1 - fraction;
+    el1.style.filter = 'blur(' + Math.min(8 / f2 - 8, 100) + 'px)';
+    el1.style.opacity = (Math.pow(f2, 0.4) * 100) + '%';
+  }
+
+  function doCooldown() {
+    morph = 0;
+    el2.style.filter = '';
+    el2.style.opacity = '100%';
+    el1.style.filter = '';
+    el1.style.opacity = '0%';
+  }
+
+  function doMorph() {
+    morph -= cooldown;
+    cooldown = 0;
+    var fraction = morph / morphTime;
+    if (fraction > 1) { cooldown = cooldownTime; fraction = 1; }
+    setMorph(fraction);
+  }
+
+  function animate() {
+    requestAnimationFrame(animate);
+    var now = new Date();
+    var shouldIncrement = cooldown > 0;
+    var dt = (now.getTime() - time.getTime()) / 1000;
+    time = now;
+    cooldown -= dt;
+    if (cooldown <= 0) {
+      if (shouldIncrement) {
+        textIndex = (textIndex + 1) % texts.length;
+        el1.textContent = texts[textIndex % texts.length];
+        el2.textContent = texts[(textIndex + 1) % texts.length];
+      }
+      doMorph();
+    } else {
+      doCooldown();
+    }
+  }
+  animate();
+})();
+
 // --- Trusted Ticker: duplicate items for seamless loop ---
 (function() {
   var track = document.querySelector('.trusted-track');
