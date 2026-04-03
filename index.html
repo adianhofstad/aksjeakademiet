@@ -1117,12 +1117,36 @@
   let liveCache={};
   let activeMarket='us';
   let lastUpdate=null;
+  const LS_KEY='addern_stocks_cache';
+
+  // ── LocalStorage cache — instant load on revisit ──
+  function saveToLS(){
+    try{
+      const data={};
+      [...STOCKS.us,...STOCKS.crypto].forEach(s=>{if(s._live) data[s.symbol]=s._live});
+      localStorage.setItem(LS_KEY,JSON.stringify({t:Date.now(),d:data}));
+    }catch(e){}
+  }
+  function loadFromLS(){
+    try{
+      const raw=localStorage.getItem(LS_KEY);
+      if(!raw) return false;
+      const {t,d}=JSON.parse(raw);
+      if(Date.now()-t>300000) return false; // stale after 5 min
+      let loaded=0;
+      [...STOCKS.us,...STOCKS.crypto].forEach(s=>{
+        if(d[s.symbol]){s._live=d[s.symbol];loaded++}
+      });
+      if(loaded>0) lastUpdate=new Date(t);
+      return loaded>0;
+    }catch(e){return false}
+  }
 
   // ── Fetch ──
   async function fetchQuote(sym){
     if(liveCache[sym]&&(Date.now()-liveCache[sym]._ts<25000)) return liveCache[sym];
     try{
-      const r=await fetch(`${FH}/quote?symbol=${encodeURIComponent(sym)}&token=${FH_KEY}`,{signal:AbortSignal.timeout(5000)});
+      const r=await fetch(`${FH}/quote?symbol=${encodeURIComponent(sym)}&token=${FH_KEY}`,{signal:AbortSignal.timeout(3000)});
       if(!r.ok) return null;
       const d=await r.json();
       if(!d.c||d.c===0) return null;
@@ -1132,13 +1156,20 @@
     }catch(e){return null}
   }
 
-  async function fetchAll(market){
+  // Fetch progressively — render after each stock loads
+  async function fetchAllProgressive(market){
     const stocks=STOCKS[market];if(!stocks) return;
-    await Promise.allSettled(stocks.map(async s=>{
+    const promises=stocks.map(async s=>{
       const q=await fetchQuote(s.symbol);
-      if(q) s._live={price:q.c,change:q.d,changePercent:q.dp,prev:q.pc};
-    }));
-    lastUpdate=new Date();
+      if(q){
+        s._live={price:q.c,change:q.d,changePercent:q.dp,prev:q.pc};
+        lastUpdate=new Date();
+        renderBar();
+        if(panel.classList.contains('open')&&activeMarket===market) renderPanel();
+      }
+    });
+    await Promise.allSettled(promises);
+    saveToLS();
   }
 
   // ── Format ──
@@ -1220,23 +1251,25 @@
       tab.classList.add('active');
       activeMarket=tab.dataset.market;
       renderPanel();
-      await fetchAll(activeMarket);
-      renderPanel();
+      fetchAllProgressive(activeMarket);
     });
   });
 
   // ── Init ──
-  async function init(){
-    await Promise.allSettled([fetchAll('us'),fetchAll('crypto')]);
-    renderBar();renderPanel();
+  function init(){
+    // 1. Instantly show cached data from last visit
+    var hadCache=loadFromLS();
+    if(hadCache){renderBar();renderPanel()}
+    // 2. Fetch fresh data progressively (each stock renders as it arrives)
+    fetchAllProgressive('us');
+    fetchAllProgressive('crypto');
   }
   init();
 
   // Refresh every 30s
-  setInterval(async function(){
-    await Promise.allSettled([fetchAll('us'),fetchAll('crypto')]);
-    renderBar();
-    if(panel.classList.contains('open')) renderPanel();
+  setInterval(function(){
+    fetchAllProgressive('us');
+    fetchAllProgressive('crypto');
   },30000);
 })();
 
