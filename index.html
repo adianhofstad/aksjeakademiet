@@ -330,6 +330,7 @@
       <img src="images/logo-icon.png" alt="" class="logo-img"> Addern Investing
     </a>
     <ul class="nav-links">
+      <li><a href="#" id="navAksjerBtn">Aksjer</a></li>
       <li><a href="#kurs">Kurs</a></li>
       <li><a href="verktoy.html">Verktøy</a></li>
       <li><a href="blogg.html">Artikler</a></li>
@@ -478,6 +479,91 @@
     </div>
   </div>
 </section>
+
+<!-- ═══ STOCK TICKER BAR + PANEL ═══ -->
+<style>
+  /* ── Top ticker bar (news-style, pinned under nav) ── */
+  .stock-bar{position:fixed;top:56px;left:0;right:0;z-index:90;background:var(--bg-secondary);border-bottom:1px solid var(--border-color);overflow:hidden;height:36px;display:flex;align-items:center}
+  .stock-bar-track{display:flex;gap:32px;width:max-content;animation:stockBarScroll 40s linear infinite;align-items:center;height:100%}
+  .stock-bar:hover .stock-bar-track{animation-play-state:paused}
+  @keyframes stockBarScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  .stock-bar-item{display:flex;align-items:center;gap:8px;white-space:nowrap;flex-shrink:0;font-size:.8rem}
+  .stock-bar-sym{font-family:var(--font-heading);font-weight:700;color:var(--text-primary);font-size:.78rem}
+  .stock-bar-price{color:var(--text-secondary);font-variant-numeric:tabular-nums}
+  .stock-bar-chg{font-weight:600;font-size:.75rem;padding:1px 6px;border-radius:4px;font-variant-numeric:tabular-nums}
+  .stock-bar-chg.up{color:#00d4aa;background:rgba(0,212,170,.08)}
+  .stock-bar-chg.down{color:#f04848;background:rgba(240,72,72,.08)}
+  .stock-bar-btn{position:absolute;right:0;top:0;bottom:0;display:flex;align-items:center;padding:0 14px;background:linear-gradient(to right,transparent,var(--bg-secondary) 30%);cursor:pointer;border:none;color:var(--accent-green);font-family:var(--font-body);font-size:.78rem;font-weight:600;gap:4px;z-index:2;transition:color .2s}
+  .stock-bar-btn:hover{color:var(--text-primary)}
+  .stock-bar-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2}
+  /* Push page content down to account for ticker bar */
+  body{padding-top:36px}
+
+  /* ── Fullscreen stock panel ── */
+  .stock-panel-overlay{position:fixed;inset:0;z-index:200;background:rgba(8,9,13,.85);backdrop-filter:blur(12px);opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
+  .stock-panel-overlay.open{opacity:1;visibility:visible}
+  .stock-panel{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:560px;z-index:201;background:var(--bg-primary);border-left:1px solid var(--border-color);transform:translateX(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);overflow-y:auto;-webkit-overflow-scrolling:touch}
+  .stock-panel.open{transform:translateX(0)}
+  .stock-panel-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--border-color);position:sticky;top:0;background:var(--bg-primary);z-index:5}
+  .stock-panel-title{font-family:var(--font-heading);font-weight:700;font-size:1.15rem}
+  .stock-panel-live{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:var(--accent-green);font-weight:600;margin-left:10px}
+  .stock-panel-live .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:livePulse 2s infinite}
+  @keyframes livePulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .stock-panel-close{width:36px;height:36px;border-radius:var(--radius-sm);border:1px solid var(--border-color);background:transparent;color:var(--text-secondary);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s}
+  .stock-panel-close:hover{background:var(--bg-card);color:var(--text-primary)}
+  .stock-panel-tabs{display:flex;gap:6px;padding:16px 24px 12px;border-bottom:1px solid var(--border-color);position:sticky;top:69px;background:var(--bg-primary);z-index:4}
+  .sp-tab{padding:8px 18px;border-radius:100px;border:1px solid var(--border-color);background:transparent;color:var(--text-secondary);font-family:var(--font-body);font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+  .sp-tab:hover{border-color:var(--border-color-strong);color:var(--text-primary)}
+  .sp-tab.active{background:var(--accent-green);color:var(--text-inverse);border-color:var(--accent-green)}
+  .stock-panel-body{padding:16px 24px 40px}
+  .stock-panel-grid{display:flex;flex-direction:column;gap:10px}
+  .sp-card{display:flex;align-items:center;gap:14px;padding:16px;background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-md);transition:all .2s}
+  .sp-card:hover{background:var(--bg-card-hover);border-color:var(--border-color-strong)}
+  .sp-card-icon{width:40px;height:40px;border-radius:var(--radius-sm);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:var(--font-heading);color:var(--text-muted);font-size:.85rem;flex-shrink:0}
+  .sp-card-info{flex:1;min-width:0}
+  .sp-card-name{font-family:var(--font-heading);font-weight:700;font-size:.9rem;color:var(--text-primary)}
+  .sp-card-sym{font-size:.75rem;color:var(--text-muted)}
+  .sp-card-right{text-align:right;flex-shrink:0}
+  .sp-card-price{font-family:var(--font-heading);font-weight:700;font-size:.95rem;color:var(--text-primary);font-variant-numeric:tabular-nums}
+  .sp-card-chg{font-size:.78rem;font-weight:600;font-variant-numeric:tabular-nums}
+  .sp-card-chg.up{color:#00d4aa}
+  .sp-card-chg.down{color:#f04848}
+  .sp-card-chart{display:flex;align-items:end;gap:2px;height:24px;margin-top:3px;justify-content:flex-end}
+  .sp-card-chart .bar{width:3px;border-radius:1px}
+  .stock-panel-note{text-align:center;color:var(--text-muted);font-size:.72rem;padding:16px 24px 24px;border-top:1px solid var(--border-color);margin-top:16px}
+  .stock-panel-updated{text-align:center;color:var(--text-muted);font-size:.72rem;margin-bottom:12px}
+
+  @media(max-width:560px){.stock-panel{max-width:100%}}
+</style>
+
+<!-- Top ticker bar -->
+<div class="stock-bar" id="stockBar">
+  <div class="stock-bar-track" id="stockBarTrack"></div>
+  <button class="stock-bar-btn" id="stockBarBtn" aria-label="Se dagens aksjer">
+    Se alle <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+
+<!-- Slide-in panel -->
+<div class="stock-panel-overlay" id="stockOverlay"></div>
+<div class="stock-panel" id="stockPanel" role="dialog" aria-label="Dagens aksjer">
+  <div class="stock-panel-head">
+    <div>
+      <span class="stock-panel-title">Dagens aksjer</span>
+      <span class="stock-panel-live"><span class="dot"></span> Live</span>
+    </div>
+    <button class="stock-panel-close" id="stockPanelClose" aria-label="Lukk">&times;</button>
+  </div>
+  <div class="stock-panel-tabs" id="spTabs">
+    <button class="sp-tab active" data-market="us">Nasdaq / NYSE</button>
+    <button class="sp-tab" data-market="crypto">Krypto</button>
+  </div>
+  <div class="stock-panel-body">
+    <div class="stock-panel-updated" id="spUpdated"></div>
+    <div class="stock-panel-grid" id="spGrid"></div>
+  </div>
+  <div class="stock-panel-note">Live data via Finnhub. Oppdateres hvert 30s. Kun til informasjonsformål — ikke finansiell rådgivning.</div>
+</div>
 
 <!-- Trusted By Partners — Auto-scrolling logos -->
 <section class="trusted-section">
@@ -996,6 +1082,162 @@
     });
   });
   searchInput.addEventListener('input', updateGrid);
+})();
+
+// --- Dagens Aksjer (Live Finnhub — ticker bar + slide panel) ---
+(function(){
+  const FH_KEY='d7839k1r01qsamsipusgd7839k1r01qsamsiput0';
+  const FH='https://finnhub.io/api/v1';
+
+  const STOCKS={
+    us:[
+      {symbol:'AAPL',name:'Apple',short:'AAPL'},
+      {symbol:'MSFT',name:'Microsoft',short:'MSFT'},
+      {symbol:'GOOGL',name:'Alphabet',short:'GOOGL'},
+      {symbol:'AMZN',name:'Amazon',short:'AMZN'},
+      {symbol:'NVDA',name:'NVIDIA',short:'NVDA'},
+      {symbol:'TSLA',name:'Tesla',short:'TSLA'},
+      {symbol:'META',name:'Meta Platforms',short:'META'},
+      {symbol:'NFLX',name:'Netflix',short:'NFLX'},
+      {symbol:'JPM',name:'JPMorgan Chase',short:'JPM'},
+      {symbol:'V',name:'Visa',short:'V'},
+      {symbol:'DIS',name:'Disney',short:'DIS'},
+      {symbol:'AMD',name:'AMD',short:'AMD'},
+    ],
+    crypto:[
+      {symbol:'BINANCE:BTCUSDT',name:'Bitcoin',short:'BTC'},
+      {symbol:'BINANCE:ETHUSDT',name:'Ethereum',short:'ETH'},
+      {symbol:'BINANCE:SOLUSDT',name:'Solana',short:'SOL'},
+      {symbol:'BINANCE:XRPUSDT',name:'Ripple',short:'XRP'},
+      {symbol:'BINANCE:ADAUSDT',name:'Cardano',short:'ADA'},
+      {symbol:'BINANCE:DOGEUSDT',name:'Dogecoin',short:'DOGE'},
+    ]
+  };
+
+  let liveCache={};
+  let activeMarket='us';
+  let lastUpdate=null;
+
+  // ── Fetch ──
+  async function fetchQuote(sym){
+    if(liveCache[sym]&&(Date.now()-liveCache[sym]._ts<25000)) return liveCache[sym];
+    try{
+      const r=await fetch(`${FH}/quote?symbol=${encodeURIComponent(sym)}&token=${FH_KEY}`,{signal:AbortSignal.timeout(5000)});
+      if(!r.ok) return null;
+      const d=await r.json();
+      if(!d.c||d.c===0) return null;
+      d._ts=Date.now();
+      liveCache[sym]=d;
+      return d;
+    }catch(e){return null}
+  }
+
+  async function fetchAll(market){
+    const stocks=STOCKS[market];if(!stocks) return;
+    await Promise.allSettled(stocks.map(async s=>{
+      const q=await fetchQuote(s.symbol);
+      if(q) s._live={price:q.c,change:q.d,changePercent:q.dp,prev:q.pc};
+    }));
+    lastUpdate=new Date();
+  }
+
+  // ── Format ──
+  function fmt(n,d){return Math.abs(n)>=1000?n.toLocaleString('nb-NO',{minimumFractionDigits:d,maximumFractionDigits:d}):n.toFixed(d)}
+  function dec(p){return p<1?4:p<10?3:p<1000?2:0}
+  function cur(sym){return sym.includes('BINANCE')?'USD':'USD'}
+  function miniChart(up){
+    const c=up?'#00d4aa':'#f04848';
+    return Array.from({length:10},()=>`<div class="bar" style="height:${6+Math.random()*18}px;background:${c}"></div>`).join('');
+  }
+
+  // ── Ticker bar ──
+  function renderBar(){
+    const track=document.getElementById('stockBarTrack');if(!track) return;
+    const all=[...STOCKS.us,...STOCKS.crypto];
+    const html=all.map(s=>{
+      if(!s._live) return '';
+      const d=s._live;const up=d.changePercent>=0;
+      return`<div class="stock-bar-item">
+        <span class="stock-bar-sym">${s.short}</span>
+        <span class="stock-bar-price">${fmt(d.price,dec(d.price))}</span>
+        <span class="stock-bar-chg ${up?'up':'down'}">${up?'+':''}${d.changePercent.toFixed(2)}%</span>
+      </div>`;
+    }).filter(Boolean).join('');
+    if(html) track.innerHTML=html+html;
+  }
+
+  // ── Panel grid ──
+  function renderPanel(){
+    const grid=document.getElementById('spGrid');if(!grid) return;
+    const stocks=STOCKS[activeMarket]||STOCKS.us;
+    grid.innerHTML=stocks.map(s=>{
+      if(!s._live) return`<div class="sp-card"><div class="sp-card-icon">${s.short.slice(0,2)}</div><div class="sp-card-info"><div class="sp-card-name">${s.name}</div><div class="sp-card-sym">Laster...</div></div></div>`;
+      const d=s._live;const up=d.changePercent>=0;
+      return`<div class="sp-card">
+        <div class="sp-card-icon">${s.short.slice(0,2)}</div>
+        <div class="sp-card-info">
+          <div class="sp-card-name">${s.name}</div>
+          <div class="sp-card-sym">${s.short} &middot; ${cur(s.symbol)}</div>
+        </div>
+        <div class="sp-card-right">
+          <div class="sp-card-price">${fmt(d.price,dec(d.price))}</div>
+          <div class="sp-card-chg ${up?'up':'down'}">${up?'\u25B2':'\u25BC'} ${up?'+':''}${d.changePercent.toFixed(2)}%</div>
+          <div class="sp-card-chart">${miniChart(up)}</div>
+        </div>
+      </div>`;
+    }).join('');
+    const upd=document.getElementById('spUpdated');
+    if(upd&&lastUpdate) upd.textContent='Sist oppdatert: '+lastUpdate.toLocaleTimeString('nb-NO');
+  }
+
+  // ── Panel open/close ──
+  const overlay=document.getElementById('stockOverlay');
+  const panel=document.getElementById('stockPanel');
+
+  function openPanel(){
+    overlay.classList.add('open');
+    panel.classList.add('open');
+    document.body.style.overflow='hidden';
+    renderPanel();
+  }
+  function closePanel(){
+    overlay.classList.remove('open');
+    panel.classList.remove('open');
+    document.body.style.overflow='';
+  }
+
+  document.getElementById('stockBarBtn').addEventListener('click',openPanel);
+  document.getElementById('stockPanelClose').addEventListener('click',closePanel);
+  overlay.addEventListener('click',closePanel);
+  var navBtn=document.getElementById('navAksjerBtn');
+  if(navBtn) navBtn.addEventListener('click',function(e){e.preventDefault();openPanel()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape') closePanel()});
+
+  // ── Panel tabs ──
+  document.querySelectorAll('#spTabs .sp-tab').forEach(function(tab){
+    tab.addEventListener('click',async function(){
+      document.querySelectorAll('#spTabs .sp-tab').forEach(function(t){t.classList.remove('active')});
+      tab.classList.add('active');
+      activeMarket=tab.dataset.market;
+      renderPanel();
+      await fetchAll(activeMarket);
+      renderPanel();
+    });
+  });
+
+  // ── Init ──
+  async function init(){
+    await Promise.allSettled([fetchAll('us'),fetchAll('crypto')]);
+    renderBar();renderPanel();
+  }
+  init();
+
+  // Refresh every 30s
+  setInterval(async function(){
+    await Promise.allSettled([fetchAll('us'),fetchAll('crypto')]);
+    renderBar();
+    if(panel.classList.contains('open')) renderPanel();
+  },30000);
 })();
 
 // --- Preloader ---
